@@ -31,6 +31,7 @@ public class Gestor {
     private ArrayList<Equipamento> equipamentos = new ArrayList<>();
     private ArrayList<Avaria> avarias = new ArrayList<>();
     private ArrayList<Reparacao> reparacoes = new ArrayList<>();
+    private ArrayList<Boolean> alteracoes = new ArrayList<>();
 
     /**
      * Metodo para adicionar uma Avaria
@@ -58,7 +59,8 @@ public class Gestor {
     }
 
     /**
-     * Método para obter a pos de uma Avaria no array do gestor dada uma avaria noutro array(EQ)
+     * Método para obter a pos de uma Avaria no array do gestor dada uma avaria
+     * noutro array(EQ)
      *
      * @param A avaria
      * @return Devolve pos da avaria no array do gestor
@@ -125,11 +127,31 @@ public class Gestor {
         } else {
             str.append("Avarias registadas (ID-Descrição da avaria): \n");
             for (int i = 0; i < avarias.size(); i++) {
-                str.append(avarias.get(i).getNumId() + "-");
-                str.append(avarias.get(i).getDescriçao()).append("\n");
+                if (avarias.get(i).isAlterado() == false) {
+                    str.append(avarias.get(i).getNumId() + "-");
+                    str.append(avarias.get(i).getDescriçao()).append("\n");
+                }
+            }
+
+        }
+
+        return str.toString();
+    }
+
+    public boolean verificarAvarias() {
+
+        boolean avariasValidas = false;
+        
+        for (int i = 0; i < avarias.size(); i++) {
+            if (avarias.get(i).isAlterado() == true) {
+                alteracoes.add(true);
+            } else {
+                alteracoes.add(false);
+                avariasValidas = true;
             }
         }
-        return str.toString();
+
+        return avariasValidas;
     }
 
     public String listarLaboratorios() {

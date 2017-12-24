@@ -24,7 +24,7 @@ public class GestaoEquipamento {
     public static void main(String[] args) {
 
         //gerir.lerFicheiro();
-        //testes(gerir); // COMENTAR 
+        testes(gerir); // COMENTAR 
         int op;
         int op2;
         int op3;
@@ -448,37 +448,43 @@ public class GestaoEquipamento {
         } while (pos == -1);
         E = gerir.obterEscola(pos);
 
-        // pedir um funcionario não docente e verificar que é tecnico   E VER PORQUE TEM DE PERTENCER A ESCOLA
-        System.out.println(gerir.listarNaoDocentes());
-        do {
-            nif = Consola.lerInt("Indique o NIF do funcionário da escola " + E.getNome() + " que está a registar equipamento: ", 1, 999999999);
-            pos = gerir.pesquisarNaoDocenteTecnico(nif, E);
-            if (pos == -1) {
-                System.err.println("NIF não existe ou o funcionário não é tecnico da escola!");
-            }
-        } while (pos == -1);
-        ND = gerir.obterFuncionarioNaoDocente(pos); //verificar que isto funciona, uma vez que a pos que ele encontra no array ND é diferente da sua pos no array de F
+        if (E.getSizeFuncionarios() != 0) {
 
-        descricao = Consola.lerString("\nDescrição do equipamento: ");
-        numSerie = Consola.lerInt("Indique o número de série do equipamento: ", 0, 999999999);  /// Alterar min / max no fim
+            // pedir um funcionario não docente e verificar que é tecnico   E VER PORQUE TEM DE PERTENCER A ESCOLA
+            System.out.println(gerir.listarNaoDocentes());
+            do {
+                nif = Consola.lerInt("Indique o NIF do funcionário da escola " + E.getNome() + " que está a registar equipamento: ", 1, 999999999);
+                pos = gerir.pesquisarNaoDocenteTecnico(nif, E);
+                if (pos == -1) {
+                    System.err.println("NIF não existe ou o funcionário não é tecnico da escola!");
+                }
+            } while (pos == -1);
+            ND = gerir.obterFuncionarioNaoDocente(pos); //verificar que isto funciona, uma vez que a pos que ele encontra no array ND é diferente da sua pos no array de F
+
+            descricao = Consola.lerString("Descrição do equipamento: ");
+            numSerie = Consola.lerInt("Indique o número de série do equipamento: ", 0, 999999999);  /// Alterar min / max no fim
 
 /////////////// ASSOCIAR A TIPO DE EQUIPAMENTO//////////////
-        System.out.println(gerir.listartiposEquipamento());
-        do {
-            idtipoEquipamento = Consola.lerInt("Indique o ID do tipo de equipamento para associar ao equipamento: ", 0, 999999999);
-            pos = gerir.pesquisarIdTipoEquipamento(idtipoEquipamento);
-            if (pos == -1) {
-                System.err.println("Não existe esse tipo de equipamento!");
-            }
-        } while (pos == -1);
-        T = gerir.obterTipoEquipamento(pos);
+            System.out.println(gerir.listartiposEquipamento());
+            do {
+                idtipoEquipamento = Consola.lerInt("Indique o ID do tipo de equipamento para associar ao equipamento: ", 0, 999999999);
+                pos = gerir.pesquisarIdTipoEquipamento(idtipoEquipamento);
+                if (pos == -1) {
+                    System.err.println("Não existe esse tipo de equipamento!");
+                }
+            } while (pos == -1);
+            T = gerir.obterTipoEquipamento(pos);
 /////////////////////////////////////////////////////
-        custo = Consola.lerInt("Custo do equipamento em euros: ", 0, 999999999);
+            custo = Consola.lerInt("Custo do equipamento em euros: ", 0, 999999999);
 
-        EQ = new Equipamento(dataIventario, descricao, numSerie, T, E, custo, ND, 1);
-        gerir.adicionarEquipamento(EQ); //adicionar ao vetor de EQ
-        E.adicionarEquipamento(EQ); //associar EQ à E
-        System.out.println("\n------Registado Equipamento com sucesso!------\n");
+            EQ = new Equipamento(dataIventario, descricao, numSerie, T, E, custo, ND, 1);
+            gerir.adicionarEquipamento(EQ); //adicionar ao vetor de EQ
+            E.adicionarEquipamento(EQ); //associar EQ à E
+            System.out.println("\n------Registado Equipamento com sucesso!------\n");
+
+        } else {
+            System.out.println("\n Não existem qualquer funcionario associado a escola !\n");
+        }
     }
 
     public static void associarLabEquipamento(Gestor gerir) {
@@ -818,7 +824,7 @@ public class GestaoEquipamento {
         L = new Laboratorio(descricao, escolaLab, escolaLoc);
         gerir.adicionarLaboratorio(L);
         escolaLab.adicionarLaboratorio(L);
-        
+
         System.out.println("\n------Inserido laboratório com sucesso!------");
 
     }

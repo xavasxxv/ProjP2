@@ -24,7 +24,7 @@ public class GestaoEquipamento {
     public static void main(String[] args) {
 
         //gerir.lerFicheiro();
-        testes(gerir); // COMENTAR 
+        //testes(gerir); // COMENTAR 
         int op;
         int op2;
         int op3;

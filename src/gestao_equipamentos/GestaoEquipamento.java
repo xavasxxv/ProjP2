@@ -186,7 +186,7 @@ public class GestaoEquipamento {
                                     if (gerir.getSizeEquipamento() == 0) {
                                         System.err.println("\nÉ necessario existir avarias!\n");
                                     }
-                                    if (gerir.verificarAvarias() == false){
+                                    if (gerir.verificarAvarias() == false) {
                                         System.err.println("\nNão há avarias para modificar!\n");
                                     }
                                 }
@@ -368,7 +368,10 @@ public class GestaoEquipamento {
         A.getEQ().obterAvaria(A).setEstadoA(estado);
         System.out.println("\n------Alterado o estado com sucesso!------\n");
 
-        
+        if (estado != 1) {
+            A.setAlterado(true);
+            A.getEQ().obterAvaria(A).setAlterado(true);
+        }
 
         if (estado == 2) {
 

@@ -278,12 +278,14 @@ public class GestaoEquipamento {
         Avaria A = new Avaria(dataIventario, EQ, "avaria1", F1, 1, false);
         gerir.adicionarAvaria(A);
         EQ.adicionarAvaria(A);
-        Avaria A1 = new Avaria(dataIventario, EQ, "avaria2", F1, 1, false);
+        Avaria A1 = new Avaria(dataIventario, EQ, "avaria2", F1, 2, true);
         gerir.adicionarAvaria(A1);
         EQ.adicionarAvaria(A1);
-        Avaria A2 = new Avaria(dataIventario, EQ, "avaria3", F1, 2, true);
-        gerir.adicionarAvaria(A2);
-        EQ.adicionarAvaria(A2);
+
+        Calendar dataReparacao = Calendar.getInstance();
+        Reparacao R = new Reparacao(A, dataReparacao, "reparação", 10, F);
+        gerir.adicionarReparacao(R);
+        EQ.adicionarReparacao(R);
 
     }
 
@@ -340,9 +342,9 @@ public class GestaoEquipamento {
 
         do {
             id = Consola.lerInt("Qual o ID da avaria que deseja alterar: ", 1, 999999999);
-            pos = gerir.pesquisarAvaria(id);
+            pos = gerir.pesquisarAvaria1(id);
             if (pos == -1) {
-                System.err.println("Não existem avarias com este número de identificação!");
+                System.err.println("Não existem avarias com este número de identificação ou já foram reparadas!");
             }
         } while (pos == -1);
 
@@ -373,6 +375,10 @@ public class GestaoEquipamento {
             A.getEQ().obterAvaria(A).setAlterado(true);
         }
 
+        if (estado == 1) {
+            A.getEQ().setEstado(2);
+        }
+
         if (estado == 2) {
 
             descricao = Consola.lerString("Coloque uma breve descrição da reparação: ");
@@ -390,6 +396,10 @@ public class GestaoEquipamento {
         if (estado == 3) {
 
             A.getEQ().setEstado(3); // 3 IRREPARAVEL
+            if (A.getEQ().getLab() == null) {
+                Laboratorio lab = new Laboratorio("Equipamento foi abatido, não tem laboratório", null, null);
+                A.getEQ().setLab(lab);
+            }
             A.getEQ().getLab().setDescricao("Equipamento foi abatido, não tem laboratório");
             A.getEQ().getLab().setEscolaLab(null);
             A.getEQ().getLab().setEscolaLoc(null);
@@ -418,27 +428,34 @@ public class GestaoEquipamento {
         } while (pos == -1);
         EQ = gerir.obterEquipamento(pos);
 
-        System.out.print(EQ.getE().listarFuncionariosEscola());
-        do {
+        if (EQ.getEstado() == 1) {
 
-            nif = Consola.lerInt("Indique o NIF do funcionário que regista a avaria: ", 1, 999999999);
-            pos = gerir.pesquisarNaoDocenteTecnico(nif, EQ.getE()); //acho que funciona porque ele vai verificar o nif ao array principal de funcionarios
-            //pos = EQ.getE().pesquisarFuncionarioNIFEscola(nif);
+            System.out.print(EQ.getE().listarFuncionariosEscola());
+            do {
 
-            if (pos == -1) {
-                System.err.println("Não existe funcionário com esse NIF ou o funcionário não pertence à escola ou não tem como função TECNICO!");
-            }
-        } while (pos == -1);
-        F = gerir.obterFuncionario(pos); //uma vez que aqui ele tmb vai buscar o F de posição pos no array principal
+                nif = Consola.lerInt("Indique o NIF do funcionário que regista a avaria: ", 1, 999999999);
+                pos = gerir.pesquisarNaoDocenteTecnico(nif, EQ.getE()); //acho que funciona porque ele vai verificar o nif ao array principal de funcionarios
+                //pos = EQ.getE().pesquisarFuncionarioNIFEscola(nif);
 
-        descriçao = Consola.lerString("Coloque uma breve descrição da avaria: ");
+                if (pos == -1) {
+                    System.err.println("Não existe funcionário com esse NIF ou o funcionário não pertence à escola ou não tem como função TECNICO!");
+                }
+            } while (pos == -1);
+            F = gerir.obterFuncionario(pos); //uma vez que aqui ele tmb vai buscar o F de posição pos no array principal
 
-        A = new Avaria(dataAvaria, EQ, descriçao, F, 1, false);
-        gerir.adicionarAvaria(A);
-        EQ.adicionarAvaria(A);
-        System.out.println("\n------Registada Avaria com sucesso!------\n");
+            descriçao = Consola.lerString("Coloque uma breve descrição da avaria: ");
 
-        //estado do equipamento passa a indisponivel (feito - EQ.adicionarAvaria(A) o método trata disso)
+            A = new Avaria(dataAvaria, EQ, descriçao, F, 1, false);
+            gerir.adicionarAvaria(A);
+            EQ.adicionarAvaria(A);
+            System.out.println("\n------Registada Avaria com sucesso!------\n");
+
+            //estado do equipamento passa a indisponivel (feito - EQ.adicionarAvaria(A) o método trata disso)
+        } else if (EQ.getEstado() == 2) {
+            System.err.println("Este equipamento já está avariado, é impossivel registar outra avaria!\n");
+        } else if (EQ.getEstado() == 3) {
+            System.err.println("Este equipamento já foi abatido, é impossivel registar avarias!\n");
+        }
     }
 
     public static void registarEquipamento(Gestor gerir) {

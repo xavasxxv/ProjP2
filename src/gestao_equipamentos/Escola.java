@@ -46,7 +46,7 @@ public class Escola implements Serializable {
     }
 
     public String listarFuncionariosEscola() {
-        StringBuilder str = new StringBuilder(" ");
+        StringBuilder str = new StringBuilder("");
         if (funcionarios.isEmpty()) {
             str.append("Não há funcionários na escola");
         } else {

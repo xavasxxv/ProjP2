@@ -294,6 +294,15 @@ public class Gestor {
         }
         return -1;
     }
+    
+    public int pesquisarAvaria1(int id) {
+        for (int i = 0; i < avarias.size(); i++) {
+            if (avarias.get(i).getNumId() == id && avarias.get(i).isAlterado() == false) {
+                return i;
+            }
+        }
+        return -1;
+    }
 
     public int pesquisarEscolaNIF(int nif) {
 

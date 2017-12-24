@@ -40,10 +40,10 @@ public class Equipamento {
         this.estado = estado;
         this.ND = ND;
         this.custo = custo;
-        this.lab = new Laboratorio(null, null, null);
+        this.lab = null;
 
     }
-
+    
     public String ListarAvarias(Equipamento EQ) {
         StringBuilder str = new StringBuilder("");
         if (EQ.avarias.isEmpty()) {

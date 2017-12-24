@@ -2,13 +2,13 @@ PROJECTO P2
 
 NUNCA FAZER GET E SET DE ARRAY LIST 
 
----Em fala---
-Fazer to-string com super Funcionarios, docente, não docente                    |parece estar + ou - feito
-Verificar data (dia, mes) e idade funcionario                                 |
+---Em falta---
+Fazer to-string com super Funcionarios, docente, não docente                    |parece estar feito
+Verificar data (dia, mes) e idade funcionario                                   |parece estar feito
 Acabar e corrigir Avarias                                                       |a tratar
 Fazer Reparações                                                                |a tratar
 Fazer Estatisticas ( criando variaveis extrategicas para optimizar a coisa )    |
-Editar gravar e Ler mesmo no fim do Programa                                    |parece estar + ou - feito
+Editar gravar e Ler mesmo no fim do Programa                                    |parece estar feito
 
 
 ---VERIFICAÇÕES---

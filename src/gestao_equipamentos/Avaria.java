@@ -21,8 +21,9 @@ public class Avaria implements Serializable {
     private String descriçao;
     private Funcionario F;
     private int estadoA;
+    private boolean alterado;
 
-    public Avaria(Calendar dataAvaria, Equipamento E, String descriçao, Funcionario F, int estadoA) {
+    public Avaria(Calendar dataAvaria, Equipamento E, String descriçao, Funcionario F, int estadoA, boolean alterado) {
 
         this.dataAvaria = dataAvaria;
         this.EQ = E;
@@ -30,6 +31,7 @@ public class Avaria implements Serializable {
         this.F = F;
         this.EQ = E;
         this.estadoA = estadoA;
+        this.alterado = alterado;
 
     }
 
@@ -37,8 +39,8 @@ public class Avaria implements Serializable {
     public String toString() {
         StringBuilder str = new StringBuilder();
         str.append("Avaria: ");
-        str.append("\nNúmero de Identificação ").append(numId);
-        str.append("\nDescrição ").append(descriçao);
+        str.append("\nNúmero de Identificação: ").append(numId);
+        str.append("\nDescrição: ").append(descriçao);
         str.append("\nEstado: ");
         if (estadoA == 1) {
             str.append("POR REPARAR");
@@ -111,6 +113,20 @@ public class Avaria implements Serializable {
      */
     public void setEstadoA(int estadoA) {
         this.estadoA = estadoA;
+    }
+
+    /**
+     * @return the alterado
+     */
+    public boolean isAlterado() {
+        return alterado;
+    }
+
+    /**
+     * @param alterado the alterado to set
+     */
+    public void setAlterado(boolean alterado) {
+        this.alterado = alterado;
     }
 
 }

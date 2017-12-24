@@ -180,17 +180,22 @@ public class GestaoEquipamento {
                                 }
                                 break;
                             case 2:
-                                if (gerir.getSizeEquipamento() != 0) {
+                                if (gerir.getSizeEquipamento() != 0 && gerir.verificarAvarias()) {
                                     alterarEstadoAvaria(gerir);
                                 } else {
-                                    System.err.println("\nÉ necessario existir avarias!\n");
+                                    if (gerir.getSizeEquipamento() == 0) {
+                                        System.err.println("\nÉ necessario existir avarias!\n");
+                                    }
+                                    if (gerir.verificarAvarias() == false){
+                                        System.err.println("\nNão há avarias para modificar!\n");
+                                    }
                                 }
-                                //Apenas se existirem Não Docentes "tecnicos" e Avarias
+                                //Apenas se existirem Não Docentes "tecnicos" e Avarias válidas
 
                                 break;
                             case 3:
                                 if (gerir.getSizeEquipamento() != 0) {
-                                    consularAvariaEquipamento(gerir);
+                                    consultarAvariaEquipamento(gerir);
                                 } else {
                                     System.err.println("\nÉ necessario existir avarias!\n");
                                 }
@@ -270,13 +275,19 @@ public class GestaoEquipamento {
         Equipamento EQ1 = new Equipamento(dataIventario, "Impresora", 11111, TipoEQ1, E1, 52, F2, 1);
         gerir.adicionarEquipamento(EQ1);
 
-        Avaria A = new Avaria(dataIventario, EQ, "avaria1", F1, 1);
+        Avaria A = new Avaria(dataIventario, EQ, "avaria1", F1, 1, false);
         gerir.adicionarAvaria(A);
         EQ.adicionarAvaria(A);
+        Avaria A1 = new Avaria(dataIventario, EQ, "avaria2", F1, 1, false);
+        gerir.adicionarAvaria(A1);
+        EQ.adicionarAvaria(A1);
+        Avaria A2 = new Avaria(dataIventario, EQ, "avaria3", F1, 2, true);
+        gerir.adicionarAvaria(A2);
+        EQ.adicionarAvaria(A2);
 
     }
 
-    public static void consularAvariaEquipamento(Gestor gerir) {
+    public static void consultarAvariaEquipamento(Gestor gerir) {
         Equipamento EQ;
         Avaria A;
         int id;
@@ -326,6 +337,7 @@ public class GestaoEquipamento {
         int custo;
 
         System.out.println(gerir.listarAvarias());
+
         do {
             id = Consola.lerInt("Qual o ID da avaria que deseja alterar: ", 1, 999999999);
             pos = gerir.pesquisarAvaria(id);
@@ -334,13 +346,14 @@ public class GestaoEquipamento {
             }
         } while (pos == -1);
 
-        System.out.println("1-POR REPARAR / 2- REPARADA / 3-IRREPARÁVEL");
-        estado = Consola.lerInt("Indique o novo estado da avaria: ", 1, 3);
-
         A = gerir.obterAvaria(pos);
 
+        System.out.println("1-POR REPARAR / 2- REPARADA / 3-IRREPARÁVEL");
+
+        estado = Consola.lerInt("Indique o novo estado da avaria: ", 1, 3);
+
         //funcionario ND e tecnico
-        System.out.println(gerir.listarNaoDocentes()); //listar apenas pessoal do IPL???
+        System.out.println(gerir.listarNaoDocentes()); //listar apenas pessoal da escola???
         do {
             nif = Consola.lerInt("Indique NIF do funcionário TECNICO da escola " + A.getEQ().getE().getNome() + " : ", 1, 999999999);
             pos = gerir.pesquisarNaoDocenteTecnico(nif, A.getEQ().getE());
@@ -354,6 +367,8 @@ public class GestaoEquipamento {
         A.setEstadoA(estado);
         A.getEQ().obterAvaria(A).setEstadoA(estado);
         System.out.println("\n------Alterado o estado com sucesso!------\n");
+
+        
 
         if (estado == 2) {
 
@@ -415,7 +430,7 @@ public class GestaoEquipamento {
 
         descriçao = Consola.lerString("Coloque uma breve descrição da avaria: ");
 
-        A = new Avaria(dataAvaria, EQ, descriçao, F, 1);
+        A = new Avaria(dataAvaria, EQ, descriçao, F, 1, false);
         gerir.adicionarAvaria(A);
         EQ.adicionarAvaria(A);
         System.out.println("\n------Registada Avaria com sucesso!------\n");
@@ -818,7 +833,7 @@ public class GestaoEquipamento {
         L = new Laboratorio(descricao, escolaLab, escolaLoc);
         gerir.adicionarLaboratorio(L);
         escolaLab.adicionarLaboratorio(L);
-        
+
         System.out.println("\n------Inserido laboratório com sucesso!------");
 
     }

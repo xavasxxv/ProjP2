@@ -172,7 +172,7 @@ public class GestaoEquipamento {
                         op2 = gestaoAvarias();
                         switch (op2) {
                             case 1:
-                                //( um equipamento so pode ter outra avaria depois de reparada a anterior)
+                                //( um equipamento so pode ter outra avaria depois de reparada a anterior) feito
                                 if (gerir.getSizeEquipamento() != 0) {
                                     registarAvaria(gerir);
                                 } else {
@@ -180,7 +180,8 @@ public class GestaoEquipamento {
                                 }
                                 break;
                             case 2:
-                                if (gerir.getSizeEquipamento() != 0 && gerir.verificarAvarias()) {
+                                //Apenas se existirem Não Docentes "tecnicos" e Avarias válidas feito
+                                if (gerir.getSizeEquipamento() != 0 && gerir.verificarAvarias() && gerir.verificaNaoDocenteTecnico()) {
                                     alterarEstadoAvaria(gerir);
                                 } else {
                                     if (gerir.getSizeEquipamento() == 0) {
@@ -190,11 +191,10 @@ public class GestaoEquipamento {
                                         System.err.println("\nNão há avarias para modificar!\n");
                                     }
                                 }
-                                //Apenas se existirem Não Docentes "tecnicos" e Avarias válidas
-
                                 break;
                             case 3:
-                                if (gerir.getSizeEquipamento() != 0) {
+                                //Apenas se exitirem Avarias feito
+                                if (gerir.getSizeEquipamento() != 0 && gerir.getSizeAvarias() != 0) {
                                     consultarAvariaEquipamento(gerir);
                                 } else {
                                     System.err.println("\nÉ necessario existir avarias!\n");
@@ -350,22 +350,39 @@ public class GestaoEquipamento {
 
         A = gerir.obterAvaria(pos);
 
+        System.out.print(A.getEQ().getE().listarFuncionariosEscola());
+        do {
+
+            nif = Consola.lerInt("Indique o NIF do funcionário que regista a avaria: ", 1, 999999999);
+            pos = gerir.pesquisarNaoDocenteTecnico(nif, A.getEQ().getE()); //acho que funciona porque ele vai verificar o nif ao array principal de funcionarios
+            //pos = EQ.getE().pesquisarFuncionarioNIFEscola(nif);
+
+            if (pos == -1) {
+                System.err.println("Não existe funcionário com esse NIF ou o funcionário não pertence à escola ou não tem como função TECNICO!");
+            }
+        } while (pos == -1);
+        F = gerir.obterFuncionario(pos); //uma vez que aqui ele tmb vai buscar o F de posição pos no array principal
+
+        /**
+         * 
+         * //funcionario ND e tecnico
+         * System.out.println(gerir.listarNaoDocentes()); //listar apenas pessoal da escola???
+         * do {
+         *     nif = Consola.lerInt("Indique NIF do funcionário TECNICO da escola " + A.getEQ().getE().getNome() + " : ", 1, 999999999);
+         *    pos = gerir.pesquisarNaoDocenteTecnico(nif, A.getEQ().getE());
+         *     if (pos == -1) {
+         *         System.err.println("NIF não existe ou o funcionário não é TECNICO da escola!");
+         *     }
+         * } while (pos == -1);
+         * ND = gerir.obterFuncionarioNaoDocente(pos);
+         * F = gerir.obterFuncionario1(ND);
+         * 
+         */
+
         System.out.println("1-POR REPARAR / 2- REPARADA / 3-IRREPARÁVEL");
 
         estado = Consola.lerInt("Indique o novo estado da avaria: ", 1, 3);
-
-        //funcionario ND e tecnico
-        System.out.println(gerir.listarNaoDocentes()); //listar apenas pessoal da escola???
-        do {
-            nif = Consola.lerInt("Indique NIF do funcionário TECNICO da escola " + A.getEQ().getE().getNome() + " : ", 1, 999999999);
-            pos = gerir.pesquisarNaoDocenteTecnico(nif, A.getEQ().getE());
-            if (pos == -1) {
-                System.err.println("NIF não existe ou o funcionário não é TECNICO da escola!");
-            }
-        } while (pos == -1);
-        ND = gerir.obterFuncionarioNaoDocente(pos);
-        F = gerir.obterFuncionario1(ND);
-
+        
         A.setEstadoA(estado);
         A.getEQ().obterAvaria(A).setEstadoA(estado);
         System.out.println("\n------Alterado o estado com sucesso!------\n");

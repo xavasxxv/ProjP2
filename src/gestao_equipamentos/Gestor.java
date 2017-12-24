@@ -31,7 +31,6 @@ public class Gestor {
     private ArrayList<Equipamento> equipamentos = new ArrayList<>();
     private ArrayList<Avaria> avarias = new ArrayList<>();
     private ArrayList<Reparacao> reparacoes = new ArrayList<>();
-    private ArrayList<Boolean> alteracoes = new ArrayList<>();
 
     /**
      * Metodo para adicionar uma Avaria
@@ -143,15 +142,25 @@ public class Gestor {
         boolean avariasValidas = false;
         
         for (int i = 0; i < avarias.size(); i++) {
-            if (avarias.get(i).isAlterado() == true) {
-                alteracoes.add(true);
-            } else {
-                alteracoes.add(false);
+            if (avarias.get(i).isAlterado() == false) {
                 avariasValidas = true;
             }
         }
 
         return avariasValidas;
+    }
+    
+    public boolean verificaNaoDocenteTecnico() {
+        
+        boolean haNDTecnico = false;
+        
+        for (int i = 0; i < naoDocentes.size(); i++) {
+            if ("tecnico".equalsIgnoreCase(naoDocentes.get(i).funcao)) {
+                haNDTecnico = true;
+            }
+        }
+        
+        return haNDTecnico;
     }
 
     public String listarLaboratorios() {

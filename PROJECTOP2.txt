@@ -26,9 +26,9 @@ consultarEquipamentoNumero -> Apenas se exitirem Equipamentos
 associarLabEquipamento-> Apenas se exitirem lab e Equipamentos  (UM equipamento so pode estar num laboratorio)
 
 
-Registar Avarias-> Apenas se exitirem equipamentos ( um equipamento so pode ter outra avaria depois de reparada a anterior)
-Alterar Estado Avarias -> Apenas se existirem Não Docentes "tecnicos" e Avarias
-Consultar Avaria -> Apenas se exitirem Avarias 
+Registar Avarias-> Apenas se exitirem equipamentos ( um equipamento so pode ter outra avaria depois de reparada a anterior) feito
+Alterar Estado Avarias -> Apenas se existirem Não Docentes "tecnicos" e Avarias válidas feito
+Consultar Avaria -> Apenas se exitirem Avarias feito
 
    
 
@@ -66,7 +66,7 @@ inserirLaboratorio - descrição ????
 
 FALTA
 custos (reparaçoes)
-verificaçoes para as reparaçoes, depois de alteradas uma vez, n podem ser mais alteradas
+verificaçoes para as reparaçoes, depois de alteradas uma vez, n podem ser mais alteradas feito
 
 
   

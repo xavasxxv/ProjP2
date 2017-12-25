@@ -96,7 +96,7 @@ public class Gestor {
         } else {
             str.append("\nFuncionários não docentes do agrupamento (NIF-Nome-Escola-Função): \n");
             for (int i = 0; i < naoDocentes.size(); i++) {
-                str.append(naoDocentes.get(i).getNif() + "-");
+                str.append("\t").append(naoDocentes.get(i).getNif() + "-");
                 str.append(naoDocentes.get(i).getNome() + "-");
                 str.append(naoDocentes.get(i).getEscolaTrabalho().getNome() + "-");
                 str.append(naoDocentes.get(i).funcao).append("\n");
@@ -112,7 +112,7 @@ public class Gestor {
         } else {
             str.append("Escolas listadas (NIF-Nome): \n");
             for (int i = 0; i < escolas.size(); i++) {
-                str.append(escolas.get(i).getNif() + "-");
+                str.append("\t").append(escolas.get(i).getNif() + "-");
                 str.append(escolas.get(i).getNome()).append("\n");
             }
         }
@@ -127,7 +127,7 @@ public class Gestor {
             str.append("Avarias registadas (ID-Descrição da avaria): \n");
             for (int i = 0; i < avarias.size(); i++) {
                 if (avarias.get(i).isAlterado() == false) {
-                    str.append(avarias.get(i).getNumId() + "-");
+                    str.append("\t").append(avarias.get(i).getNumId() + "-");
                     str.append(avarias.get(i).getDescriçao()).append("\n");
                 }
             }
@@ -183,7 +183,7 @@ public class Gestor {
         } else {
             str.append("Laboratórios listados (Descrição - Escola): \n");
             for (int i = 0; i < laboratorios.size(); i++) {
-                str.append(laboratorios.get(i).getDescricao() + " - ");
+                str.append("\t").append(laboratorios.get(i).getDescricao() + " - ");
                 str.append(laboratorios.get(i).getEscolaLab().getNome()).append("\n");
             }
         }
@@ -197,7 +197,7 @@ public class Gestor {
         } else {
             str.append("Tipos de equipamento listados (ID-Designação): \n");
             for (int i = 0; i < tipoEquipamentos.size(); i++) {
-                str.append(tipoEquipamentos.get(i).getNumId() + "-");
+                str.append("\t").append(tipoEquipamentos.get(i).getNumId() + "-");
                 str.append(tipoEquipamentos.get(i).getDesignacao()).append("\n");
             }
         }
@@ -211,7 +211,7 @@ public class Gestor {
         } else {
             str.append("Equipamento listados (ID-Descrição-Escola-NumSerie-TipoEquipamento): \n");
             for (int i = 0; i < equipamentos.size(); i++) {
-                str.append(equipamentos.get(i).getNumId() + "-");
+                str.append("\t").append(equipamentos.get(i).getNumId() + "-");
                 str.append(equipamentos.get(i).getDescricao() + "-");
                 str.append(equipamentos.get(i).getE().getNome() + "-");
                 str.append(equipamentos.get(i).getNumSerie() + "-");

@@ -140,7 +140,7 @@ public class Gestor {
     public boolean verificarAvarias() {
 
         boolean avariasValidas = false;
-        
+
         for (int i = 0; i < avarias.size(); i++) {
             if (avarias.get(i).isAlterado() == false) {
                 avariasValidas = true;
@@ -149,18 +149,31 @@ public class Gestor {
 
         return avariasValidas;
     }
-    
+
     public boolean verificaNaoDocenteTecnico() {
-        
+
         boolean haNDTecnico = false;
-        
+
         for (int i = 0; i < naoDocentes.size(); i++) {
             if ("tecnico".equalsIgnoreCase(naoDocentes.get(i).funcao)) {
                 haNDTecnico = true;
             }
         }
-        
+
         return haNDTecnico;
+    }
+
+    public boolean verificaNaoDocenteTecnicoEscola(Escola E) {
+
+        boolean haNDTecnicoEscola = false;
+
+        for (int i = 0; i < naoDocentes.size(); i++) {
+            if ("tecnico".equalsIgnoreCase(naoDocentes.get(i).funcao) && naoDocentes.get(i).getEscolaTrabalho().equals(E)) {
+                haNDTecnicoEscola = true;
+            }
+        }
+
+        return haNDTecnicoEscola;
     }
 
     public String listarLaboratorios() {
@@ -303,7 +316,7 @@ public class Gestor {
         }
         return -1;
     }
-    
+
     public int pesquisarAvaria1(int id) {
         for (int i = 0; i < avarias.size(); i++) {
             if (avarias.get(i).getNumId() == id && avarias.get(i).isAlterado() == false) {

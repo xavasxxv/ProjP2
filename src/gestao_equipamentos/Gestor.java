@@ -31,7 +31,6 @@ public class Gestor {
     private ArrayList<Equipamento> equipamentos = new ArrayList<>();
     private ArrayList<Avaria> avarias = new ArrayList<>();
     private ArrayList<Reparacao> reparacoes = new ArrayList<>();
-    private ArrayList<Boolean> alteracoes = new ArrayList<>();
 
     /**
      * Metodo para adicionar uma Avaria
@@ -141,17 +140,40 @@ public class Gestor {
     public boolean verificarAvarias() {
 
         boolean avariasValidas = false;
-        
+
         for (int i = 0; i < avarias.size(); i++) {
-            if (avarias.get(i).isAlterado() == true) {
-                alteracoes.add(true);
-            } else {
-                alteracoes.add(false);
+            if (avarias.get(i).isAlterado() == false) {
                 avariasValidas = true;
             }
         }
 
         return avariasValidas;
+    }
+
+    public boolean verificaNaoDocenteTecnico() {
+
+        boolean haNDTecnico = false;
+
+        for (int i = 0; i < naoDocentes.size(); i++) {
+            if ("tecnico".equalsIgnoreCase(naoDocentes.get(i).funcao)) {
+                haNDTecnico = true;
+            }
+        }
+
+        return haNDTecnico;
+    }
+
+    public boolean verificaNaoDocenteTecnicoEscola(Escola E) {
+
+        boolean haNDTecnicoEscola = false;
+
+        for (int i = 0; i < naoDocentes.size(); i++) {
+            if ("tecnico".equalsIgnoreCase(naoDocentes.get(i).funcao) && naoDocentes.get(i).getEscolaTrabalho().equals(E)) {
+                haNDTecnicoEscola = true;
+            }
+        }
+
+        return haNDTecnicoEscola;
     }
 
     public String listarLaboratorios() {
@@ -289,6 +311,15 @@ public class Gestor {
     public int pesquisarAvaria(int id) {
         for (int i = 0; i < avarias.size(); i++) {
             if (avarias.get(i).getNumId() == id) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public int pesquisarAvaria1(int id) {
+        for (int i = 0; i < avarias.size(); i++) {
+            if (avarias.get(i).getNumId() == id && avarias.get(i).isAlterado() == false) {
                 return i;
             }
         }

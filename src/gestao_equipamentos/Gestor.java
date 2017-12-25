@@ -88,6 +88,21 @@ public class Gestor {
     public TipoEquipamento obterTipoEquipamento(int pos) {
         return tipoEquipamentos.get(pos);
     }
+    
+    public String listarFuncionarios() {
+        StringBuilder str = new StringBuilder("");
+        if (funcionarios.isEmpty()) {
+            str.append("\nNão há funcionários!");
+        } else {
+            str.append("\nFuncionários do agrupamento (NIF-Nome-Escola): \n");
+            for (int i = 0; i < funcionarios.size(); i++) {
+                str.append("\t").append(funcionarios.get(i).getNif() + "-");
+                str.append(funcionarios.get(i).getNome() + "-");
+                str.append(funcionarios.get(i).getEscolaTrabalho().getNome()).append("\n");
+            }
+        }
+        return str.toString();
+    }
 
     public String listarNaoDocentes() {
         StringBuilder str = new StringBuilder("");
@@ -193,6 +208,7 @@ public class Gestor {
     }
 
     public String listartiposEquipamento() {
+        
         StringBuilder str = new StringBuilder("");
         if (tipoEquipamentos.isEmpty()) {
             str.append("Não há tipos de equipamento registados!");

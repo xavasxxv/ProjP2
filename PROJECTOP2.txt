@@ -2,7 +2,35 @@ PROJECTO P2
 
 NUNCA FAZER GET E SET DE ARRAY LIST 
 
+
+---A fazer---
+Reparações
+
+
+---Em falta---
+Fazer Estatisticas (criando variaveis extrategicas para optimizar a coisa)
+custos (reparaçoes)
+consultarLaboratorioEscola - n sei o que se pretende nesta função
+
+
+---VERIFICAÇÕES---
+Eliminar Funcionario -> se o funcionario nao estiver associado a reparações, avarias, equipamentos
+    reparações e equipamentos n faz sentido, apenas avarias "pendentes"/por reparar
+Reparações -> (depois de estarem feitas)
+
+
+---JavaDOCK HTML--- 
+Comentar Metodos e Atributos
+
+
+---VOU PRECISAR DISTO---
+public Avaria obterAvaria1(Avaria A) {                               |já fiz isto, chama-se obterAvaria1 na classe gestor
+    return avarias.get(avarias.indexOf(A));
+}
+
+
 ---Feito---
+Merge #4
 Fazer to-string com super Funcionarios, docente, não docente        |parece estar
 Verificar data (dia, mes) e idade funcionario                       |parece estar
 Editar gravar e Ler mesmo no fim do Programa                        |parece estar
@@ -23,47 +51,27 @@ associarLabEquipamento - "\nIndique o id do Equipamento ao qual pretende adicion
 registarAvaria alterarEstadoAvaria - maneiras diferentes de mostrar os funcionários
 registarAvaria alterarEstadoAvaria - mostra apenas os funcionarios da escola correspondente
 
+Commit #19
 associarLabEquipamento - mostra apenas os laboratorios correspondentes à escola dele
     métodos mudados/adicionados
         listarLaboratorios -> listarLaboratorioEscola (Gestor)
         pesquisarLabDescEscola (Gestor)
-        
 
-
----A fazer---
-Reparações
-
-
----Em falta---
-Fazer Estatisticas ( criando variaveis extrategicas para optimizar a coisa )
-custos (reparaçoes)
-inserirEscola - dataInicioServico.set(dataIServico, 1, 1) -> set(YEAR, year);
-consultarLaboratorioEscola - ????
-inserirLaboratorio - descrição ????
-eliminarFuncionarioNIF - mostrar funcionarios?
-
-
----VERIFICAÇÕES---
+eliminarFuncionarioNIF - mostrar funcionarios
+inserirEscola - dataInicioServico.set(dataIServico, 1, 1) -> set(YEAR, ano);
+      
+(verificado se implementa estas condiçoes no código, podem n funcionar)
 Consultar Escola -> Apenas se exitirem escolas
-Inserir Funcionario -> Apenas se existirem Escolas 
-Alterar Funcionario -> Apenas se existirem funcionarios
+Inserir Funcionario -> Apenas se existirem Escolas
+Alterar Funcionario -> Apenas se existirem funcionarios 
 Consultar Fucnionarios -> Apenas se exitirem funcionarios
-Eliminar Funcionario-> Apenas se ja exitirem funcionarios, se o funcionario nao estiver associado a reparações, avarias, equipamentos
 Inserir Laboratorio -> Apenas se existirem Escolas
-Consultar Laboratorio -> Apenas se exitirem labortorios
-Consultar lab por Descriçao -> Apenas se exitirem labortorios
+Consultar lab por Descriçao -> Apenas se exitirem laboratorios
 Consultar tipos de equipamento->  Apenas se exitirem tipos equipamento
 Inserir Equipamentos -> Apenas se existirem tipos Equipamento, Escolas, Funcionarios
 consultarEquipamentoNumero -> Apenas se exitirem Equipamentos
-associarLabEquipamento-> Apenas se exitirem lab e Equipamentos  (UM equipamento so pode estar num laboratorio)
-( verificações das reparações depois de estarem feitas)
-
-
----JavaDOCK HTML--- 
-Comentar Metodos e Atributos
-
-
----VOU PRECISAR DISTO---
-public Avaria obterAvaria1(Avaria A) {                               |já fiz isto, chama-se obterAvaria1 na classe gestor
-    return avarias.get(avarias.indexOf(A));
-}
+associarLabEquipamento-> Apenas se exitirem lab e Equipamentos
+Eliminar Funcionario-> Apenas se ja exitirem funcionarios
+associarLabEquipamento -> UM equipamento so pode estar num laboratorio
+    se ja tiver associado, n pode ser alterado (n sei se é isso que se pretende)
+Consultar lab por Escola -> Apenas se exitirem laboratorios

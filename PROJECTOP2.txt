@@ -30,7 +30,7 @@ public Avaria obterAvaria1(Avaria A) {                               |já fiz is
 
 
 ---Feito---
-Merge #4
+Merge #6
 Fazer to-string com super Funcionarios, docente, não docente        |parece estar
 Verificar data (dia, mes) e idade funcionario                       |parece estar
 Editar gravar e Ler mesmo no fim do Programa                        |parece estar
@@ -51,7 +51,7 @@ associarLabEquipamento - "\nIndique o id do Equipamento ao qual pretende adicion
 registarAvaria alterarEstadoAvaria - maneiras diferentes de mostrar os funcionários
 registarAvaria alterarEstadoAvaria - mostra apenas os funcionarios da escola correspondente
 
-Commit #19
+Merge #7
 associarLabEquipamento - mostra apenas os laboratorios correspondentes à escola dele
     métodos mudados/adicionados
         listarLaboratorios -> listarLaboratorioEscola (Gestor)

@@ -60,6 +60,10 @@ public class Escola implements Serializable {
         return str.toString();
     }
 
+    public int getSizeFuncionarios() {
+        return funcionarios.size();
+    }
+
     public void removerFuncionario(Funcionario f) {
         funcionarios.remove(f);
     }

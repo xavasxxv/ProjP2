@@ -2,4 +2,4 @@
 
 25/12 2:06 AM
 
-todo verificado, sacar a versão master
+tudo verificado, sacar a versão master

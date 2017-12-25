@@ -261,6 +261,10 @@ public class GestaoEquipamento {
         Laboratorio L1 = new Laboratorio("LAB-ELETRO", E, "No paraiso");
         gerir.adicionarLaboratorio(L1);
         E1.adicionarLaboratorio(L1);
+        
+        Laboratorio L2 = new Laboratorio("LAB-TESTE", E1, "No caralho");
+        gerir.adicionarLaboratorio(L2);
+        E1.adicionarLaboratorio(L2);
 
         TipoEquipamento TipoEQ = new TipoEquipamento("Eletronica");
         gerir.adicionarTipoEquipamento(TipoEQ);
@@ -561,12 +565,12 @@ public class GestaoEquipamento {
         } while (pos == -1);
         EQ = gerir.obterEquipamento(pos);
 
-        System.out.println(gerir.listarLaboratorios());
+        System.out.println(gerir.listarLaboratorioEscola(EQ.getE()));
         do {
             descricao = Consola.lerString("Indique a descrição do laboratório ao qual pretende associar: "); //"\nIndique o id do Equipamento ao qual pretende adicionar laboratorio " -> "\nIndique a descricao do laboratorio ao qual pretende associar"
-            pos = gerir.pesquisarLabDesc(descricao);
+            pos = gerir.pesquisarLabDescEscola(descricao, EQ.getE());
             if (pos == -1) {
-                System.err.println("Não existe laboratório com essa descrição!");
+                System.err.println("Não existe laboratório com essa descrição na escola do equipamento!");
             }
         } while (pos == -1);
 
@@ -628,7 +632,7 @@ public class GestaoEquipamento {
         int nif;
         int telefone;
         int validarEmail;  // Variavel que valida email por detetar @. Se for -1 + email é invalido
-        int errodi;
+        //int errodi;
         String nome;
         String morada;
         String email;
@@ -909,7 +913,7 @@ public class GestaoEquipamento {
         int pos;
 
         do {
-            descricao = Consola.lerString("Descrição do laboratório: ");
+            descricao = Consola.lerString("\n Indique a descrição do laboratório a consultar: ");
             pos = gerir.pesquisarLabDesc(descricao);
 
             if (pos == -1) {

@@ -8,9 +8,9 @@ Verificar data (dia, mes) e idade funcionario                       |parece esta
 Editar gravar e Ler mesmo no fim do Programa                        |parece estar
 Acabar e corrigir Avarias                                                       
 
-Registar Avarias-> Apenas se exitirem equipamentos ( um equipamento so pode ter outra avaria depois de reparada a anterior) feito
-Alterar Estado Avarias -> Apenas se existirem Não Docentes "tecnicos" e Avarias válidas feito
-Consultar Avaria -> Apenas se exitirem Avarias feito
+Registar Avarias-> Apenas se exitirem equipamentos ( um equipamento so pode ter outra avaria depois de reparada a anterior)
+Alterar Estado Avarias -> Apenas se existirem Não Docentes "tecnicos" e Avarias válidas
+Consultar Avaria -> Apenas se exitirem Avarias
 
 verificaçoes para as reparaçoes, depois de alteradas uma vez, n podem ser mais alteradas
 pesquisarNaoDocenteTecnico - 2 ifs |(passou a 1 if)
@@ -22,6 +22,12 @@ associarLabEquipamento - "\nIndique o id do Equipamento ao qual pretende adicion
 (classe Equipamento) - método avariasEQnotEmpty para avaliar se o array tem alguma avaria no método ConsularAvariaEquipamento
 registarAvaria alterarEstadoAvaria - maneiras diferentes de mostrar os funcionários
 registarAvaria alterarEstadoAvaria - mostra apenas os funcionarios da escola correspondente
+
+associarLabEquipamento - mostra apenas os laboratorios correspondentes à escola dele
+    métodos mudados/adicionados
+        listarLaboratorios -> listarLaboratorioEscola (Gestor)
+        pesquisarLabDescEscola (Gestor)
+        
 
 
 ---A fazer---

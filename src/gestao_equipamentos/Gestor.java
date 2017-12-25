@@ -176,15 +176,17 @@ public class Gestor {
         return haNDTecnicoEscola;
     }
 
-    public String listarLaboratorios() {
+    public String listarLaboratorioEscola(Escola E) {
         StringBuilder str = new StringBuilder("");
         if (laboratorios.isEmpty()) {
             str.append("Não há laboratórios inseridos!");
         } else {
             str.append("Laboratórios listados (Descrição - Escola): \n");
             for (int i = 0; i < laboratorios.size(); i++) {
-                str.append("\t").append(laboratorios.get(i).getDescricao() + " - ");
-                str.append(laboratorios.get(i).getEscolaLab().getNome()).append("\n");
+                if (laboratorios.get(i).getEscolaLab().equals(E)) {
+                    str.append("\t").append(laboratorios.get(i).getDescricao() + " - ");
+                    str.append(laboratorios.get(i).getEscolaLab().getNome()).append("\n");
+                }
             }
         }
         return str.toString();
@@ -359,6 +361,15 @@ public class Gestor {
     public int pesquisarLabDesc(String descricao) {
         for (int i = 0; i < laboratorios.size(); i++) {
             if (descricao.equalsIgnoreCase(laboratorios.get(i).getDescricao())) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public int pesquisarLabDescEscola(String descricao, Escola E) {
+        for (int i = 0; i < laboratorios.size(); i++) {
+            if (descricao.equalsIgnoreCase(laboratorios.get(i).getDescricao()) && laboratorios.get(i).getEscolaLab().equals(E)) {
                 return i;
             }
         }

@@ -40,6 +40,7 @@ public class Equipamento {
         this.estado = estado;
         this.ND = ND;
         this.custo = custo;
+        this.lab = new Laboratorio(null, null, null);
 
     }
 

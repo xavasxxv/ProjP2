@@ -89,7 +89,7 @@ public class GestaoEquipamento {
                         op2 = gestaoLaboratorios();
                         switch (op2) {
                             case 1:
-                                if (gerir.getSizeLaboratorio() != 0) {
+                                if (gerir.getSizeEscolas() != 0) {
                                     inserirLaboratorio(gerir);
                                 } else {
                                     System.err.println("\nÉ necessário existirem escolas!\n");
@@ -145,7 +145,7 @@ public class GestaoEquipamento {
                                 if (gerir.getSizeEscolas() != 0 && gerir.getSizeFuncionarios() != 0 && gerir.getSizeTipoEquipamento() != 0) {
                                     registarEquipamento(gerir);
                                 } else {
-                                    System.err.println("\nÉ necessario existir escolas, funcionarios e tipo de equipamentos para se registarem equipamentos!\n");
+                                    System.err.println("\nÉ necessario existir escolas, funcionários e tipo de equipamentos para se registarem equipamentos!\n");
                                 }
                                 break;
                             case 2:
@@ -262,6 +262,10 @@ public class GestaoEquipamento {
         gerir.adicionarLaboratorio(L1);
         E1.adicionarLaboratorio(L1);
 
+        Laboratorio L2 = new Laboratorio("LAB-TESTE", E1, "No caralho");
+        gerir.adicionarLaboratorio(L2);
+        E1.adicionarLaboratorio(L2);
+
         TipoEquipamento TipoEQ = new TipoEquipamento("Eletronica");
         gerir.adicionarTipoEquipamento(TipoEQ);
         TipoEquipamento TipoEQ1 = new TipoEquipamento("Mecanica");
@@ -369,21 +373,20 @@ public class GestaoEquipamento {
         } while (pos == -1);
         F = gerir.obterFuncionario(pos); //uma vez que aqui ele tmb vai buscar o F de posição pos no array principal
 
-        /*** 
-         *
-         * //funcionario ND e tecnico
-         * System.out.println(gerir.listarNaoDocentes()); //listar apenas pessoal da escola???
-         * do {
-         *     nif = Consola.lerInt("Indique NIF do funcionário TECNICO da escola " + A.getEQ().getE().getNome() + " : ", 1, 999999999);
-         *    pos = gerir.pesquisarNaoDocenteTecnico(nif, A.getEQ().getE());
-         *     if (pos == -1) {
-         *         System.err.println("NIF não existe ou o funcionário não é TECNICO da escola!");
-         *     }
-         * } while (pos == -1);
-         * ND = gerir.obterFuncionarioNaoDocente(pos);
-         * F = gerir.obterFuncionario1(ND);
-         * 
-         */
+        /**
+        //funcionario ND e tecnico
+        System.out.println(gerir.listarNaoDocentes()); //listar apenas pessoal da escola ??? 
+        do {
+            nif = Consola.lerInt("Indique NIF do funcionário TECNICO da escola " + A.getEQ().getE().getNome() + " : ", 1, 999999999);
+            pos = gerir.pesquisarNaoDocenteTecnico(nif, A.getEQ().getE());
+            if (pos == -1) {
+                System.err.println("NIF não existe ou o funcionário não é TECNICO da escola!");
+            }
+        } while (pos == -1);
+        ND = gerir.obterFuncionarioNaoDocente(pos);
+        F = gerir.obterFuncionario1(ND);
+        */
+        
         System.out.println("1-POR REPARAR / 2- REPARADA / 3-IRREPARÁVEL");
 
         estado = Consola.lerInt("Indique o novo estado da avaria: ", 1, 3);
@@ -559,14 +562,20 @@ public class GestaoEquipamento {
                 System.err.println("Não existe equipamento com esse ID!");
             }
         } while (pos == -1);
+        
         EQ = gerir.obterEquipamento(pos);
+        
+        if (EQ.getLab() != null){
+            System.err.println("Este equipamento já tem laboratório associado!\n");
+            return;
+        }
 
-        System.out.println(gerir.listarLaboratorios());
+        System.out.println(gerir.listarLaboratorioEscola(EQ.getE()));
         do {
             descricao = Consola.lerString("Indique a descrição do laboratório ao qual pretende associar: "); //"\nIndique o id do Equipamento ao qual pretende adicionar laboratorio " -> "\nIndique a descricao do laboratorio ao qual pretende associar"
-            pos = gerir.pesquisarLabDesc(descricao);
+            pos = gerir.pesquisarLabDescEscola(descricao, EQ.getE());
             if (pos == -1) {
-                System.err.println("Não existe laboratório com essa descrição!");
+                System.err.println("Não existe laboratório com essa descrição na escola do equipamento!");
             }
         } while (pos == -1);
 
@@ -603,13 +612,15 @@ public class GestaoEquipamento {
         designacao = Consola.lerString("\nIndique a designação do tipo de equipamento: ");
         TE = new TipoEquipamento(designacao);
         gerir.adicionarTipoEquipamento(TE);
-        System.out.println("\n------Inserido tipo de equipamento com sucesso!------");
+        System.out.println("\n------Inserido tipo de equipamento com sucesso!------\n");
 
     }
 
     public static void consultarTiposEquipamentos(Gestor gerir) {
         int id;
         int pos;
+
+        System.out.println(gerir.listartiposEquipamento());;
 
         do {
             id = Consola.lerInt("\nIndique o ID a consultar: ", 0, 999999999);
@@ -618,6 +629,7 @@ public class GestaoEquipamento {
                 System.err.println("Não existe tipo de equipamento com esse ID!");
             }
         } while (pos == -1);
+
         System.out.println(gerir.obterTipoEquipamento(pos) + "\n");
 
     }
@@ -628,11 +640,11 @@ public class GestaoEquipamento {
         int nif;
         int telefone;
         int validarEmail;  // Variavel que valida email por detetar @. Se for -1 + email é invalido
-        int errodi;
+        //int errodi;
         String nome;
         String morada;
         String email;
-        int dataIServico;
+        int ano;
         Calendar dataInicioServico = new GregorianCalendar();
 
         /// REVER APENAS TEMOS DE PEDIR ANO  
@@ -640,7 +652,7 @@ public class GestaoEquipamento {
             nif = Consola.lerInt("\nIndique o NIF da escola a adicionar: ", 0, 999999999);  /// Alterar min / max no fim
             pos = gerir.pesquisarEscolaNIF(nif);
             if (pos != -1) {
-                System.err.println("Já existeuma escola com esse NIF!");
+                System.err.println("Já existe uma escola com esse NIF!");
             }
         } while (pos != -1);
 
@@ -663,10 +675,12 @@ public class GestaoEquipamento {
             }
         } while (validarEmail == -1);
 
-        dataIServico = Consola.lerInt("Indique o ano de início de funcionamento da escola: ", 1, 2999);
-        // ano mes dia
-        dataInicioServico.set(dataIServico, 1, 1); //set(YEAR, year);
-
+        ano = Consola.lerInt("Indique o ano de início de funcionamento da escola: ", 1, 2999);
+        //ano mes dia dataInicioServico.set(dataIServico, 1, 1);
+        //ano apenas
+        dataInicioServico.set(1, ano); //o (1) representa ano, o método pede (int field, int value), ver definição YEAR em Calendar.java
+        //isto muda o ano como deve de ser, o resto dos campos são obtidos da hora de sistema automaticamente
+        
         E = new Escola(nome, nif, morada, telefone, email, dataInicioServico);
         gerir.adicionarEscola(E);
         System.out.println("\n------Inserida escola com sucesso!------");
@@ -802,6 +816,7 @@ public class GestaoEquipamento {
         telefone = Consola.lerInt("Indique o número de telefone: ", 0, 999999999);  /// Alterar min / max no fim 
         func.setMorada(morada);
         func.setTelefone(telefone);
+        System.out.println("\nFuncionário alterado com sucesso!\n");
     }
 
     public static void eliminarFuncionarioNIF(Gestor gerir) {
@@ -810,7 +825,8 @@ public class GestaoEquipamento {
         int nif;
         char opcao = 0;
 
-        //mostrar funcionarios??
+        System.out.println(gerir.listarFuncionarios());
+        
         nif = Consola.lerInt("\nIndique o NIF  do funcionário a eliminar: ", 0, 999999999);  /// Alterar min / max no fim
         pos = gerir.pesquisarFuncionarioNIF(nif);
         if (pos != -1) {
@@ -858,12 +874,12 @@ public class GestaoEquipamento {
             descricao = Consola.lerString("\nDescrição do laboratório: ");
             pos = gerir.pesquisarLabDesc(descricao);
             if (pos != -1) {
-                System.err.println("A descrição tem de ser única por laboratorio!");
+                System.err.println("A descrição tem de ser única por laboratório!");
             }
         } while (pos != -1);
 
         do {
-            System.err.println(gerir.listarEscolaNome());
+            System.out.println(gerir.listarEscolaNome());
             nifE = Consola.lerInt("\nIndique o NIF da escola onde o laboratório irá ficar: ", 1, 999999999);
 
             pos = gerir.pesquisarEscolaNIF(nifE);
@@ -882,7 +898,7 @@ public class GestaoEquipamento {
         gerir.adicionarLaboratorio(L);
         escolaLab.adicionarLaboratorio(L);
 
-        System.out.println("\n------Inserido laboratório com sucesso!------");
+        System.out.println("\n------Inserido laboratório com sucesso!------\n");
 
     }
 
@@ -909,7 +925,7 @@ public class GestaoEquipamento {
         int pos;
 
         do {
-            descricao = Consola.lerString("Descrição do laboratório: ");
+            descricao = Consola.lerString("\n Indique a descrição do laboratório a consultar: ");
             pos = gerir.pesquisarLabDesc(descricao);
 
             if (pos == -1) {

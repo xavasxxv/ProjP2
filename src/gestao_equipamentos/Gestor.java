@@ -88,6 +88,21 @@ public class Gestor {
     public TipoEquipamento obterTipoEquipamento(int pos) {
         return tipoEquipamentos.get(pos);
     }
+    
+    public String listarFuncionarios() {
+        StringBuilder str = new StringBuilder("");
+        if (funcionarios.isEmpty()) {
+            str.append("\nNão há funcionários!");
+        } else {
+            str.append("\nFuncionários do agrupamento (NIF-Nome-Escola): \n");
+            for (int i = 0; i < funcionarios.size(); i++) {
+                str.append("\t").append(funcionarios.get(i).getNif() + "-");
+                str.append(funcionarios.get(i).getNome() + "-");
+                str.append(funcionarios.get(i).getEscolaTrabalho().getNome()).append("\n");
+            }
+        }
+        return str.toString();
+    }
 
     public String listarNaoDocentes() {
         StringBuilder str = new StringBuilder("");
@@ -176,21 +191,24 @@ public class Gestor {
         return haNDTecnicoEscola;
     }
 
-    public String listarLaboratorios() {
+    public String listarLaboratorioEscola(Escola E) {
         StringBuilder str = new StringBuilder("");
         if (laboratorios.isEmpty()) {
             str.append("Não há laboratórios inseridos!");
         } else {
             str.append("Laboratórios listados (Descrição - Escola): \n");
             for (int i = 0; i < laboratorios.size(); i++) {
-                str.append("\t").append(laboratorios.get(i).getDescricao() + " - ");
-                str.append(laboratorios.get(i).getEscolaLab().getNome()).append("\n");
+                if (laboratorios.get(i).getEscolaLab().equals(E)) {
+                    str.append("\t").append(laboratorios.get(i).getDescricao() + " - ");
+                    str.append(laboratorios.get(i).getEscolaLab().getNome()).append("\n");
+                }
             }
         }
         return str.toString();
     }
 
     public String listartiposEquipamento() {
+        
         StringBuilder str = new StringBuilder("");
         if (tipoEquipamentos.isEmpty()) {
             str.append("Não há tipos de equipamento registados!");
@@ -359,6 +377,15 @@ public class Gestor {
     public int pesquisarLabDesc(String descricao) {
         for (int i = 0; i < laboratorios.size(); i++) {
             if (descricao.equalsIgnoreCase(laboratorios.get(i).getDescricao())) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public int pesquisarLabDescEscola(String descricao, Escola E) {
+        for (int i = 0; i < laboratorios.size(); i++) {
+            if (descricao.equalsIgnoreCase(laboratorios.get(i).getDescricao()) && laboratorios.get(i).getEscolaLab().equals(E)) {
                 return i;
             }
         }

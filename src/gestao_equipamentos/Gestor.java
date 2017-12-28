@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
 
 /**
  * Class Gestor que gere todo o Agrupamento
@@ -31,6 +33,64 @@ public class Gestor {
     private ArrayList<Equipamento> equipamentos = new ArrayList<>();
     private ArrayList<Avaria> avarias = new ArrayList<>();
     private ArrayList<Reparacao> reparacoes = new ArrayList<>();
+    private ArrayList<AuxEst> auxEst = new ArrayList<>();
+
+    public float percEquipAvariagrup() {
+        float percEquipAvariagrup = 0;
+
+        percEquipAvariagrup = ((float) avarias.size() / equipamentos.size()) * 100;
+
+        return percEquipAvariagrup;
+    }
+
+
+    public String AvariasRegistadasPorOrdemCrescenteTotal() {
+        ComparadorTotalAvarias cn = new ComparadorTotalAvarias();
+        StringBuilder str = new StringBuilder();
+        Collections.sort(auxEst, cn);
+        
+          if (auxEst.isEmpty()) {
+            str.append("\nNão é possivel consultar esta estatistica não há avarias");
+        } else {
+                str.append("\nTota de avarias resgitadas por estado num determinado ano");
+                str.append("\nAno-Avarias-AvariasReparadas-AvariasPorReparar-AvariasInrreparaveis\n");
+            for (int i = 0; i < auxEst.size(); i++) {
+          
+                 str.append(auxEst.get(i).getDataAvaria().get(Calendar.YEAR)).append("-").append(auxEst.get(i).getNumEquipAvarias()).append("-").append(auxEst.get(i).getNumAvariasReparadas())
+                        .append("-").append(auxEst.get(i).getNumAvariasPorReparar()).append("-").append(auxEst.get(i).getNumAvariasIrreparaveis()).append("\n");
+ 
+
+            }
+       }
+        
+
+        return str.toString();
+    }
+
+    public int pesquisarAvariaAno(Calendar Data) {
+
+        if (auxEst.isEmpty()) {
+           return -1;
+        } else {
+        for (int i = 0; i < auxEst.size(); i++) {
+            if (Data.get(Calendar.YEAR) == auxEst.get(i).getDataAvaria().get(Calendar.YEAR)) {
+                return i;
+            }
+        }
+         }
+        return -1;
+
+    }
+
+    public void adicionarauEst(AuxEst Aux) {
+        auxEst.add(Aux);
+
+    }
+
+    public AuxEst obteradicionarauEst(int pos) {
+
+        return auxEst.get(pos);
+    }
 
     /**
      * Metodo para adicionar uma Avaria
@@ -88,7 +148,7 @@ public class Gestor {
     public TipoEquipamento obterTipoEquipamento(int pos) {
         return tipoEquipamentos.get(pos);
     }
-    
+
     public String listarFuncionarios() {
         StringBuilder str = new StringBuilder("");
         if (funcionarios.isEmpty()) {
@@ -208,7 +268,7 @@ public class Gestor {
     }
 
     public String listartiposEquipamento() {
-        
+
         StringBuilder str = new StringBuilder("");
         if (tipoEquipamentos.isEmpty()) {
             str.append("Não há tipos de equipamento registados!");

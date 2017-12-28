@@ -1,0 +1,77 @@
+PROJECTO P2 
+
+NUNCA FAZER GET E SET DE ARRAY LIST 
+
+
+---A fazer---
+Reparações
+
+
+---Em falta---
+Fazer Estatisticas (criando variaveis extrategicas para optimizar a coisa)
+custos (reparaçoes)
+consultarLaboratorioEscola - n sei o que se pretende nesta função
+
+
+---VERIFICAÇÕES---
+Eliminar Funcionario -> se o funcionario nao estiver associado a reparações, avarias, equipamentos
+    reparações e equipamentos n faz sentido, apenas avarias "pendentes"/por reparar
+Reparações -> (depois de estarem feitas)
+
+
+---JavaDOCK HTML--- 
+Comentar Metodos e Atributos
+
+
+---VOU PRECISAR DISTO---
+public Avaria obterAvaria1(Avaria A) {                               |já fiz isto, chama-se obterAvaria1 na classe gestor
+    return avarias.get(avarias.indexOf(A));
+}
+
+
+---Feito---
+Merge #6
+Fazer to-string com super Funcionarios, docente, não docente        |parece estar
+Verificar data (dia, mes) e idade funcionario                       |parece estar
+Editar gravar e Ler mesmo no fim do Programa                        |parece estar
+Acabar e corrigir Avarias                                                       
+
+Registar Avarias-> Apenas se exitirem equipamentos ( um equipamento so pode ter outra avaria depois de reparada a anterior)
+Alterar Estado Avarias -> Apenas se existirem Não Docentes "tecnicos" e Avarias válidas
+Consultar Avaria -> Apenas se exitirem Avarias
+
+verificaçoes para as reparaçoes, depois de alteradas uma vez, n podem ser mais alteradas
+pesquisarNaoDocenteTecnico - 2 ifs |(passou a 1 if)
+alterarEstadoAvaria - caso 2(reparado) -> estado 1(disponivel)
+registarAvaria - passa a estar indisponivel o EQ||n verifica se o funcionário é técnico||n descobre bem os NIFs dos funcionários
+main (case 5.3) consultar por laboratorio chama o método consultarEquipamentoNumero -> (consultar por Id)
+associarLabEquipamento - "\nIndique o id do Equipamento ao qual pretende adicionar laboratorio " -> "\nIndique a descricao do laboratorio ao qual pretende associar"
+(classe Equipamento)[adicionarAvaria] - passa automaticamente a indisponivel
+(classe Equipamento) - método avariasEQnotEmpty para avaliar se o array tem alguma avaria no método ConsularAvariaEquipamento
+registarAvaria alterarEstadoAvaria - maneiras diferentes de mostrar os funcionários
+registarAvaria alterarEstadoAvaria - mostra apenas os funcionarios da escola correspondente
+
+Merge #7
+associarLabEquipamento - mostra apenas os laboratorios correspondentes à escola dele
+    métodos mudados/adicionados
+        listarLaboratorios -> listarLaboratorioEscola (Gestor)
+        pesquisarLabDescEscola (Gestor)
+
+eliminarFuncionarioNIF - mostrar funcionarios
+inserirEscola - dataInicioServico.set(dataIServico, 1, 1) -> set(YEAR, ano);
+      
+(verificado se implementa estas condiçoes no código, podem n funcionar)
+Consultar Escola -> Apenas se exitirem escolas
+Inserir Funcionario -> Apenas se existirem Escolas
+Alterar Funcionario -> Apenas se existirem funcionarios 
+Consultar Fucnionarios -> Apenas se exitirem funcionarios
+Inserir Laboratorio -> Apenas se existirem Escolas
+Consultar lab por Descriçao -> Apenas se exitirem laboratorios
+Consultar tipos de equipamento->  Apenas se exitirem tipos equipamento
+Inserir Equipamentos -> Apenas se existirem tipos Equipamento, Escolas, Funcionarios
+consultarEquipamentoNumero -> Apenas se exitirem Equipamentos
+associarLabEquipamento-> Apenas se exitirem lab e Equipamentos
+Eliminar Funcionario-> Apenas se ja exitirem funcionarios
+associarLabEquipamento -> UM equipamento so pode estar num laboratorio
+    se ja tiver associado, n pode ser alterado (n sei se é isso que se pretende)
+Consultar lab por Escola -> Apenas se exitirem laboratorios

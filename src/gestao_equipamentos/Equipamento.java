@@ -43,7 +43,7 @@ public class Equipamento {
         this.lab = null;
 
     }
-    
+
     public String ListarAvarias(Equipamento EQ) {
         StringBuilder str = new StringBuilder("");
         if (EQ.avarias.isEmpty()) {
@@ -124,6 +124,7 @@ public class Equipamento {
             str.append("ABATIDO");
         }
         str.append("\nTécnico que registou: ").append(ND.getNome());
+        str.append("\nNumero de Avarias do equipamento: ").append(avarias.size());
         str.append("\nData de inventário: ").append(dataIventario.get(Calendar.DATE)).append("/");
         str.append((dataIventario.get(Calendar.MONTH) + 1)).append("/");
         str.append(dataIventario.get(Calendar.YEAR)).append("\n");

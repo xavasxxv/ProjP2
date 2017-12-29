@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
 
 /**
  * Class Gestor que gere todo o Agrupamento
@@ -31,6 +33,64 @@ public class Gestor {
     private ArrayList<Equipamento> equipamentos = new ArrayList<>();
     private ArrayList<Avaria> avarias = new ArrayList<>();
     private ArrayList<Reparacao> reparacoes = new ArrayList<>();
+    private ArrayList<AuxEst> auxEst = new ArrayList<>();
+
+    public float percEquipAvariagrup() {
+        float percEquipAvariagrup = 0;
+
+        percEquipAvariagrup = ((float) avarias.size() / equipamentos.size()) * 100;
+
+        return percEquipAvariagrup;
+    }
+
+
+    public String AvariasRegistadasPorOrdemCrescenteTotal() {
+        ComparadorTotalAvarias cn = new ComparadorTotalAvarias();
+        StringBuilder str = new StringBuilder();
+        Collections.sort(auxEst, cn);
+        
+          if (auxEst.isEmpty()) {
+            str.append("\nNão é possivel consultar esta estatistica não há avarias");
+        } else {
+                str.append("\nTota de avarias resgitadas por estado num determinado ano");
+                str.append("\nAno-Avarias-AvariasReparadas-AvariasPorReparar-AvariasInrreparaveis\n");
+            for (int i = 0; i < auxEst.size(); i++) {
+          
+                 str.append(auxEst.get(i).getDataAvaria().get(Calendar.YEAR)).append("-").append(auxEst.get(i).getNumEquipAvarias()).append("-").append(auxEst.get(i).getNumAvariasReparadas())
+                        .append("-").append(auxEst.get(i).getNumAvariasPorReparar()).append("-").append(auxEst.get(i).getNumAvariasIrreparaveis()).append("\n");
+ 
+
+            }
+       }
+        
+
+        return str.toString();
+    }
+
+    public int pesquisarAvariaAno(Calendar Data) {
+
+        if (auxEst.isEmpty()) {
+           return -1;
+        } else {
+        for (int i = 0; i < auxEst.size(); i++) {
+            if (Data.get(Calendar.YEAR) == auxEst.get(i).getDataAvaria().get(Calendar.YEAR)) {
+                return i;
+            }
+        }
+         }
+        return -1;
+
+    }
+
+    public void adicionarauEst(AuxEst Aux) {
+        auxEst.add(Aux);
+
+    }
+
+    public AuxEst obteradicionarauEst(int pos) {
+
+        return auxEst.get(pos);
+    }
 
     /**
      * Metodo para adicionar uma Avaria
@@ -87,6 +147,21 @@ public class Gestor {
 
     public TipoEquipamento obterTipoEquipamento(int pos) {
         return tipoEquipamentos.get(pos);
+    }
+
+    public String listarFuncionarios() {
+        StringBuilder str = new StringBuilder("");
+        if (funcionarios.isEmpty()) {
+            str.append("\nNão há funcionários!");
+        } else {
+            str.append("\nFuncionários do agrupamento (NIF-Nome-Escola): \n");
+            for (int i = 0; i < funcionarios.size(); i++) {
+                str.append("\t").append(funcionarios.get(i).getNif() + "-");
+                str.append(funcionarios.get(i).getNome() + "-");
+                str.append(funcionarios.get(i).getEscolaTrabalho().getNome()).append("\n");
+            }
+        }
+        return str.toString();
     }
 
     public String listarNaoDocentes() {
@@ -176,21 +251,24 @@ public class Gestor {
         return haNDTecnicoEscola;
     }
 
-    public String listarLaboratorios() {
+    public String listarLaboratorioEscola(Escola E) {
         StringBuilder str = new StringBuilder("");
         if (laboratorios.isEmpty()) {
             str.append("Não há laboratórios inseridos!");
         } else {
             str.append("Laboratórios listados (Descrição - Escola): \n");
             for (int i = 0; i < laboratorios.size(); i++) {
-                str.append("\t").append(laboratorios.get(i).getDescricao() + " - ");
-                str.append(laboratorios.get(i).getEscolaLab().getNome()).append("\n");
+                if (laboratorios.get(i).getEscolaLab().equals(E)) {
+                    str.append("\t").append(laboratorios.get(i).getDescricao() + " - ");
+                    str.append(laboratorios.get(i).getEscolaLab().getNome()).append("\n");
+                }
             }
         }
         return str.toString();
     }
 
     public String listartiposEquipamento() {
+
         StringBuilder str = new StringBuilder("");
         if (tipoEquipamentos.isEmpty()) {
             str.append("Não há tipos de equipamento registados!");
@@ -359,6 +437,15 @@ public class Gestor {
     public int pesquisarLabDesc(String descricao) {
         for (int i = 0; i < laboratorios.size(); i++) {
             if (descricao.equalsIgnoreCase(laboratorios.get(i).getDescricao())) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public int pesquisarLabDescEscola(String descricao, Escola E) {
+        for (int i = 0; i < laboratorios.size(); i++) {
+            if (descricao.equalsIgnoreCase(laboratorios.get(i).getDescricao()) && laboratorios.get(i).getEscolaLab().equals(E)) {
                 return i;
             }
         }

@@ -6,6 +6,7 @@
 package gestao_equipamentos;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
@@ -16,7 +17,13 @@ public class TipoEquipamento implements Serializable {
 
     private String designacao;
     private int numId;
-    private int numTotal;
+    private ArrayList<Equipamento> equipamentos = new ArrayList<>();
+    
+       public void adicionarEquipamento(Equipamento EQ) {
+
+        equipamentos.add(EQ);
+    }
+
 
     public TipoEquipamento(String designacao) {
         this.designacao = designacao;
@@ -50,27 +57,16 @@ public class TipoEquipamento implements Serializable {
         this.numId = numId;
     }
 
-    /**
-     * @return the numTotal
-     */
-    public int getNumTotal() {
-        return numTotal;
-    }
-
-    /**
-     * @param numTotal the numTotal to set
-     */
-    public void setNumTotal(int numTotal) {
-        this.numTotal = numTotal;
-    }
+    
 
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder();
-        str.append("Tipo de Equipamento (Id-Desginação): ");
+        str.append("Tipo de Equipamento (Id-Desginação-NumeroEquipamentos): ");
         str.append("\nId: ").append(numId);
-        str.append("-Designação: ").append(designacao).append("\n");
-
+         str.append("\nDesignação: ").append(designacao);
+        str.append("\nNumero Equipamentos: ").append(equipamentos.size()).append("\n");
+     
         return str.toString();
     }
 

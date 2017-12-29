@@ -315,12 +315,14 @@ public class GestaoEquipamento {
         } else {
             Aux = gerir.obteradicionarauEst(pos1);
         }
+        
         Aux.setNumAvariasPorReparar(Aux.getNumAvariasPorReparar() + 1);
         Aux.setNumEquipAvarias(Aux.getNumEquipAvarias() + 1);
         EQ.adicionarAvaria(A);
 
         Avaria A1 = new Avaria(data2, EQ, "avaria1", F, 2, true);
         gerir.adicionarAvaria(A1);
+        
         pos1 = gerir.pesquisarAvariaAno(A1.getDataAvaria());
         if (pos1 == -1) {
             Aux = new AuxEst(A1.getDataAvaria());
@@ -329,7 +331,7 @@ public class GestaoEquipamento {
         } else {
             Aux = gerir.obteradicionarauEst(pos1);
         }
-        Aux.setNumAvariasPorReparar(Aux.getNumAvariasPorReparar() + 1);
+        Aux.setNumAvariasPorReparar(Aux.getNumAvariasReparadas()+ 1);
         Aux.setNumEquipAvarias(Aux.getNumEquipAvarias() + 1);
         EQ.adicionarAvaria(A1);
 
@@ -343,7 +345,7 @@ public class GestaoEquipamento {
         } else {
             Aux = gerir.obteradicionarauEst(pos1);
         }
-        Aux.setNumAvariasPorReparar(Aux.getNumAvariasPorReparar() + 1);
+        Aux.setNumAvariasPorReparar(Aux.getNumAvariasReparadas()+ 1);
         Aux.setNumEquipAvarias(Aux.getNumEquipAvarias() + 1);
         EQ.adicionarAvaria(A2);
 
@@ -357,7 +359,7 @@ public class GestaoEquipamento {
         } else {
             Aux = gerir.obteradicionarauEst(pos1);
         }
-        Aux.setNumAvariasPorReparar(Aux.getNumAvariasPorReparar() + 1);
+        Aux.setNumAvariasPorReparar(Aux.getNumAvariasReparadas()+ 1);
         Aux.setNumEquipAvarias(Aux.getNumEquipAvarias() + 1);
         EQ.adicionarAvaria(A3);
 
@@ -371,11 +373,11 @@ public class GestaoEquipamento {
         } else {
             Aux = gerir.obteradicionarauEst(pos1);
         }
-        Aux.setNumAvariasPorReparar(Aux.getNumAvariasPorReparar() + 1);
+        Aux.setNumAvariasPorReparar(Aux.getNumAvariasReparadas()+ 1);
         Aux.setNumEquipAvarias(Aux.getNumEquipAvarias() + 1);
         EQ.adicionarAvaria(A4);
 
-        Avaria A5 = new Avaria(data3, EQ, "avaria5", F, 2, true);
+        Avaria A5 = new Avaria(data3, EQ, "avaria5", F, 3, true);
         gerir.adicionarAvaria(A5);
         pos1 = gerir.pesquisarAvariaAno(A5.getDataAvaria());
         if (pos1 == -1) {
@@ -385,11 +387,11 @@ public class GestaoEquipamento {
         } else {
             Aux = gerir.obteradicionarauEst(pos1);
         }
-        Aux.setNumAvariasPorReparar(Aux.getNumAvariasPorReparar() + 1);
+        Aux.setNumAvariasPorReparar(Aux.getNumAvariasIrreparaveis()+ 1);
         Aux.setNumEquipAvarias(Aux.getNumEquipAvarias() + 1);
         EQ.adicionarAvaria(A5);
 
-        Avaria A6 = new Avaria(data3, EQ, "avaria6", F, 2, true);
+        Avaria A6 = new Avaria(data3, EQ, "avaria6", F, 3, true);
         gerir.adicionarAvaria(A6);
         pos1 = gerir.pesquisarAvariaAno(A6.getDataAvaria());
         if (pos1 == -1) {
@@ -399,7 +401,7 @@ public class GestaoEquipamento {
         } else {
             Aux = gerir.obteradicionarauEst(pos1);
         }
-        Aux.setNumAvariasPorReparar(Aux.getNumAvariasPorReparar() + 1);
+        Aux.setNumAvariasPorReparar(Aux.getNumAvariasIrreparaveis()+ 1);
         Aux.setNumEquipAvarias(Aux.getNumEquipAvarias() + 1);
         EQ.adicionarAvaria(A6);
 
@@ -490,17 +492,18 @@ public class GestaoEquipamento {
         } while (pos == -1);
         F = gerir.obterFuncionario(pos); //uma vez que aqui ele tmb vai buscar o F de posição pos no array principal
 
-        /**
-         * //funcionario ND e tecnico
-         * System.out.println(gerir.listarNaoDocentes()); //listar apenas
-         * pessoal da escola ??? do { nif = Consola.lerInt("Indique NIF do
-         * funcionário TECNICO da escola " + A.getEQ().getE().getNome() + " : ",
-         * 1, 999999999); pos = gerir.pesquisarNaoDocenteTecnico(nif,
-         * A.getEQ().getE()); if (pos == -1) { System.err.println("NIF não
-         * existe ou o funcionário não é TECNICO da escola!"); } } while (pos ==
-         * -1); ND = gerir.obterFuncionarioNaoDocente(pos); F =
-         * gerir.obterFuncionario1(ND);
-         */
+        //funcionario ND e tecnico
+        //System.out.println(gerir.listarNaoDocentes()); //listar apenas pessoal da escola ??? 
+        //do {
+        //    nif = Consola.lerInt("Indique NIF do funcionário TECNICO da escola " + A.getEQ().getE().getNome() + " : ", 1, 999999999);
+        //    pos = gerir.pesquisarNaoDocenteTecnico(nif, A.getEQ().getE());
+        //    if (pos == -1) {
+        //        System.err.println("NIF não existe ou o funcionário não é TECNICO da escola!");
+        //    }
+        //} while (pos == -1);
+        //ND = gerir.obterFuncionarioNaoDocente(pos);
+        //F = gerir.obterFuncionario1(ND);
+        
         System.out.println("1-POR REPARAR / 2- REPARADA / 3-IRREPARÁVEL");
 
         estado = Consola.lerInt("Indique o novo estado da avaria: ", 1, 3);

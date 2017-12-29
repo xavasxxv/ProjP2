@@ -34,7 +34,7 @@ public class Escola implements Serializable {
         this.email = email;
         this.dataInicioServico = dataInicioServico;
     }
-
+    
     public int pesquisarFuncionarioNIFEscola(int nif) {
 
         for (int i = 0; i < funcionarios.size(); i++) {

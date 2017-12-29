@@ -43,26 +43,23 @@ public class Gestor {
         return percEquipAvariagrup;
     }
 
-
     public String AvariasRegistadasPorOrdemCrescenteTotal() {
         ComparadorTotalAvarias cn = new ComparadorTotalAvarias();
         StringBuilder str = new StringBuilder();
         Collections.sort(auxEst, cn);
-        
-          if (auxEst.isEmpty()) {
+
+        if (auxEst.isEmpty()) {
             str.append("\nNão é possivel consultar esta estatistica não há avarias");
         } else {
-                str.append("\nTota de avarias resgitadas por estado num determinado ano");
-                str.append("\nAno-Avarias-AvariasReparadas-AvariasPorReparar-AvariasInrreparaveis\n");
+            str.append("\nTota de avarias resgitadas por estado num determinado ano");
+            str.append("\nAno-Avarias-AvariasReparadas-AvariasPorReparar-AvariasInrreparaveis\n");
             for (int i = 0; i < auxEst.size(); i++) {
-          
-                 str.append(auxEst.get(i).getDataAvaria().get(Calendar.YEAR)).append("-").append(auxEst.get(i).getNumEquipAvarias()).append("-").append(auxEst.get(i).getNumAvariasReparadas())
+
+                str.append(auxEst.get(i).getDataAvaria().get(Calendar.YEAR)).append("-").append(auxEst.get(i).getNumEquipAvarias()).append("-").append(auxEst.get(i).getNumAvariasReparadas())
                         .append("-").append(auxEst.get(i).getNumAvariasPorReparar()).append("-").append(auxEst.get(i).getNumAvariasIrreparaveis()).append("\n");
- 
 
             }
-       }
-        
+        }
 
         return str.toString();
     }
@@ -70,14 +67,14 @@ public class Gestor {
     public int pesquisarAvariaAno(Calendar Data) {
 
         if (auxEst.isEmpty()) {
-           return -1;
+            return -1;
         } else {
-        for (int i = 0; i < auxEst.size(); i++) {
-            if (Data.get(Calendar.YEAR) == auxEst.get(i).getDataAvaria().get(Calendar.YEAR)) {
-                return i;
+            for (int i = 0; i < auxEst.size(); i++) {
+                if (Data.get(Calendar.YEAR) == auxEst.get(i).getDataAvaria().get(Calendar.YEAR)) {
+                    return i;
+                }
             }
         }
-         }
         return -1;
 
     }
@@ -159,6 +156,23 @@ public class Gestor {
                 str.append("\t").append(funcionarios.get(i).getNif() + "-");
                 str.append(funcionarios.get(i).getNome() + "-");
                 str.append(funcionarios.get(i).getEscolaTrabalho().getNome()).append("\n");
+            }
+        }
+        return str.toString();
+    }
+
+    public String listarTecnicosEscola(Escola E) {
+        StringBuilder str = new StringBuilder("");
+        if (verificaNaoDocenteTecnicoEscola(E) == false) {
+            str.append("\nNão há funcionários técnicos na escola!");
+        } else {
+
+            str.append("\nFuncionários técnicos da escola (NIF-Nome): \n");
+            for (int i = 0; i < naoDocentes.size(); i++) {
+                if ("tecnico".equalsIgnoreCase(naoDocentes.get(i).funcao) && naoDocentes.get(i).getEscolaTrabalho().equals(E)) {
+                    str.append("\t").append(naoDocentes.get(i).getNif() + "-");
+                    str.append(naoDocentes.get(i).getNome()).append("\n");
+                }
             }
         }
         return str.toString();

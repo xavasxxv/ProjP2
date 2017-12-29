@@ -329,7 +329,7 @@ public class GestaoEquipamento {
         } else {
             Aux = gerir.obteradicionarauEst(pos1);
         }
-        Aux.setNumAvariasPorReparar(Aux.getNumAvariasPorReparar() + 1);
+        Aux.setNumAvariasPorReparar(Aux.getNumAvariasReparadas()+ 1);
         Aux.setNumEquipAvarias(Aux.getNumEquipAvarias() + 1);
         EQ.adicionarAvaria(A1);
 
@@ -343,7 +343,7 @@ public class GestaoEquipamento {
         } else {
             Aux = gerir.obteradicionarauEst(pos1);
         }
-        Aux.setNumAvariasPorReparar(Aux.getNumAvariasPorReparar() + 1);
+        Aux.setNumAvariasPorReparar(Aux.getNumAvariasReparadas()+ 1);
         Aux.setNumEquipAvarias(Aux.getNumEquipAvarias() + 1);
         EQ.adicionarAvaria(A2);
 
@@ -357,7 +357,7 @@ public class GestaoEquipamento {
         } else {
             Aux = gerir.obteradicionarauEst(pos1);
         }
-        Aux.setNumAvariasPorReparar(Aux.getNumAvariasPorReparar() + 1);
+        Aux.setNumAvariasPorReparar(Aux.getNumAvariasReparadas()+ 1);
         Aux.setNumEquipAvarias(Aux.getNumEquipAvarias() + 1);
         EQ.adicionarAvaria(A3);
 
@@ -371,11 +371,11 @@ public class GestaoEquipamento {
         } else {
             Aux = gerir.obteradicionarauEst(pos1);
         }
-        Aux.setNumAvariasPorReparar(Aux.getNumAvariasPorReparar() + 1);
+        Aux.setNumAvariasPorReparar(Aux.getNumAvariasReparadas()+ 1);
         Aux.setNumEquipAvarias(Aux.getNumEquipAvarias() + 1);
         EQ.adicionarAvaria(A4);
 
-        Avaria A5 = new Avaria(data3, EQ, "avaria5", F, 2, true);
+        Avaria A5 = new Avaria(data3, EQ, "avaria5", F, 3, true);
         gerir.adicionarAvaria(A5);
         pos1 = gerir.pesquisarAvariaAno(A5.getDataAvaria());
         if (pos1 == -1) {
@@ -385,11 +385,11 @@ public class GestaoEquipamento {
         } else {
             Aux = gerir.obteradicionarauEst(pos1);
         }
-        Aux.setNumAvariasPorReparar(Aux.getNumAvariasPorReparar() + 1);
+        Aux.setNumAvariasPorReparar(Aux.getNumAvariasIrreparaveis()+ 1);
         Aux.setNumEquipAvarias(Aux.getNumEquipAvarias() + 1);
         EQ.adicionarAvaria(A5);
 
-        Avaria A6 = new Avaria(data3, EQ, "avaria6", F, 2, true);
+        Avaria A6 = new Avaria(data3, EQ, "avaria6", F, 3, true);
         gerir.adicionarAvaria(A6);
         pos1 = gerir.pesquisarAvariaAno(A6.getDataAvaria());
         if (pos1 == -1) {
@@ -399,7 +399,7 @@ public class GestaoEquipamento {
         } else {
             Aux = gerir.obteradicionarauEst(pos1);
         }
-        Aux.setNumAvariasPorReparar(Aux.getNumAvariasPorReparar() + 1);
+        Aux.setNumAvariasPorReparar(Aux.getNumAvariasIrreparaveis()+ 1);
         Aux.setNumEquipAvarias(Aux.getNumEquipAvarias() + 1);
         EQ.adicionarAvaria(A6);
 

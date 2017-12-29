@@ -11,9 +11,12 @@ Reparações
 Fazer Estatisticas (criando variaveis extrategicas para optimizar a coisa)
 custos (reparaçoes)
 consultarLaboratorioEscola - n sei o que se pretende nesta função
+Nif ( colocar algarismo nif correctos )
+Falta ultima estatistica ( atençao entrar com custo do equipamento e reparaçoes )
+É necessario que fique registado para cada escola o total gasto por ano em equipamentos, desde o ano em que a escola entrou em funcionamento até ao ano corrente ( basta criar uma variavel e incrementar consoante a escola os custos de equipamento) 
 
 
----VERIFICAÇÕES---
+---VERIFICAÇÕES EM FALTA---
 Eliminar Funcionario -> se o funcionario nao estiver associado a reparações, avarias, equipamentos
     reparações e equipamentos n faz sentido, apenas avarias "pendentes"/por reparar
 Reparações -> (depois de estarem feitas)
@@ -33,7 +36,7 @@ public Avaria obterAvaria1(Avaria A) {                               |já fiz is
 Merge #6
 Fazer to-string com super Funcionarios, docente, não docente        |parece estar
 Verificar data (dia, mes) e idade funcionario                       |parece estar
-Editar gravar e Ler mesmo no fim do Programa                        |parece estar
+Editar gravar e Ler mesmo no fim do Programa                        |parece estar (o código parece estar, falta implementar)
 Acabar e corrigir Avarias                                                       
 
 Registar Avarias-> Apenas se exitirem equipamentos ( um equipamento so pode ter outra avaria depois de reparada a anterior)
@@ -64,7 +67,7 @@ inserirEscola - dataInicioServico.set(dataIServico, 1, 1) -> set(YEAR, ano);
 Consultar Escola -> Apenas se exitirem escolas
 Inserir Funcionario -> Apenas se existirem Escolas
 Alterar Funcionario -> Apenas se existirem funcionarios 
-Consultar Fucnionarios -> Apenas se exitirem funcionarios
+Consultar Funcionario -> Apenas se exitirem funcionarios
 Inserir Laboratorio -> Apenas se existirem Escolas
 Consultar lab por Descriçao -> Apenas se exitirem laboratorios
 Consultar tipos de equipamento->  Apenas se exitirem tipos equipamento

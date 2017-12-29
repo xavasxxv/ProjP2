@@ -21,7 +21,7 @@ public class Avaria implements Serializable {
     private String descriçao;
     private Funcionario F;
     private int estadoA;
-    private boolean alterado;
+    private boolean alterado;  
 
     public Avaria(Calendar dataAvaria, Equipamento E, String descriçao, Funcionario F, int estadoA, boolean alterado) {
 

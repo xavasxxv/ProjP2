@@ -255,6 +255,14 @@ public class GestaoEquipamento {
         gerir.adicionarDocente(F3);
         E1.adicionarFuncionario(F3);
 
+        FuncionarioDocente F4 = new FuncionarioDocente("Manuel", "Cona da tia", 5, "@com", 9145, dataIventario, "Mestrado", E, "EEC");
+        gerir.adicionarDocente(F4);
+        E.adicionarFuncionario(F4);
+        
+        FuncionarioNaoDocente F5 = new FuncionarioNaoDocente("Duarte", "morada", 6, "gmail@com", 91, dataIventario, "12", E, "tecnico");
+        gerir.adicionarNaoDocente(F5);
+        E.adicionarFuncionario(F5);
+        
         Laboratorio L = new Laboratorio("LAB-INFORMATICA", E, "Perto do chao");
         gerir.adicionarLaboratorio(L);
         E.adicionarLaboratorio(L);
@@ -474,19 +482,18 @@ public class GestaoEquipamento {
 
         System.out.print(A.getEQ().getE().listarFuncionariosEscola());
 
-        //tem de ser revista
+        //revista, já funciona como deve de ser
         do {
 
             nif = Consola.lerInt("Indique o NIF do funcionário que regista a avaria: ", 1, 999999999);
-            pos = gerir.pesquisarNaoDocenteTecnico(nif, A.getEQ().getE()); //acho que funciona porque ele vai verificar o nif ao array principal de funcionarios
-            //pos = EQ.getE().pesquisarFuncionarioNIFEscola(nif);
+            pos = gerir.pesquisarNaoDocenteTecnico(nif, A.getEQ().getE()); //ele vai procurar o ND ou array dos ND e verifica se é da escola e se é tecnico, devolva a pos no array ND
 
             if (pos == -1) {
                 System.err.println("Não existe funcionário com esse NIF ou não tem como função TECNICO!");
             }
         } while (pos == -1);
-        F = gerir.obterFuncionario(pos); //uma vez que aqui ele tmb vai buscar o F de posição pos no array principal
-
+        F = gerir.obterFuncionario1(gerir.obterFuncionarioNaoDocente(pos)); //aqui ele vai buscar a instância ND dada a pos no array ND e depois procura a instancia ND no array F, funciona como deve de ser
+        
         System.out.println("1-POR REPARAR / 2- REPARADA / 3-IRREPARÁVEL");
 
         estado = Consola.lerInt("Indique o novo estado da avaria: ", 1, 3);
@@ -569,19 +576,19 @@ public class GestaoEquipamento {
         }
 
         if (EQ.getEstado() == 1) {
-            //tem de ser revisto (qq funcionário)
+            //revisto, todos os F das E podem adicionar avarias, obtém a instância F não vo array principal, mas do array da escola
             System.out.print(EQ.getE().listarFuncionariosEscola());
             do {
 
                 nif = Consola.lerInt("Indique o NIF do funcionário que regista a avaria: ", 1, 999999999);
-                pos = gerir.pesquisarNaoDocenteTecnico(nif, EQ.getE()); //acho que funciona porque ele vai verificar o nif ao array principal de funcionarios
-                //pos = EQ.getE().pesquisarFuncionarioNIFEscola(nif);
+                pos = EQ.getE().pesquisarFuncionarioNIFEscola(nif);
 
                 if (pos == -1) {
                     System.err.println("Não existe funcionário com esse NIF ou o funcionário não pertence à escola ou não tem como função TECNICO!");
                 }
             } while (pos == -1);
-            F = gerir.obterFuncionario(pos); //uma vez que aqui ele tmb vai buscar o F de posição pos no array principal
+            
+            F = EQ.getE().obterFuncionarioEscola(pos);
 
             descriçao = Consola.lerString("Coloque uma breve descrição da avaria: ");
 

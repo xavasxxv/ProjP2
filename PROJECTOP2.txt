@@ -10,8 +10,6 @@ Estatisticas (criando variaveis extrategicas para optimizar a coisa)
 custos (reparaçoes)
 consultarLaboratorioEscola
 Nif ( colocar algarismo nif correctos )
-    linha 477 572 
-    gestor pesquisarNaoDocenteTecnico
 
 
 ---VERIFICAÇÕES EM FALTA---
@@ -78,3 +76,8 @@ limpar o proj do ricardo
 
 Pull #14
 Reparações e verificações
+
+Pull #15
+alterarEstadoAvaria - corrigida a procura pelo funcinário
+registarAvaria - corrigida a procura pelo funcinário, qq funcionário pode adicionar
+(Gestor) pesquisarNaoDocenteTecnico - procura a instancia ND no array F, funciona como deve de ser

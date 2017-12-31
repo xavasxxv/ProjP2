@@ -129,7 +129,7 @@ public class Gestor {
 
     public Funcionario obterFuncionario1(FuncionarioNaoDocente ND) {
 
-        return funcionarios.get(naoDocentes.indexOf(ND));
+        return funcionarios.get(funcionarios.indexOf(ND));
 
     }
 
@@ -441,7 +441,7 @@ public class Gestor {
 
     public int pesquisarNaoDocenteTecnico(int nif, Escola E) {
         for (int i = 0; i < naoDocentes.size(); i++) {
-            if ("tecnico".equalsIgnoreCase(naoDocentes.get(i).funcao) && funcionarios.get(i).getNif() == nif && naoDocentes.get(i).getEscolaTrabalho().getNif() == E.getNif()) {
+            if ("tecnico".equalsIgnoreCase(naoDocentes.get(i).funcao) && naoDocentes.get(i).getNif() == nif && naoDocentes.get(i).getEscolaTrabalho() == E) {
                 return i;
             }
         }

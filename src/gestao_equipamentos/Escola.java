@@ -35,6 +35,10 @@ public class Escola implements Serializable {
         this.dataInicioServico = dataInicioServico;
     }
     
+    public Funcionario obterFuncionarioEscola(int pos) {
+        return funcionarios.get(pos);
+    }
+    
     public int pesquisarFuncionarioNIFEscola(int nif) {
 
         for (int i = 0; i < funcionarios.size(); i++) {

@@ -4,16 +4,18 @@ NUNCA FAZER GET E SET DE ARRAY LIST
 
 ---A fazer---
 Estatisticas (criando variaveis extrategicas para optimizar a coisa)
+    total gasto por ano por escola, falta ordenar
+custos (reparaçoes)
 
 
 ---Em falta---
-custos (reparaçoes)
-consultarLaboratorioEscola
+    consultarLaboratorioEscola
 Nif ( colocar algarismo nif correctos )
+    consultar EQ por laboratório
 
 
 ---VERIFICAÇÕES EM FALTA---
-Eliminar Funcionario -> se o funcionario nao estiver associado a avarias "pendentes"/por reparar
+    Eliminar Funcionario -> se o funcionario nao estiver associado a avarias "pendentes"/por reparar
 
 
 ---JavaDOCK HTML--- 
@@ -81,3 +83,5 @@ Pull #15
 alterarEstadoAvaria - corrigida a procura pelo funcinário
 registarAvaria - corrigida a procura pelo funcinário, qq funcionário pode adicionar
 (Gestor) pesquisarNaoDocenteTecnico - procura a instancia ND no array F, funciona como deve de ser
+
+listar nr de eq. por tipo no menu

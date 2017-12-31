@@ -12,7 +12,7 @@ import java.util.Calendar;
  *
  * @author RicardoAnastácio
  */
-public class FuncionarioDocente extends Funcionario implements  Serializable {
+public class FuncionarioDocente extends Funcionario implements Serializable {
 
     protected String departamento;
 
@@ -22,8 +22,8 @@ public class FuncionarioDocente extends Funcionario implements  Serializable {
         this.departamento = departamento;
 
     }
-    
-     @Override
+
+    @Override
     public String toString() {
         StringBuilder str = new StringBuilder();
         str.append("Funcionário docente: ");
@@ -31,7 +31,5 @@ public class FuncionarioDocente extends Funcionario implements  Serializable {
         str.append("\n\tDepartamento: ").append(departamento).append("\n");
         return str.toString();
     }
-
-    
 
 }

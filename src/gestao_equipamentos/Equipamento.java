@@ -5,6 +5,7 @@
  */
 package gestao_equipamentos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -13,7 +14,7 @@ import java.util.GregorianCalendar;
  *
  * @author RicardoAnastácio
  */
-public class Equipamento {
+public class Equipamento implements Serializable {
 
     private int numId;
     private Calendar dataIventario = new GregorianCalendar();
@@ -92,7 +93,7 @@ public class Equipamento {
      * @param pos posição
      * @return Devolve uma avaria
      */
-    public Avaria obterAvaria1(int pos) {
+    public Avaria obterAvaria(int pos) {
 
         return avarias.get(pos);
     }
@@ -204,6 +205,13 @@ public class Equipamento {
 
     public boolean avariasEQnotEmpty() {
         return !avarias.isEmpty();
+    }
+
+    /**
+     * @return the dataIventario
+     */
+    public Calendar getDataIventario() {
+        return dataIventario;
     }
 
 }

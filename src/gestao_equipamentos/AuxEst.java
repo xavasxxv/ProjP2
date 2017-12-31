@@ -5,6 +5,7 @@
  */
 package gestao_equipamentos;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -12,24 +13,19 @@ import java.util.GregorianCalendar;
  *
  * @author ricar
  */
-public class AuxEst {
-    
+public class AuxEst implements Serializable {
+
     private int numEquipAvarias;
     private int numAvariasReparadas;
     private int numAvariasPorReparar;
     private int numAvariasIrreparaveis;
     private Calendar dataAvaria = new GregorianCalendar();
-    
-    
-    
 
-     public AuxEst(Calendar dataAvaria) {
+    public AuxEst(Calendar dataAvaria) {
 
         this.dataAvaria = dataAvaria;
     }
- 
-     
-     
+
     /**
      * @return the numAvariasReparadas
      */
@@ -99,9 +95,5 @@ public class AuxEst {
     public void setNumEquipAvarias(int numEquipAvarias) {
         this.numEquipAvarias = numEquipAvarias;
     }
-    
-    
-     
-     
-    
+
 }

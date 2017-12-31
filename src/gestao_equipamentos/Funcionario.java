@@ -12,7 +12,7 @@ import java.util.Calendar;
  *
  * @author RicardoAnastácio
  */
-public class Funcionario  implements  Serializable {
+public class Funcionario implements Serializable {
 
     private String nome;
     private String morada;
@@ -35,7 +35,7 @@ public class Funcionario  implements  Serializable {
         this.escolaTrabalho = escolaTrabalho;
 
     }
-    
+
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder();
@@ -52,46 +52,47 @@ public class Funcionario  implements  Serializable {
 
         return str.toString();
     }
-    
-    
+
     /**
      * @return the nome
      */
     public String getNome() {
         return nome;
     }
+
     /**
      * @return the morada
      */
     public String getMorada() {
         return morada;
     }
+
     /**
      * @param morada the morada to set
      */
     public void setMorada(String morada) {
         this.morada = morada;
     }
+
     /**
      * @return the nif
      */
     public int getNif() {
         return nif;
     }
+
     /**
      * @param telefone the telefone to set
      */
     public void setTelefone(int telefone) {
         this.telefone = telefone;
     }
+
     /**
      * @return the escolaTrabalho
      */
     public Escola getEscolaTrabalho() {
         return escolaTrabalho;
     }
-    
-    
-    
 
 }

@@ -640,7 +640,7 @@ public class GestaoEquipamento {
         }
 
         if (EQ.getEstado() == 1) {
-            //revisto, todos os F das E podem adicionar avarias, obtém a instância F não vo array principal, mas do array da escola
+            //revisto, todos os F das E podem adicionar avarias, obtém a instância F não do array principal, mas do array da escola
             System.out.print(EQ.getE().listarFuncionariosEscola());
             do {
 
@@ -720,7 +720,7 @@ public class GestaoEquipamento {
         ND = gerir.obterFuncionarioNaoDocente(pos);
 
         descricao = Consola.lerString("\nDescrição do equipamento: ");
-        numSerie = Consola.lerInt("Indique o número de série do equipamento: ", 0, 999999999);  /// Alterar min / max no fim
+        numSerie = Consola.lerInt("Indique o número de série do equipamento: ", 0, 999999999);
 
         System.out.println(gerir.listarTiposEquipamento());
         do {
@@ -732,7 +732,7 @@ public class GestaoEquipamento {
         } while (pos == -1);
         T = gerir.obterTipoEquipamento(pos);
 
-        custo = Consola.lerInt("Custo do equipamento em euros: ", 0, 999999999); //aidicionar a um var de custos totais
+        custo = Consola.lerInt("Custo do equipamento em euros: ", 0, 999999999);
 
         EQ = new Equipamento(dataIventario, descricao, numSerie, T, E, custo, ND, 1);
         gerir.adicionarEquipamento(EQ);

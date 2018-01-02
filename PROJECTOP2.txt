@@ -25,7 +25,7 @@ Comentar Metodos e Atributos
 Pull #6
 Fazer to-string com super Funcionarios, docente, não docente
 Verificar data (dia, mes) e idade funcionario
-Editar gravar e Ler mesmo no fim do Programa                        |parece estar (o código parece estar, falta implementar) e falta pintelhos
+Editar gravar e Ler mesmo no fim do Programa                        |implementado e a gravar tudo
 Acabar e corrigir Avarias                                                       
 
 Registar Avarias-> Apenas se exitirem equipamentos ( um equipamento so pode ter outra avaria depois de reparada a anterior)

@@ -5,7 +5,6 @@ NUNCA FAZER GET E SET DE ARRAY LIST
 ---A fazer---
 Estatisticas (criando variaveis extrategicas para optimizar a coisa)
     total gasto por ano por escola, falta ordenar
-custos (reparaçoes)
 
 
 ---Em falta---
@@ -78,8 +77,8 @@ limpar o proj do ricardo
 
 Pull #14
 Reparações e verificações
+custos (reparaçoes)
 
-Pull #15
 alterarEstadoAvaria - corrigida a procura pelo funcinário
 registarAvaria - corrigida a procura pelo funcinário, qq funcionário pode adicionar
 (Gestor) pesquisarNaoDocenteTecnico - procura a instancia ND no array F, funciona como deve de ser

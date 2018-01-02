@@ -24,6 +24,7 @@ public class Escola implements Serializable {
     private ArrayList<Funcionario> funcionarios = new ArrayList<>();
     private ArrayList<Laboratorio> laboratorios = new ArrayList<>();
     private ArrayList<Equipamento> equipamentos = new ArrayList<>();
+    private ArrayList<AuxEst2> gastosAno = new ArrayList<>();
 
     public Escola(String nome, int nif, String morada, int telefone, String email, Calendar dataInicioServico) {
 
@@ -33,6 +34,26 @@ public class Escola implements Serializable {
         this.telefone = telefone;
         this.email = email;
         this.dataInicioServico = dataInicioServico;
+    }
+
+    public boolean gastosAnoIsEmpty() {
+        return gastosAno.isEmpty();
+    }
+
+    public int gastosAnoSize() {
+        return gastosAno.size();
+    }
+
+    public void adicionarAnoGastos(AuxEst2 anoGastos) {
+        gastosAno.add(anoGastos);
+    }
+
+    public AuxEst2 obterAnoGastos(int pos) {
+        return gastosAno.get(pos);
+    }
+
+    public Funcionario obterFuncionarioEscola(int pos) {
+        return funcionarios.get(pos);
     }
 
     public int pesquisarFuncionarioNIFEscola(int nif) {
@@ -137,6 +158,13 @@ public class Escola implements Serializable {
      */
     public Calendar getDataInicioServico() {
         return dataInicioServico;
+    }
+
+    /**
+     * @return the gastosAno
+     */
+    public ArrayList<AuxEst2> getGastosAno() {
+        return gastosAno;
     }
 
 }

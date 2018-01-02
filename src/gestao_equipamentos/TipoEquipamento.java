@@ -18,12 +18,11 @@ public class TipoEquipamento implements Serializable {
     private String designacao;
     private int numId;
     private ArrayList<Equipamento> equipamentos = new ArrayList<>();
-    
-       public void adicionarEquipamento(Equipamento EQ) {
+
+    public void adicionarEquipamento(Equipamento EQ) {
 
         equipamentos.add(EQ);
     }
-
 
     public TipoEquipamento(String designacao) {
         this.designacao = designacao;
@@ -57,16 +56,21 @@ public class TipoEquipamento implements Serializable {
         this.numId = numId;
     }
 
-    
+    /**
+     * @return sizeOf equipamentos
+     */
+    public int getNumEq() {
+        return equipamentos.size();
+    }
 
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder();
         str.append("Tipo de Equipamento (Id-Desginação-NumeroEquipamentos): ");
         str.append("\nId: ").append(numId);
-         str.append("\nDesignação: ").append(designacao);
+        str.append("\nDesignação: ").append(designacao);
         str.append("\nNumero Equipamentos: ").append(equipamentos.size()).append("\n");
-     
+
         return str.toString();
     }
 

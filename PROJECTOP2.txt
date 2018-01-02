@@ -2,41 +2,30 @@ PROJECTO P2
 
 NUNCA FAZER GET E SET DE ARRAY LIST 
 
-//comentario
 ---A fazer---
-Reparações
+Estatisticas (criando variaveis extrategicas para optimizar a coisa)
+    total gasto por ano por escola, falta ordenar
 
 
 ---Em falta---
-Fazer Estatisticas (criando variaveis extrategicas para optimizar a coisa)
-custos (reparaçoes)
-consultarLaboratorioEscola - n sei o que se pretende nesta função
+    consultarLaboratorioEscola
 Nif ( colocar algarismo nif correctos )
-Falta ultima estatistica ( atençao entrar com custo do equipamento e reparaçoes )
-É necessario que fique registado para cada escola o total gasto por ano em equipamentos, desde o ano em que a escola entrou em funcionamento até ao ano corrente ( basta criar uma variavel e incrementar consoante a escola os custos de equipamento) 
+    consultar EQ por laboratório
 
 
 ---VERIFICAÇÕES EM FALTA---
-Eliminar Funcionario -> se o funcionario nao estiver associado a reparações, avarias, equipamentos
-    reparações e equipamentos n faz sentido, apenas avarias "pendentes"/por reparar
-Reparações -> (depois de estarem feitas)
+    Eliminar Funcionario -> se o funcionario nao estiver associado a avarias "pendentes"/por reparar
 
 
 ---JavaDOCK HTML--- 
 Comentar Metodos e Atributos
 
 
----VOU PRECISAR DISTO---
-public Avaria obterAvaria1(Avaria A) {                               |já fiz isto, chama-se obterAvaria1 na classe gestor
-    return avarias.get(avarias.indexOf(A));
-}
-
-
 ---Feito---
 Pull #6
-Fazer to-string com super Funcionarios, docente, não docente        |parece estar
-Verificar data (dia, mes) e idade funcionario                       |parece estar
-Editar gravar e Ler mesmo no fim do Programa                        |parece estar (o código parece estar, falta implementar)
+Fazer to-string com super Funcionarios, docente, não docente
+Verificar data (dia, mes) e idade funcionario
+Editar gravar e Ler mesmo no fim do Programa                        |implementado e a gravar tudo
 Acabar e corrigir Avarias                                                       
 
 Registar Avarias-> Apenas se exitirem equipamentos ( um equipamento so pode ter outra avaria depois de reparada a anterior)
@@ -83,4 +72,15 @@ Consultar lab por Escola -> Apenas se exitirem laboratorios
 Pull #8
 Feito pelo ricardo
 
-Pull #9
+Pull #9:13
+limpar o proj do ricardo
+
+Pull #14
+Reparações e verificações
+custos (reparaçoes)
+
+alterarEstadoAvaria - corrigida a procura pelo funcinário
+registarAvaria - corrigida a procura pelo funcinário, qq funcionário pode adicionar
+(Gestor) pesquisarNaoDocenteTecnico - procura a instancia ND no array F, funciona como deve de ser
+
+listar nr de eq. por tipo no menu

@@ -15,8 +15,8 @@ public class ComparadorTotalAvarias implements Comparator<AuxEst> {
 
     @Override
     public int compare(AuxEst t, AuxEst t1) {
-   
-         if (t.getNumEquipAvarias() < t1.getNumEquipAvarias()) {
+
+        if (t.getNumEquipAvarias() < t1.getNumEquipAvarias()) {
             return 1;
         }
         if (t.getNumEquipAvarias() > t1.getNumEquipAvarias()) {
@@ -24,6 +24,5 @@ public class ComparadorTotalAvarias implements Comparator<AuxEst> {
         }
         return 0;
     }
-  
-}
 
+}

@@ -12,7 +12,7 @@ import java.util.Calendar;
  *
  * @author RicardoAnastácio
  */
-public class FuncionarioNaoDocente extends Funcionario implements  Serializable {
+public class FuncionarioNaoDocente extends Funcionario implements Serializable {
 
     protected String funcao;
 
@@ -22,8 +22,8 @@ public class FuncionarioNaoDocente extends Funcionario implements  Serializable 
         this.funcao = funcao;
 
     }
-    
-     @Override
+
+    @Override
     public String toString() {
         StringBuilder str = new StringBuilder();
         str.append("Funcionário não docente: ");
@@ -45,6 +45,5 @@ public class FuncionarioNaoDocente extends Funcionario implements  Serializable 
     public void setFuncao(String funcao) {
         this.funcao = funcao;
     }
-
 
 }

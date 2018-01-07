@@ -391,7 +391,7 @@ public class GestaoEquipamento {
         pos1 = gerir.pesquisarAvariaAno(A1.getDataAvaria());
         if (pos1 == -1) {
             Aux = new AuxEst(A1.getDataAvaria());
-            pos1 = gerir.pesquisarAvariaAno(A1.getDataAvaria());
+            //pos1 = gerir.pesquisarAvariaAno(A1.getDataAvaria());
             gerir.adicionarAuxEst(Aux);
         } else {
             Aux = gerir.obterAuxEst(pos1);
@@ -655,19 +655,27 @@ public class GestaoEquipamento {
             E.adicionarFuncionario(ND6);
             nif++;
 
-            Laboratorio L1 = new Laboratorio("lab1", E, "loc1");
+            str = new StringBuilder("");
+            nome = str.append("lab1").append(" - ").append(E.getNome()).toString();
+            Laboratorio L1 = new Laboratorio(nome, E, "loc1");
             gerir.adicionarLaboratorio(L1);
             E.adicionarLaboratorio(L1);
 
-            Laboratorio L2 = new Laboratorio("lab2", E, "loc2");
+            str = new StringBuilder("");
+            nome = str.append("lab2").append(" - ").append(E.getNome()).toString();
+            Laboratorio L2 = new Laboratorio(nome, E, "loc2");
             gerir.adicionarLaboratorio(L2);
             E.adicionarLaboratorio(L2);
 
-            Laboratorio L3 = new Laboratorio("lab3", E, "loc3");
+            str = new StringBuilder("");
+            nome = str.append("lab3").append(" - ").append(E.getNome()).toString();
+            Laboratorio L3 = new Laboratorio(nome, E, "loc3");
             gerir.adicionarLaboratorio(L3);
             E.adicionarLaboratorio(L3);
 
-            Laboratorio L4 = new Laboratorio("lab4", E, "loc4");
+            str = new StringBuilder("");
+            nome = str.append("lab4").append(" - ").append(E.getNome()).toString();
+            Laboratorio L4 = new Laboratorio(nome, E, "loc4");
             gerir.adicionarLaboratorio(L4);
             E.adicionarLaboratorio(L4);
 
@@ -1133,7 +1141,7 @@ public class GestaoEquipamento {
         EQ = gerir.obterEquipamento(pos);
         labAntigo = EQ.getLab();
 
-        if (labAntigo.getDescricao().equals("Equipamento foi abatido, não tem laboratório") && labAntigo.getEscolaLab() == null && labAntigo.getEscolaLoc() == null) {
+        if (EQ.getEstado() == 3) {
             System.err.println("Este equipamento foi abatido, não pode ser associado a um laborátório!");
             return;
         }
@@ -1154,7 +1162,9 @@ public class GestaoEquipamento {
         L = gerir.obterLaboratorio(pos);
 
         EQ.setLab(L);
-        labAntigo.removerEquipamento(EQ);
+        if (labAntigo != null) {
+            labAntigo.removerEquipamento(EQ);
+        }
         L.adicionarEquipamento(EQ);
 
     }

@@ -82,8 +82,6 @@ public class AuxEst implements Serializable, Comparable<AuxEst> {
         this.dataAvaria = dataAvaria;
     }
 
-    
-
     @Override
     public int compareTo(AuxEst o) {
 

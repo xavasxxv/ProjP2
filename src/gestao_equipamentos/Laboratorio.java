@@ -66,7 +66,7 @@ public class Laboratorio implements Serializable {
     public void adicionarEquipamento(Equipamento E) {
         equipamentos.add(E);
     }
-    
+
     public void removerEquipamento(Equipamento E) {
         equipamentos.remove(E);
     }
@@ -91,9 +91,9 @@ public class Laboratorio implements Serializable {
     public void setEscolaLoc(String escolaLoc) {
         this.escolaLoc = escolaLoc;
     }
-    
-    public String listarEQLab (){
-        
+
+    public String listarEQLab() {
+
         StringBuilder str = new StringBuilder("");
         if (equipamentos.isEmpty()) {
             str.append("Não há equipamentos neste laboratório!");
@@ -108,7 +108,7 @@ public class Laboratorio implements Serializable {
             }
         }
         return str.toString();
-        
+
     }
 
 }

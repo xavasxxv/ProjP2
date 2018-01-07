@@ -60,7 +60,6 @@ consultarEquipamentoNumero -> Apenas se exitirem Equipamentos
 associarLabEquipamento-> Apenas se exitirem lab e Equipamentos
 Eliminar Funcionario-> Apenas se ja exitirem funcionarios
 associarLabEquipamento -> UM equipamento so pode estar num laboratorio
-    se ja tiver associado, n pode ser alterado (n sei se é isso que se pretende)//pode se mudar!!!!!
 Consultar lab por Escola -> Apenas se exitirem laboratorios
 
 
@@ -78,6 +77,7 @@ alterarEstadoAvaria - corrigida a procura pelo funcinário
 registarAvaria - corrigida a procura pelo funcinário, qq funcionário pode adicionar
 (Gestor) pesquisarNaoDocenteTecnico - procura a instancia ND no array F, funciona como deve de ser
 
+Pull #15
 listar nr de eq. por tipo no menu
 nr de EQ com avarias alterado, global, nao por ano
 consultar EQ por laboratório
@@ -86,3 +86,6 @@ comparar anos dentro da E cada vez que é adicionado gastos
 consultarLaboratorioEscola
 Eliminar Funcionario -> se o funcionario nao estiver associado a EQ, A ou R
 nr de EQs avariados, se já esteve avariado pelo menos 1 vez
+associarLabEquipamento -> UM equipamento so pode estar num laboratorio
+    se ja tiver associado, n pode ser alterado
+    estava assim, corrigido para puder ser alterável

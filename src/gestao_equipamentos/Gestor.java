@@ -65,7 +65,7 @@ public class Gestor {
 
             }
         }
-        
+
         str.append('\n');
 
         return str.toString();
@@ -73,7 +73,7 @@ public class Gestor {
 
     public float percEquipAvariaAgrup() {
         float percEquipAvariagrup = 0;
-        
+
         percEquipAvariagrup = (numEquipAvariaTotal / equipamentos.size()) * 100;
 
         return percEquipAvariagrup;

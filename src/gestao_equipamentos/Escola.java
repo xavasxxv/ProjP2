@@ -41,7 +41,7 @@ public class Escola implements Serializable, Comparable<Escola> {
 
         gastosAno.get(pos).aumentaGastosAno(gasto);
         Collections.sort(gastosAno);
-        
+
     }
 
     public boolean gastosAnoIsEmpty() {
@@ -89,7 +89,7 @@ public class Escola implements Serializable, Comparable<Escola> {
         }
         return str.toString();
     }
-    
+
     public String listarLaboratoriosEscola() {
         StringBuilder str = new StringBuilder("");
         if (laboratorios.isEmpty()) {

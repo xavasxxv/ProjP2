@@ -76,9 +76,9 @@ custos (reparaçoes)
 alterarEstadoAvaria - corrigida a procura pelo funcinário
 registarAvaria - corrigida a procura pelo funcinário, qq funcionário pode adicionar
 (Gestor) pesquisarNaoDocenteTecnico - procura a instancia ND no array F, funciona como deve de ser
+listar nr de eq. por tipo no menu
 
 Pull #15
-listar nr de eq. por tipo no menu
 nr de EQ com avarias alterado, global, nao por ano
 consultar EQ por laboratório
 total gasto por ano por escola(ordem alfabética 1º, decrescente custo por ano), ordenar

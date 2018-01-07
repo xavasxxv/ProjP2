@@ -76,6 +76,7 @@ custos (reparaçoes)
 alterarEstadoAvaria - corrigida a procura pelo funcinário
 registarAvaria - corrigida a procura pelo funcinário, qq funcionário pode adicionar
 (Gestor) pesquisarNaoDocenteTecnico - procura a instancia ND no array F, funciona como deve de ser
+
 listar nr de eq. por tipo no menu
 
 Pull #15

@@ -164,7 +164,7 @@ public class GestaoEquipamento {
                                 }
                                 break;
                             case 4:
-                                if (gerir.getSizeEquipamento() != 0) {
+                                if (gerir.getSizeEquipamento() != 0 && gerir.getSizeLaboratorio() != 0) {
                                     consultarEquipamentoLab(gerir);
                                 } else {
                                     System.err.println("\nÉ necessario existir equipamentos para os puder consultar!\n");

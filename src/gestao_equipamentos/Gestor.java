@@ -44,7 +44,6 @@ public class Gestor {
 
     public String totalGastoAnoEqEscola() {
         StringBuilder str = new StringBuilder();
-        AuxEst2 gastosTmp;
         Collections.sort(escolas);
 
         if (equipamentos.isEmpty()) {
@@ -58,8 +57,7 @@ public class Gestor {
                     str.append("  Esta escola não teve gastos!");
                 } else {
                     for (int j = 0; j < escolas.get(i).gastosAnoSize(); j++) {
-                        gastosTmp = escolas.get(i).getGastosAno().get(j);
-                        str.append("  ").append(gastosTmp.getAnoGastos().get(Calendar.YEAR)).append(" - ").append(gastosTmp.getTotalGasto()).append("\n");
+                        str.append("  " + escolas.get(i).getGastosAno().get(j).getAnoGastos().get(Calendar.YEAR)).append(" - ").append(escolas.get(i).getGastosAno().get(j).getTotalGasto()).append("\n");
                     }
                 }
 

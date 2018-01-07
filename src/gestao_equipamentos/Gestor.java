@@ -34,11 +34,18 @@ public class Gestor {
     private ArrayList<Avaria> avarias = new ArrayList<>();
     private ArrayList<Reparacao> reparacoes = new ArrayList<>();
     private ArrayList<AuxEst> auxEst = new ArrayList<>();
+    private int numEquipAvariaTotal;
+
+    public void adicionaNumEQAvariaTotal(Equipamento EQ) {
+        if (EQ.avariasEQnotEmpty() == false) {
+            numEquipAvariaTotal++;
+        }
+    }
 
     public String totalGastoAnoEqEscola() {
-        //ComparadorTotalAvarias cn = new ComparadorTotalAvarias();
         StringBuilder str = new StringBuilder();
-        //Collections.sort(auxEst, cn);
+        AuxEst2 gastosTmp;
+        Collections.sort(escolas);
 
         if (equipamentos.isEmpty()) {
             str.append("\nNão é possivel consultar esta estatística, não há equipamentos registados nem avarias");
@@ -47,28 +54,34 @@ public class Gestor {
             str.append("\nEscola\n  Ano - Gasto\n\n");
             for (int i = 0; i < escolas.size(); i++) {
                 str.append(escolas.get(i).getNome()).append("\n");
-                for (int j = 0; j < escolas.get(j).gastosAnoSize(); j++) {
-                    str.append("  " + escolas.get(i).getGastosAno().get(j).getAnoGastos().get(Calendar.YEAR)).append(" - ").append(escolas.get(i).getGastosAno().get(j).getTotalGasto()).append("\n");
+                if (escolas.get(i).gastosAnoIsEmpty()) {
+                    str.append("  Esta escola não teve gastos!");
+                } else {
+                    for (int j = 0; j < escolas.get(i).gastosAnoSize(); j++) {
+                        gastosTmp = escolas.get(i).getGastosAno().get(j);
+                        str.append("  ").append(gastosTmp.getAnoGastos().get(Calendar.YEAR)).append(" - ").append(gastosTmp.getTotalGasto()).append("\n");
+                    }
                 }
 
             }
         }
+        
+        str.append('\n');
 
         return str.toString();
     }
 
     public float percEquipAvariaAgrup() {
         float percEquipAvariagrup = 0;
-
-        percEquipAvariagrup = ((float) avarias.size() / equipamentos.size()) * 100;
+        
+        percEquipAvariagrup = (numEquipAvariaTotal / equipamentos.size()) * 100;
 
         return percEquipAvariagrup;
     }
 
     public String avariasRegistadasPorOrdemCrescenteTotal() {
-        ComparadorTotalAvarias cn = new ComparadorTotalAvarias();
         StringBuilder str = new StringBuilder();
-        Collections.sort(auxEst, cn);
+        Collections.sort(auxEst);
 
         if (auxEst.isEmpty()) {
             str.append("\nNão é possivel consultar esta estatística não há avarias");
@@ -77,7 +90,7 @@ public class Gestor {
             str.append("\nAno-Avarias-AvariasReparadas-AvariasPorReparar-AvariasInrreparaveis\n");
             for (int i = 0; i < auxEst.size(); i++) {
 
-                str.append(auxEst.get(i).getDataAvaria().get(Calendar.YEAR)).append("-").append(auxEst.get(i).getNumEquipAvarias()).append("-").append(auxEst.get(i).getNumAvariasReparadas())
+                str.append(auxEst.get(i).getDataAvaria().get(Calendar.YEAR)).append("-").append(auxEst.get(i).getNumAvarias()).append("-").append(auxEst.get(i).getNumAvariasReparadas())
                         .append("-").append(auxEst.get(i).getNumAvariasPorReparar()).append("-").append(auxEst.get(i).getNumAvariasIrreparaveis()).append("\n");
 
             }
@@ -138,6 +151,7 @@ public class Gestor {
             A.setNumId(avarias.get(avarias.size() - 1).getNumId() + 1);
         }
         avarias.add(A);
+        A.getF().setVerificaEliminar(true);
     }
 
     /**
@@ -335,7 +349,7 @@ public class Gestor {
         return str.toString();
     }
 
-    public String ListarEquipamentos() {
+    public String listarEquipamentos() {
         StringBuilder str = new StringBuilder("");
         if (equipamentos.isEmpty()) {
             str.append("Não há equipamentos registados!");
@@ -368,10 +382,7 @@ public class Gestor {
             EQ.setNumId(equipamentos.get(equipamentos.size() - 1).getNumId() + 1);
         }
         equipamentos.add(EQ);
-    }
-
-    public void adicionarLaboratorio(TipoEquipamento TE) {
-        tipoEquipamentos.add(TE);
+        EQ.getND().setVerificaEliminar(true);
     }
 
     public void adicionarDocente(FuncionarioDocente D) {
@@ -567,6 +578,7 @@ public class Gestor {
             out.writeObject(avarias);
             out.writeObject(reparacoes);
             out.writeObject(auxEst);
+            out.writeInt(numEquipAvariaTotal);
             // gravar/ler variaveis usadas para estatisticas no fim do projeto
             out.close();
         } catch (IOException ex) {
@@ -587,10 +599,25 @@ public class Gestor {
             avarias = (ArrayList<Avaria>) in.readObject();
             reparacoes = (ArrayList<Reparacao>) in.readObject();
             auxEst = (ArrayList<AuxEst>) in.readObject();
+            numEquipAvariaTotal = in.readInt();
             in.close();
         } catch (IOException | ClassNotFoundException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+
+    /**
+     * @return the numEquipAvariaTotal
+     */
+    public int getNumEquipAvariaTotal() {
+        return numEquipAvariaTotal;
+    }
+
+    /**
+     * @param numEquipAvariaTotal the numEquipAvariaTotal to set
+     */
+    public void setNumEquipAvariaTotal(int numEquipAvariaTotal) {
+        this.numEquipAvariaTotal = numEquipAvariaTotal;
     }
 
 }

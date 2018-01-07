@@ -25,6 +25,7 @@ public class GestaoEquipamento {
 
         gerir.lerFicheiro();
         //testes(gerir); // COMENTAR 
+        //testes1(gerir, 0);
         int op;
         int op2;
         int op3;
@@ -162,6 +163,13 @@ public class GestaoEquipamento {
                                     System.err.println("\nÉ necessario existir equipamentos para os puder consultar!\n");
                                 }
                                 break;
+                            case 4:
+                                if (gerir.getSizeEquipamento() != 0) {
+                                    consultarEquipamentoLab(gerir);
+                                } else {
+                                    System.err.println("\nÉ necessario existir equipamentos para os puder consultar!\n");
+                                }
+                                break;
                         }
                     } while (op2 != 0);
                     break;
@@ -269,7 +277,7 @@ public class GestaoEquipamento {
 
         Laboratorio L1 = new Laboratorio("LAB-ELETRO", E, "No paraiso");
         gerir.adicionarLaboratorio(L1);
-        E1.adicionarLaboratorio(L1);
+        E.adicionarLaboratorio(L1);
 
         Laboratorio L2 = new Laboratorio("LAB-TESTE", E1, "No caralho");
         gerir.adicionarLaboratorio(L2);
@@ -283,7 +291,7 @@ public class GestaoEquipamento {
         gerir.adicionarTipoEquipamento(TipoEQ2);
 
         data2.set(1, 2016);
-        data3.set(1, 2018);
+        data3.set(1, 2017);
         data4.set(1, 2019);
 
         AuxEst2 auxGastos;
@@ -373,7 +381,8 @@ public class GestaoEquipamento {
         }
 
         Aux.setNumAvariasPorReparar(Aux.getNumAvariasPorReparar() + 1);
-        Aux.setNumEquipAvarias(Aux.getNumEquipAvarias() + 1);
+        Aux.setNumAvarias(Aux.getNumAvarias() + 1);
+        gerir.adicionaNumEQAvariaTotal(EQ);
         EQ.adicionarAvaria(A);
 
         Avaria A1 = new Avaria(data2, EQ, "avaria1", F, 2, true);
@@ -382,14 +391,27 @@ public class GestaoEquipamento {
         pos1 = gerir.pesquisarAvariaAno(A1.getDataAvaria());
         if (pos1 == -1) {
             Aux = new AuxEst(A1.getDataAvaria());
-            //pos1 = gerir.pesquisarAvariaAno(A1.getDataAvaria());
+            pos1 = gerir.pesquisarAvariaAno(A1.getDataAvaria());
             gerir.adicionarAuxEst(Aux);
         } else {
             Aux = gerir.obterAuxEst(pos1);
         }
-        Aux.setNumAvariasPorReparar(Aux.getNumAvariasReparadas() + 1);
-        Aux.setNumEquipAvarias(Aux.getNumEquipAvarias() + 1);
+        Aux.setNumAvariasReparadas(Aux.getNumAvariasReparadas() + 1);
+        Aux.setNumAvarias(Aux.getNumAvarias() + 1);
+        gerir.adicionaNumEQAvariaTotal(EQ);
         EQ.adicionarAvaria(A1);
+        Reparacao R = new Reparacao(A1, data2, "reparação", 10, F);
+        gerir.adicionarReparacao(R);
+        EQ.adicionarReparacao(R);
+        pos = gerir.pesquisarAnoGastos(E, data2);
+        if (pos == -1) {
+            auxGastos = new AuxEst2(data2);
+            E.adicionarAnoGastos(auxGastos);
+        } else {
+            auxGastos = E.obterAnoGastos(pos);
+        }
+
+        auxGastos.aumentaGastosAno(10);
 
         Avaria A2 = new Avaria(data3, EQ, "avaria2", F, 2, true);
         gerir.adicionarAvaria(A2);
@@ -401,9 +423,22 @@ public class GestaoEquipamento {
         } else {
             Aux = gerir.obterAuxEst(pos1);
         }
-        Aux.setNumAvariasPorReparar(Aux.getNumAvariasReparadas() + 1);
-        Aux.setNumEquipAvarias(Aux.getNumEquipAvarias() + 1);
+        Aux.setNumAvariasReparadas(Aux.getNumAvariasReparadas() + 1);
+        Aux.setNumAvarias(Aux.getNumAvarias() + 1);
+        gerir.adicionaNumEQAvariaTotal(EQ);
         EQ.adicionarAvaria(A2);
+        R = new Reparacao(A2, data3, "reparação", 10, F);
+        gerir.adicionarReparacao(R);
+        EQ.adicionarReparacao(R);
+        pos = gerir.pesquisarAnoGastos(E, data3);
+        if (pos == -1) {
+            auxGastos = new AuxEst2(data3);
+            E.adicionarAnoGastos(auxGastos);
+        } else {
+            auxGastos = E.obterAnoGastos(pos);
+        }
+
+        auxGastos.aumentaGastosAno(10);
 
         Avaria A3 = new Avaria(data4, EQ, "avaria3", F, 2, true);
         gerir.adicionarAvaria(A3);
@@ -415,9 +450,22 @@ public class GestaoEquipamento {
         } else {
             Aux = gerir.obterAuxEst(pos1);
         }
-        Aux.setNumAvariasPorReparar(Aux.getNumAvariasReparadas() + 1);
-        Aux.setNumEquipAvarias(Aux.getNumEquipAvarias() + 1);
+        Aux.setNumAvariasReparadas(Aux.getNumAvariasReparadas() + 1);
+        Aux.setNumAvarias(Aux.getNumAvarias() + 1);
+        gerir.adicionaNumEQAvariaTotal(EQ);
         EQ.adicionarAvaria(A3);
+        R = new Reparacao(A3, data4, "reparação", 10, F);
+        gerir.adicionarReparacao(R);
+        EQ.adicionarReparacao(R);
+        pos = gerir.pesquisarAnoGastos(E, data4);
+        if (pos == -1) {
+            auxGastos = new AuxEst2(data4);
+            E.adicionarAnoGastos(auxGastos);
+        } else {
+            auxGastos = E.obterAnoGastos(pos);
+        }
+
+        auxGastos.aumentaGastosAno(10);
 
         Avaria A4 = new Avaria(data2, EQ, "avaria4", F, 2, true);
         gerir.adicionarAvaria(A4);
@@ -429,9 +477,22 @@ public class GestaoEquipamento {
         } else {
             Aux = gerir.obterAuxEst(pos1);
         }
-        Aux.setNumAvariasPorReparar(Aux.getNumAvariasReparadas() + 1);
-        Aux.setNumEquipAvarias(Aux.getNumEquipAvarias() + 1);
+        Aux.setNumAvariasReparadas(Aux.getNumAvariasReparadas() + 1);
+        Aux.setNumAvarias(Aux.getNumAvarias() + 1);
+        gerir.adicionaNumEQAvariaTotal(EQ);
         EQ.adicionarAvaria(A4);
+        R = new Reparacao(A4, data2, "reparação", 10, F);
+        gerir.adicionarReparacao(R);
+        EQ.adicionarReparacao(R);
+        pos = gerir.pesquisarAnoGastos(E, data2);
+        if (pos == -1) {
+            auxGastos = new AuxEst2(data2);
+            E.adicionarAnoGastos(auxGastos);
+        } else {
+            auxGastos = E.obterAnoGastos(pos);
+        }
+
+        auxGastos.aumentaGastosAno(10);
 
         Avaria A5 = new Avaria(data3, EQ, "avaria5", F, 3, true);
         gerir.adicionarAvaria(A5);
@@ -443,10 +504,15 @@ public class GestaoEquipamento {
         } else {
             Aux = gerir.obterAuxEst(pos1);
         }
-        Aux.setNumAvariasPorReparar(Aux.getNumAvariasIrreparaveis() + 1);
-        Aux.setNumEquipAvarias(Aux.getNumEquipAvarias() + 1);
+        Aux.setNumAvariasIrreparaveis(Aux.getNumAvariasIrreparaveis() + 1);
+        Aux.setNumAvarias(Aux.getNumAvarias() + 1);
+        gerir.adicionaNumEQAvariaTotal(EQ);
         EQ.adicionarAvaria(A5);
 
+        //Calendar dataReparacao1 = Calendar.getInstance();
+        //Reparacao R = new Reparacao(A5, dataReparacao1, "reparação", 10, F);
+        //gerir.adicionarReparacao(R);
+        //EQ.adicionarReparacao(R);
         Avaria A6 = new Avaria(data3, EQ, "avaria6", F, 3, true);
         gerir.adicionarAvaria(A6);
         pos1 = gerir.pesquisarAvariaAno(A6.getDataAvaria());
@@ -457,14 +523,306 @@ public class GestaoEquipamento {
         } else {
             Aux = gerir.obterAuxEst(pos1);
         }
-        Aux.setNumAvariasPorReparar(Aux.getNumAvariasIrreparaveis() + 1);
-        Aux.setNumEquipAvarias(Aux.getNumEquipAvarias() + 1);
+        Aux.setNumAvariasIrreparaveis(Aux.getNumAvariasIrreparaveis() + 1);
+        Aux.setNumAvarias(Aux.getNumAvarias() + 1);
+        gerir.adicionaNumEQAvariaTotal(EQ);
         EQ.adicionarAvaria(A6);
 
-        Calendar dataReparacao = Calendar.getInstance();
-        Reparacao R = new Reparacao(A, dataReparacao, "reparação", 10, F);
-        gerir.adicionarReparacao(R);
-        EQ.adicionarReparacao(R);
+        //Calendar dataReparacao = Calendar.getInstance();
+        Reparacao R1 = new Reparacao(A6, data2, "reparação", 10, F);
+        gerir.adicionarReparacao(R1);
+        EQ.adicionarReparacao(R1);
+    }
+
+    public static void testes1(Gestor gerir, int nrAvariasAdicionar) {
+
+        Equipamento EQ1, EQ2, EQ3, EQ4;
+
+        AuxEst2 auxGastos;
+        AuxEst Aux;
+
+        Equipamento passaEQ;
+
+        Calendar passaData = new GregorianCalendar();
+        Calendar data = new GregorianCalendar();
+        data.set(1, 1990);
+        Calendar data1 = new GregorianCalendar();
+        data1.set(1, 2016);
+        Calendar data2 = new GregorianCalendar();
+        data2.set(1, 2017);
+        Calendar data3 = new GregorianCalendar();
+        data3.set(1, 2018);
+        Calendar data4 = new GregorianCalendar();
+        data4.set(1, 2019);
+
+        TipoEquipamento T1 = new TipoEquipamento("tipo 1");
+        TipoEquipamento T2 = new TipoEquipamento("tipo 2");
+        TipoEquipamento T3 = new TipoEquipamento("tipo 3");
+        TipoEquipamento T4 = new TipoEquipamento("tipo 4");
+
+        String descricao = "teste";
+
+        FuncionarioNaoDocente ND;
+
+        int custo1 = 20, custo2 = 40, custo3 = 50, custo4 = 30;
+        int nif, pos;
+        StringBuilder str = new StringBuilder("");
+        String nome;
+
+        gerir.adicionarTipoEquipamento(T1);
+        gerir.adicionarTipoEquipamento(T2);
+        gerir.adicionarTipoEquipamento(T3);
+        gerir.adicionarTipoEquipamento(T4);
+
+        Escola E1 = new Escola("E1", 1, "a", 1, "@", data);
+        gerir.adicionarEscola(E1);
+        Escola E2 = new Escola("E2", 2, "a", 1, "@", data);
+        gerir.adicionarEscola(E2);
+        Escola E3 = new Escola("E3", 3, "a", 1, "@", data);
+        gerir.adicionarEscola(E3);
+        Escola E4 = new Escola("E4", 4, "a", 1, "@", data);
+        gerir.adicionarEscola(E4);
+
+        nif = 1;
+        for (int i = 0; i < gerir.getSizeEscolas(); i++) {
+            Escola E = gerir.obterEscola(i);
+            nome = str.append("aa").append(i).toString();
+            FuncionarioDocente D1 = new FuncionarioDocente(nome, "a", nif, "@", 1, data, "12ano", E, "departamento");
+            gerir.adicionarDocente(D1);
+            E.adicionarFuncionario(D1);
+            nif++;
+
+            str = new StringBuilder("");
+            nome = str.append("ab").append(i).toString();
+            FuncionarioDocente D2 = new FuncionarioDocente(nome, "a", nif, "@", 1, data, "12ano", E, "departamento");
+            gerir.adicionarDocente(D2);
+            E.adicionarFuncionario(D2);
+            nif++;
+
+            str = new StringBuilder("");
+            nome = str.append("ac").append(i).toString();
+            FuncionarioDocente D3 = new FuncionarioDocente(nome, "a", nif, "@", 1, data, "12ano", E, "departamento");
+            gerir.adicionarDocente(D3);
+            E.adicionarFuncionario(D3);
+            nif++;
+
+            str = new StringBuilder("");
+            nome = str.append("ad").append(i).toString();
+            FuncionarioDocente D4 = new FuncionarioDocente(nome, "a", nif, "@", 1, data, "12ano", E, "departamento");
+            gerir.adicionarDocente(D4);
+            E.adicionarFuncionario(D4);
+            nif++;
+
+            str = new StringBuilder("");
+            nome = str.append("ae").append(i).toString();
+            FuncionarioNaoDocente ND1 = new FuncionarioNaoDocente(nome, "a", nif, "@", 1, data, "12ano", E, "tecnico");
+            gerir.adicionarNaoDocente(ND1);
+            E.adicionarFuncionario(ND1);
+            nif++;
+
+            str = new StringBuilder("");
+            nome = str.append("af").append(i).toString();
+            FuncionarioNaoDocente ND2 = new FuncionarioNaoDocente(nome, "a", nif, "@", 1, data, "12ano", E, "tecnico");
+            gerir.adicionarNaoDocente(ND2);
+            E.adicionarFuncionario(ND2);
+            nif++;
+
+            str = new StringBuilder("");
+            nome = str.append("ag").append(i).toString();
+            FuncionarioNaoDocente ND3 = new FuncionarioNaoDocente(nome, "a", nif, "@", 1, data, "12ano", E, "tecnico");
+            gerir.adicionarNaoDocente(ND3);
+            E.adicionarFuncionario(ND3);
+            nif++;
+
+            str = new StringBuilder("");
+            nome = str.append("ah").append(i).toString();
+            FuncionarioNaoDocente ND4 = new FuncionarioNaoDocente(nome, "a", nif, "@", 1, data, "12ano", E, "tecnico");
+            gerir.adicionarNaoDocente(ND4);
+            E.adicionarFuncionario(ND4);
+            nif++;
+
+            str = new StringBuilder("");
+            nome = str.append("ai").append(i).toString();
+            FuncionarioNaoDocente ND5 = new FuncionarioNaoDocente(nome, "a", nif, "@", 1, data, "12ano", E, "limpa");
+            gerir.adicionarNaoDocente(ND5);
+            E.adicionarFuncionario(ND5);
+            nif++;
+
+            str = new StringBuilder("");
+            nome = str.append("aj").append(i).toString();
+            FuncionarioNaoDocente ND6 = new FuncionarioNaoDocente(nome, "a", nif, "@", 1, data, "12ano", E, "limpa");
+            gerir.adicionarNaoDocente(ND6);
+            E.adicionarFuncionario(ND6);
+            nif++;
+
+            Laboratorio L1 = new Laboratorio("lab1", E, "loc1");
+            gerir.adicionarLaboratorio(L1);
+            E.adicionarLaboratorio(L1);
+
+            Laboratorio L2 = new Laboratorio("lab2", E, "loc2");
+            gerir.adicionarLaboratorio(L2);
+            E.adicionarLaboratorio(L2);
+
+            Laboratorio L3 = new Laboratorio("lab3", E, "loc3");
+            gerir.adicionarLaboratorio(L3);
+            E.adicionarLaboratorio(L3);
+
+            Laboratorio L4 = new Laboratorio("lab4", E, "loc4");
+            gerir.adicionarLaboratorio(L4);
+            E.adicionarLaboratorio(L4);
+
+        }
+
+        for (int i = 0; i < gerir.getSizeEscolas(); i++) {
+            nif = 0;
+            Escola E = gerir.obterEscola(i);
+            do {
+                nif++;
+                pos = gerir.pesquisarNaoDocenteTecnico(nif, E);
+            } while (pos == -1);
+            ND = gerir.obterFuncionarioNaoDocente(pos);
+            EQ1 = new Equipamento(data1, descricao, 1, T1, E, custo1, ND, 1);
+            E.adicionarEquipamento(EQ1);
+            gerir.adicionarEquipamento(EQ1);
+            T1.adicionarEquipamento(EQ1);
+            passaData = data1;
+            passaEQ = EQ1;
+            pos = gerir.pesquisarAnoGastos(E, data1);
+            if (pos == -1) {
+                auxGastos = new AuxEst2(data1);
+                auxGastos.aumentaGastosAno(custo1);
+                E.adicionarAnoGastos(auxGastos);
+            } else {
+                E.aumentaGastosAno(custo1, pos);
+            }
+            for (int k = 0; k < nrAvariasAdicionar; k++) {
+                Avaria A = new Avaria(passaData, passaEQ, "avaria", ND, 1, false);
+                gerir.adicionarAvaria(A);
+                pos = gerir.pesquisarAvariaAno(passaData);
+                if (pos == -1) {
+                    Aux = new AuxEst(passaData);
+                    gerir.adicionarAuxEst(Aux);
+                } else {
+                    Aux = gerir.obterAuxEst(pos);
+                }
+                Aux.setNumAvariasPorReparar(Aux.getNumAvariasPorReparar() + 1);
+                Aux.setNumAvarias(Aux.getNumAvarias() + 1);
+                gerir.adicionaNumEQAvariaTotal(passaEQ);
+                passaEQ.adicionarAvaria(A);
+            }
+
+            nif = 0;
+            E = gerir.obterEscola(i);
+            do {
+                nif++;
+                pos = gerir.pesquisarNaoDocenteTecnico(nif, E);
+            } while (pos == -1);
+            ND = gerir.obterFuncionarioNaoDocente(pos);
+            EQ2 = new Equipamento(data2, descricao, 1, T2, E, custo2, ND, 1);
+            E.adicionarEquipamento(EQ2);
+            gerir.adicionarEquipamento(EQ2);
+            T2.adicionarEquipamento(EQ2);
+            passaData = data2;
+            passaEQ = EQ2;
+            pos = gerir.pesquisarAnoGastos(E, data2);
+            if (pos == -1) {
+                auxGastos = new AuxEst2(data2);
+                auxGastos.aumentaGastosAno(custo2);
+                E.adicionarAnoGastos(auxGastos);
+            } else {
+                E.aumentaGastosAno(custo2, pos);
+            }
+            for (int k = 0; k < nrAvariasAdicionar; k++) {
+                Avaria A = new Avaria(passaData, passaEQ, "avaria", ND, 1, false);
+                gerir.adicionarAvaria(A);
+                pos = gerir.pesquisarAvariaAno(passaData);
+                if (pos == -1) {
+                    Aux = new AuxEst(passaData);
+                    gerir.adicionarAuxEst(Aux);
+                } else {
+                    Aux = gerir.obterAuxEst(pos);
+                }
+                Aux.setNumAvariasPorReparar(Aux.getNumAvariasPorReparar() + 1);
+                Aux.setNumAvarias(Aux.getNumAvarias() + 1);
+                gerir.adicionaNumEQAvariaTotal(passaEQ);
+                passaEQ.adicionarAvaria(A);
+            }
+
+            nif = 0;
+            E = gerir.obterEscola(i);
+            do {
+                nif++;
+                pos = gerir.pesquisarNaoDocenteTecnico(nif, E);
+            } while (pos == -1);
+            ND = gerir.obterFuncionarioNaoDocente(pos);
+            EQ3 = new Equipamento(data3, descricao, 1, T3, E, custo3, ND, 1);
+            E.adicionarEquipamento(EQ3);
+            gerir.adicionarEquipamento(EQ3);
+            T3.adicionarEquipamento(EQ3);
+            passaData = data3;
+            passaEQ = EQ3;
+            pos = gerir.pesquisarAnoGastos(E, data3);
+            if (pos == -1) {
+                auxGastos = new AuxEst2(data3);
+                auxGastos.aumentaGastosAno(custo3);
+                E.adicionarAnoGastos(auxGastos);
+            } else {
+                E.aumentaGastosAno(custo3, pos);
+            }
+            for (int k = 0; k < nrAvariasAdicionar; k++) {
+                Avaria A = new Avaria(passaData, passaEQ, "avaria", ND, 1, false);
+                gerir.adicionarAvaria(A);
+                pos = gerir.pesquisarAvariaAno(passaData);
+                if (pos == -1) {
+                    Aux = new AuxEst(passaData);
+                    gerir.adicionarAuxEst(Aux);
+                } else {
+                    Aux = gerir.obterAuxEst(pos);
+                }
+                Aux.setNumAvariasPorReparar(Aux.getNumAvariasPorReparar() + 1);
+                Aux.setNumAvarias(Aux.getNumAvarias() + 1);
+                gerir.adicionaNumEQAvariaTotal(passaEQ);
+                passaEQ.adicionarAvaria(A);
+            }
+
+            nif = 0;
+            E = gerir.obterEscola(i);
+            do {
+                nif++;
+                pos = gerir.pesquisarNaoDocenteTecnico(nif, E);
+            } while (pos == -1);
+            ND = gerir.obterFuncionarioNaoDocente(pos);
+            EQ4 = new Equipamento(data4, descricao, 1, T4, E, custo4, ND, 1);
+            E.adicionarEquipamento(EQ4);
+            gerir.adicionarEquipamento(EQ4);
+            T4.adicionarEquipamento(EQ4);
+            passaData = data4;
+            passaEQ = EQ4;
+            pos = gerir.pesquisarAnoGastos(E, data4);
+            if (pos == -1) {
+                auxGastos = new AuxEst2(data4);
+                auxGastos.aumentaGastosAno(custo4);
+                E.adicionarAnoGastos(auxGastos);
+            } else {
+                E.aumentaGastosAno(custo4, pos);
+            }
+            for (int k = 0; k < nrAvariasAdicionar; k++) {
+                Avaria A = new Avaria(passaData, passaEQ, "avaria", ND, 1, false);
+                gerir.adicionarAvaria(A);
+                pos = gerir.pesquisarAvariaAno(passaData);
+                if (pos == -1) {
+                    Aux = new AuxEst(passaData);
+                    gerir.adicionarAuxEst(Aux);
+                } else {
+                    Aux = gerir.obterAuxEst(pos);
+                }
+                Aux.setNumAvariasPorReparar(Aux.getNumAvariasPorReparar() + 1);
+                Aux.setNumAvarias(Aux.getNumAvarias() + 1);
+                gerir.adicionaNumEQAvariaTotal(passaEQ);
+                passaEQ.adicionarAvaria(A);
+            }
+
+        }
     }
 
     public static void consultarAvariaEquipamento(Gestor gerir) {
@@ -473,7 +831,7 @@ public class GestaoEquipamento {
         int id;
         int pos;
 
-        System.out.println(gerir.ListarEquipamentos());
+        System.out.println(gerir.listarEquipamentos());
         do {
             id = Consola.lerInt("Indique o ID do equipamento a consultar: ", 1, 999999999);
             pos = gerir.pesquisarIdEquipamento(id);
@@ -562,6 +920,7 @@ public class GestaoEquipamento {
         if (estado != 1) {
             A.setAlterado(true);
             A.getEQ().obterAvaria(A).setAlterado(true);
+            A.getF().setVerificaEliminar(true);
         }
 
         if (estado == 1) {
@@ -581,17 +940,16 @@ public class GestaoEquipamento {
             System.out.println(R);
 
             Aux.setNumAvariasReparadas(Aux.getNumAvariasReparadas() + 1);
-            Aux.setNumAvariasPorReparar(Aux.getNumAvariasPorReparar() + -1);
+            Aux.setNumAvariasPorReparar(Aux.getNumAvariasPorReparar() - 1);
 
             pos = gerir.pesquisarAnoGastos(A.getEQ().getE(), A.getEQ().getDataIventario());
             if (pos == -1) {
                 auxGastos = new AuxEst2(A.getEQ().getDataIventario());
+                auxGastos.aumentaGastosAno(custo);
                 A.getEQ().getE().adicionarAnoGastos(auxGastos);
             } else {
-                auxGastos = A.getEQ().getE().obterAnoGastos(pos);
+                A.getEQ().getE().aumentaGastosAno(custo, pos);
             }
-
-            auxGastos.aumentaGastosAno(custo);
 
         }
 
@@ -607,7 +965,7 @@ public class GestaoEquipamento {
             A.getEQ().getLab().setEscolaLoc(null);
 
             Aux.setNumAvariasIrreparaveis(Aux.getNumAvariasIrreparaveis() + 1);
-            Aux.setNumAvariasPorReparar(Aux.getNumAvariasPorReparar() + - 1);
+            Aux.setNumAvariasPorReparar(Aux.getNumAvariasPorReparar() - 1);
 
         }
 
@@ -624,7 +982,7 @@ public class GestaoEquipamento {
         int nif;
         AuxEst Aux;
 
-        System.out.println(gerir.ListarEquipamentos());
+        System.out.println(gerir.listarEquipamentos());
         do {
             id = Consola.lerInt("Indique qual o equipamento que pretende registar uma avaria: ", 1, 999999999);
             pos = gerir.pesquisarIdEquipamento(id);
@@ -639,48 +997,51 @@ public class GestaoEquipamento {
             return;
         }
 
-        if (EQ.getEstado() == 1) {
-            //revisto, todos os F das E podem adicionar avarias, obtém a instância F não do array principal, mas do array da escola
-            System.out.print(EQ.getE().listarFuncionariosEscola());
-            do {
+        switch (EQ.getEstado()) {
+            case 1:
+                //revisto, todos os F das E podem adicionar avarias, obtém a instância F não do array principal, mas do array da escola
+                System.out.print(EQ.getE().listarFuncionariosEscola());
+                do {
 
-                nif = Consola.lerInt("Indique o NIF do funcionário que regista a avaria: ", 1, 999999999);
-                pos = EQ.getE().pesquisarFuncionarioNIFEscola(nif);
+                    nif = Consola.lerInt("Indique o NIF do funcionário que regista a avaria: ", 1, 999999999);
+                    pos = EQ.getE().pesquisarFuncionarioNIFEscola(nif);
 
-                if (pos == -1) {
-                    System.err.println("Não existe funcionário com esse NIF ou o funcionário não pertence à escola ou não tem como função TECNICO!");
+                    if (pos == -1) {
+                        System.err.println("Não existe funcionário com esse NIF ou o funcionário não pertence à escola ou não tem como função TECNICO!");
+                    }
+                } while (pos == -1);
+
+                F = EQ.getE().obterFuncionarioEscola(pos);
+
+                descriçao = Consola.lerString("Coloque uma breve descrição da avaria: ");
+
+                A = new Avaria(dataAvaria, EQ, descriçao, F, 1, false);
+                gerir.adicionarAvaria(A);
+                EQ.adicionarAvaria(A);
+
+                int pos1;
+                pos1 = gerir.pesquisarAvariaAno(dataAvaria);
+
+                if (pos1 == -1) {
+                    Aux = new AuxEst(dataAvaria);
+                    gerir.adicionarAuxEst(Aux);
+                } else {
+                    Aux = gerir.obterAuxEst(pos1);
                 }
-            } while (pos == -1);
 
-            F = EQ.getE().obterFuncionarioEscola(pos);
+                Aux.setNumAvariasPorReparar(Aux.getNumAvariasPorReparar() + 1);
+                Aux.setNumAvarias(Aux.getNumAvarias() + 1);
+                gerir.adicionaNumEQAvariaTotal(EQ);
 
-            descriçao = Consola.lerString("Coloque uma breve descrição da avaria: ");
+                System.out.println("\n------Registada Avaria com sucesso!------\n");
+                break;
+            case 2:
+                System.err.println("Este equipamento já está avariado, é impossivel registar outra avaria!\n");
+                break;
+            case 3:
+                System.err.println("Este equipamento já foi abatido, é impossivel registar avarias!\n");
+                break;
 
-            A = new Avaria(dataAvaria, EQ, descriçao, F, 1, false);
-            gerir.adicionarAvaria(A);
-            EQ.adicionarAvaria(A);
-
-            int pos1;
-            pos1 = gerir.pesquisarAvariaAno(dataAvaria);
-
-            if (pos1 == -1) {
-                Aux = new AuxEst(dataAvaria);
-                pos1 = gerir.pesquisarAvariaAno(A.getDataAvaria());
-                gerir.adicionarAuxEst(Aux);
-            } else {
-                Aux = gerir.obterAuxEst(pos1);
-            }
-
-            Aux.setNumAvariasPorReparar(Aux.getNumAvariasPorReparar() + 1);
-
-            Aux.setNumEquipAvarias(Aux.getNumEquipAvarias() + 1);
-
-            System.out.println("\n------Registada Avaria com sucesso!------\n");
-
-        } else if (EQ.getEstado() == 2) {
-            System.err.println("Este equipamento já está avariado, é impossivel registar outra avaria!\n");
-        } else if (EQ.getEstado() == 3) {
-            System.err.println("Este equipamento já foi abatido, é impossivel registar avarias!\n");
         }
     }
 
@@ -742,12 +1103,11 @@ public class GestaoEquipamento {
         pos = gerir.pesquisarAnoGastos(E, dataIventario);
         if (pos == -1) {
             auxGastos = new AuxEst2(dataIventario);
+            auxGastos.aumentaGastosAno(custo);
             E.adicionarAnoGastos(auxGastos);
         } else {
-            auxGastos = E.obterAnoGastos(pos);
+            E.aumentaGastosAno(custo, pos);
         }
-
-        auxGastos.aumentaGastosAno(custo);
 
         System.out.println("\n------Registado Equipamento com sucesso!------\n");
 
@@ -757,11 +1117,11 @@ public class GestaoEquipamento {
 
         int id;
         int pos;
-        Laboratorio L;
+        Laboratorio L, labAntigo;
         Equipamento EQ;
         String descricao;
 
-        System.out.println(gerir.ListarEquipamentos());
+        System.out.println(gerir.listarEquipamentos());
         do {
             id = Consola.lerInt("Indique o ID do equipamento o qual pretende associar ao laboratório: ", 0, 999999999);
             pos = gerir.pesquisarIdEquipamento(id);
@@ -771,12 +1131,17 @@ public class GestaoEquipamento {
         } while (pos == -1);
 
         EQ = gerir.obterEquipamento(pos);
+        labAntigo = EQ.getLab();
 
-        if (EQ.getLab() != null) {
-            System.err.println("Este equipamento já tem laboratório associado!\n");
+        if (labAntigo.getDescricao().equals("Equipamento foi abatido, não tem laboratório") && labAntigo.getEscolaLab() == null && labAntigo.getEscolaLoc() == null) {
+            System.err.println("Este equipamento foi abatido, não pode ser associado a um laborátório!");
             return;
         }
 
+        //if (EQ.getLab() != null) {
+        //    System.err.println("Este equipamento já tem laboratório associado!\n");
+        //    return;
+        //}
         System.out.println(gerir.listarLaboratorioEscola(EQ.getE()));
         do {
             descricao = Consola.lerString("Indique a descrição do laboratório ao qual pretende associar: ");
@@ -789,6 +1154,7 @@ public class GestaoEquipamento {
         L = gerir.obterLaboratorio(pos);
 
         EQ.setLab(L);
+        labAntigo.removerEquipamento(EQ);
         L.adicionarEquipamento(EQ);
 
     }
@@ -799,7 +1165,7 @@ public class GestaoEquipamento {
         int id;
         int pos;
 
-        System.out.println(gerir.ListarEquipamentos());
+        System.out.println(gerir.listarEquipamentos());
         do {
             id = Consola.lerInt("Indique o ID do equipamento a consultar: ", 1, 999999999);
             pos = gerir.pesquisarIdEquipamento(id);
@@ -809,6 +1175,25 @@ public class GestaoEquipamento {
         } while (pos == -1);
         EQ = gerir.obterEquipamento(pos);
         System.out.println(EQ);
+
+    }
+
+    public static void consultarEquipamentoLab(Gestor gerir) {
+
+        int pos;
+        String descricao;
+
+        do {
+            descricao = Consola.lerString("\nIndique a descrição do laboratório a consultar: ");
+            pos = gerir.pesquisarLabDesc(descricao);
+
+            if (pos == -1) {
+                System.err.println("Não existe nenhum laboratório com essa descrição!");
+            }
+
+        } while (pos == -1);
+
+        System.out.println(gerir.obterLaboratorio(pos).listarEQLab());
 
     }
 
@@ -828,7 +1213,7 @@ public class GestaoEquipamento {
         int id;
         int pos;
 
-        System.out.println(gerir.listarTiposEquipamento());;
+        System.out.println(gerir.listarTiposEquipamento());
 
         do {
             id = Consola.lerInt("Indique o ID a consultar: ", 0, 999999999);
@@ -1040,9 +1425,13 @@ public class GestaoEquipamento {
             System.err.println("Ou o funcionário já foi eliminado!\n");
         } else if (opcao == 'S' || opcao == 's') {
             func = gerir.obterFuncionario(pos);
-            gerir.removerFuncionario(pos);
-            func.getEscolaTrabalho().removerFuncionario(func);
-            System.out.println("Funcionário removido com sucesso!\n");
+            if (func.isVerificaEliminar() == false) {
+                gerir.removerFuncionario(pos);
+                func.getEscolaTrabalho().removerFuncionario(func);
+                System.out.println("Funcionário removido com sucesso!\n");
+            } else {
+                System.err.println("O funcionário está associado a um equipamento, avaria ou reparação!");
+            }
         } else {
             System.out.println("Funcionário não foi removido!\n");
         }
@@ -1082,7 +1471,7 @@ public class GestaoEquipamento {
 
         do {
             System.out.println(gerir.listarEscolaNome());
-            nifE = Consola.lerInt("\nIndique o NIF da escola onde o laboratório irá ficar: ", 1, 999999999);
+            nifE = Consola.lerInt("Indique o NIF da escola onde o laboratório irá ficar: ", 1, 999999999);
 
             pos = gerir.pesquisarEscolaNIF(nifE);
 
@@ -1109,16 +1498,15 @@ public class GestaoEquipamento {
         int pos;
 
         do {
-            nif = Consola.lerInt("\nIndique o NIF  a consultar: ", 0, 999999999);
+            nif = Consola.lerInt("\nIndique o NIF da escola a consultar: ", 0, 999999999);
             pos = gerir.pesquisarEscolaNIF(nif);
             if (pos == -1) {
                 System.err.println("Não existe escola com esse NIF!");
-            } else {
-                ///????
-                System.out.println(gerir.obterLaboratorio(pos));
             }
 
         } while (pos == -1);
+
+        System.out.println(gerir.obterEscola(pos).listarLaboratoriosEscola());
 
     }
 
@@ -1194,8 +1582,9 @@ public class GestaoEquipamento {
         System.out.println("1 - Registar Equipamento");
         System.out.println("2 - Associar Laboratório");
         System.out.println("3 - Consultar por Id");
+        System.out.println("4 - Consultar por laboratório");
         System.out.println("0 - Voltar ao menu anterior");
-        opcao = Consola.lerInt("Indique uma opção: ", 0, 3);
+        opcao = Consola.lerInt("Indique uma opção: ", 0, 4);
         return opcao;
     }
 
@@ -1213,7 +1602,7 @@ public class GestaoEquipamento {
         System.out.println("1 - Inserir laboratório");
         System.out.println("2 - Consultar informaçao de um laboratório");
         System.out.println("0 - Voltar ao menu anterior");
-        opcao = Consola.lerInt("Indique uma opção: ", 0, 3);
+        opcao = Consola.lerInt("Indique uma opção: ", 0, 2);
         return opcao;
     }
 

@@ -13,9 +13,9 @@ import java.util.GregorianCalendar;
  *
  * @author ricar
  */
-public class AuxEst implements Serializable {
+public class AuxEst implements Serializable, Comparable<AuxEst> {
 
-    private int numEquipAvarias;
+    private int numAvarias;
     private int numAvariasReparadas;
     private int numAvariasPorReparar;
     private int numAvariasIrreparaveis;
@@ -82,18 +82,31 @@ public class AuxEst implements Serializable {
         this.dataAvaria = dataAvaria;
     }
 
-    /**
-     * @return the numEquipAvarias
-     */
-    public int getNumEquipAvarias() {
-        return numEquipAvarias;
+    @Override
+    public int compareTo(AuxEst o) {
+
+        if (numAvarias < o.getNumAvarias()) {
+            return 1;
+        }
+        if (numAvarias > o.getNumAvarias()) {
+            return -1;
+        }
+        return 0;
+
     }
 
     /**
-     * @param numEquipAvarias the numEquipAvarias to set
+     * @return the numAvarias
      */
-    public void setNumEquipAvarias(int numEquipAvarias) {
-        this.numEquipAvarias = numEquipAvarias;
+    public int getNumAvarias() {
+        return numAvarias;
+    }
+
+    /**
+     * @param numAvarias the numAvarias to set
+     */
+    public void setNumAvarias(int numAvarias) {
+        this.numAvarias = numAvarias;
     }
 
 }

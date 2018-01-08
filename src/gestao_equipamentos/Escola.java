@@ -8,12 +8,13 @@ package gestao_equipamentos;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 
 /**
  *
  * @author RicardoAnastácio
  */
-public class Escola implements Serializable {
+public class Escola implements Serializable, Comparable<Escola> {
 
     private String nome;
     private String morada;
@@ -36,6 +37,13 @@ public class Escola implements Serializable {
         this.dataInicioServico = dataInicioServico;
     }
 
+    public void aumentaGastosAno(int gasto, int pos) {
+
+        gastosAno.get(pos).aumentaGastosAno(gasto);
+        Collections.sort(gastosAno);
+
+    }
+
     public boolean gastosAnoIsEmpty() {
         return gastosAno.isEmpty();
     }
@@ -46,6 +54,7 @@ public class Escola implements Serializable {
 
     public void adicionarAnoGastos(AuxEst2 anoGastos) {
         gastosAno.add(anoGastos);
+        Collections.sort(gastosAno);
     }
 
     public AuxEst2 obterAnoGastos(int pos) {
@@ -75,6 +84,20 @@ public class Escola implements Serializable {
             for (int i = 0; i < funcionarios.size(); i++) {
                 str.append(funcionarios.get(i).getNif() + "-");
                 str.append(funcionarios.get(i).getNome()).append("\n");
+            }
+            str.append("\n");
+        }
+        return str.toString();
+    }
+
+    public String listarLaboratoriosEscola() {
+        StringBuilder str = new StringBuilder("");
+        if (laboratorios.isEmpty()) {
+            str.append("Não há laboratórios na escola!");
+        } else {
+            str.append("Laboratórios da escola " + "(NIF-Nome): \n");
+            for (int i = 0; i < laboratorios.size(); i++) {
+                str.append(laboratorios.get(i));
             }
             str.append("\n");
         }
@@ -165,6 +188,11 @@ public class Escola implements Serializable {
      */
     public ArrayList<AuxEst2> getGastosAno() {
         return gastosAno;
+    }
+
+    @Override
+    public int compareTo(Escola o) {
+        return nome.compareToIgnoreCase(o.getNome());
     }
 
 }

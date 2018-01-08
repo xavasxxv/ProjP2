@@ -3,18 +3,13 @@ PROJECTO P2
 NUNCA FAZER GET E SET DE ARRAY LIST 
 
 ---A fazer---
-Estatisticas (criando variaveis extrategicas para optimizar a coisa)
-    total gasto por ano por escola, falta ordenar
 
 
 ---Em falta---
-    consultarLaboratorioEscola
 Nif ( colocar algarismo nif correctos )
-    consultar EQ por laboratório
 
 
 ---VERIFICAÇÕES EM FALTA---
-    Eliminar Funcionario -> se o funcionario nao estiver associado a avarias "pendentes"/por reparar
 
 
 ---JavaDOCK HTML--- 
@@ -65,7 +60,6 @@ consultarEquipamentoNumero -> Apenas se exitirem Equipamentos
 associarLabEquipamento-> Apenas se exitirem lab e Equipamentos
 Eliminar Funcionario-> Apenas se ja exitirem funcionarios
 associarLabEquipamento -> UM equipamento so pode estar num laboratorio
-    se ja tiver associado, n pode ser alterado (n sei se é isso que se pretende)
 Consultar lab por Escola -> Apenas se exitirem laboratorios
 
 
@@ -84,3 +78,15 @@ registarAvaria - corrigida a procura pelo funcinário, qq funcionário pode adic
 (Gestor) pesquisarNaoDocenteTecnico - procura a instancia ND no array F, funciona como deve de ser
 
 listar nr de eq. por tipo no menu
+
+Pull #15
+nr de EQ com avarias alterado, global, nao por ano
+consultar EQ por laboratório
+total gasto por ano por escola(ordem alfabética 1º, decrescente custo por ano), ordenar
+comparar anos dentro da E cada vez que é adicionado gastos
+consultarLaboratorioEscola
+Eliminar Funcionario -> se o funcionario nao estiver associado a EQ, A ou R
+nr de EQs avariados, se já esteve avariado pelo menos 1 vez
+associarLabEquipamento -> UM equipamento so pode estar num laboratorio
+    se ja tiver associado, n pode ser alterado
+    estava assim, corrigido para puder ser alterável

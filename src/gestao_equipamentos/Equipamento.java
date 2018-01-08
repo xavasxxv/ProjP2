@@ -24,7 +24,6 @@ public class Equipamento implements Serializable {
     private Laboratorio lab;
     private Escola E;
     private int estado;
-
     private FuncionarioNaoDocente ND;
     private int custo;
 
@@ -212,6 +211,13 @@ public class Equipamento implements Serializable {
      */
     public Calendar getDataIventario() {
         return dataIventario;
+    }
+
+    /**
+     * @return the ND
+     */
+    public FuncionarioNaoDocente getND() {
+        return ND;
     }
 
 }

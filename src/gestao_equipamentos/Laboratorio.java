@@ -67,6 +67,10 @@ public class Laboratorio implements Serializable {
         equipamentos.add(E);
     }
 
+    public void removerEquipamento(Equipamento E) {
+        equipamentos.remove(E);
+    }
+
     /**
      * @param descricao the descricao to set
      */
@@ -86,6 +90,25 @@ public class Laboratorio implements Serializable {
      */
     public void setEscolaLoc(String escolaLoc) {
         this.escolaLoc = escolaLoc;
+    }
+
+    public String listarEQLab() {
+
+        StringBuilder str = new StringBuilder("");
+        if (equipamentos.isEmpty()) {
+            str.append("Não há equipamentos neste laboratório!");
+        } else {
+            str.append("Equipamento listados (ID-Descrição-Escola-NumSerie-TipoEquipamento): \n");
+            for (int i = 0; i < equipamentos.size(); i++) {
+                str.append("\t").append(equipamentos.get(i).getNumId() + "-");
+                str.append(equipamentos.get(i).getDescricao() + "-");
+                str.append(equipamentos.get(i).getE().getNome() + "-");
+                str.append(equipamentos.get(i).getNumSerie() + "-");
+                str.append(equipamentos.get(i).getT().getDesignacao()).append("\n");
+            }
+        }
+        return str.toString();
+
     }
 
 }

@@ -13,7 +13,7 @@ import java.util.GregorianCalendar;
  *
  * @author ricar
  */
-public class AuxEst2 implements Serializable {
+public class AuxEst2 implements Serializable, Comparable<AuxEst2> {
 
     private int totalGasto;
     private Calendar anoGastos = new GregorianCalendar();
@@ -53,6 +53,19 @@ public class AuxEst2 implements Serializable {
 
     public void aumentaGastosAno(int gasto) {
         totalGasto += gasto;
+    }
+
+    @Override
+    public int compareTo(AuxEst2 o) {
+
+        if (totalGasto < o.getTotalGasto()) {
+            return 1;
+        }
+        if (totalGasto > o.getTotalGasto()) {
+            return -1;
+        }
+        return 0;
+
     }
 
 }

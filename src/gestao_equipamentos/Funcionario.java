@@ -22,6 +22,7 @@ public class Funcionario implements Serializable {
     private Calendar dataNasc;
     private String habilitacoes;
     private Escola escolaTrabalho;
+    private boolean verificaEliminar;
 
     public Funcionario(String nome, String morada, int nif, String email, int telefone, Calendar dataNasc, String habilitacoes, Escola escolaTrabalho) {
 
@@ -93,6 +94,20 @@ public class Funcionario implements Serializable {
      */
     public Escola getEscolaTrabalho() {
         return escolaTrabalho;
+    }
+
+    /**
+     * @return the verificaEliminar
+     */
+    public boolean isVerificaEliminar() {
+        return verificaEliminar;
+    }
+
+    /**
+     * @param verificaEliminar the verificaEliminar to set
+     */
+    public void setVerificaEliminar(boolean verificaEliminar) {
+        this.verificaEliminar = verificaEliminar;
     }
 
 }

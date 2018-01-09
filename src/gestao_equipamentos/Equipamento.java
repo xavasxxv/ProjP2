@@ -44,7 +44,7 @@ public class Equipamento implements Serializable {
 
     }
 
-    public String ListarAvarias(Equipamento EQ) {
+    public String listarAvarias(Equipamento EQ) {
         StringBuilder str = new StringBuilder("");
         if (EQ.avarias.isEmpty()) {
             str.append("Não há avarias registadas!");

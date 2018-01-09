@@ -23,9 +23,9 @@ public class GestaoEquipamento {
 
     public static void main(String[] args) {
 
-        gerir.lerFicheiro();
+        //gerir.lerFicheiro();
         //testes(gerir); // COMENTAR 
-        //testes1(gerir, 0);
+        testes1(gerir, 1);
         int op;
         int op2;
         int op3;
@@ -381,7 +381,6 @@ public class GestaoEquipamento {
         }
 
         Aux.setNumAvariasPorReparar(Aux.getNumAvariasPorReparar() + 1);
-        Aux.setNumAvarias(Aux.getNumAvarias() + 1);
         gerir.adicionaNumEQAvariaTotal(EQ);
         EQ.adicionarAvaria(A);
 
@@ -396,8 +395,8 @@ public class GestaoEquipamento {
         } else {
             Aux = gerir.obterAuxEst(pos1);
         }
+        Aux.setNumAvariasPorReparar(Aux.getNumAvariasPorReparar() + 1);
         Aux.setNumAvariasReparadas(Aux.getNumAvariasReparadas() + 1);
-        Aux.setNumAvarias(Aux.getNumAvarias() + 1);
         gerir.adicionaNumEQAvariaTotal(EQ);
         EQ.adicionarAvaria(A1);
         Reparacao R = new Reparacao(A1, data2, "reparação", 10, F);
@@ -423,8 +422,8 @@ public class GestaoEquipamento {
         } else {
             Aux = gerir.obterAuxEst(pos1);
         }
+        Aux.setNumAvariasPorReparar(Aux.getNumAvariasPorReparar() + 1);
         Aux.setNumAvariasReparadas(Aux.getNumAvariasReparadas() + 1);
-        Aux.setNumAvarias(Aux.getNumAvarias() + 1);
         gerir.adicionaNumEQAvariaTotal(EQ);
         EQ.adicionarAvaria(A2);
         R = new Reparacao(A2, data3, "reparação", 10, F);
@@ -450,8 +449,8 @@ public class GestaoEquipamento {
         } else {
             Aux = gerir.obterAuxEst(pos1);
         }
+        Aux.setNumAvariasPorReparar(Aux.getNumAvariasPorReparar() + 1);
         Aux.setNumAvariasReparadas(Aux.getNumAvariasReparadas() + 1);
-        Aux.setNumAvarias(Aux.getNumAvarias() + 1);
         gerir.adicionaNumEQAvariaTotal(EQ);
         EQ.adicionarAvaria(A3);
         R = new Reparacao(A3, data4, "reparação", 10, F);
@@ -477,8 +476,8 @@ public class GestaoEquipamento {
         } else {
             Aux = gerir.obterAuxEst(pos1);
         }
+        Aux.setNumAvariasPorReparar(Aux.getNumAvariasPorReparar() + 1);
         Aux.setNumAvariasReparadas(Aux.getNumAvariasReparadas() + 1);
-        Aux.setNumAvarias(Aux.getNumAvarias() + 1);
         gerir.adicionaNumEQAvariaTotal(EQ);
         EQ.adicionarAvaria(A4);
         R = new Reparacao(A4, data2, "reparação", 10, F);
@@ -504,8 +503,8 @@ public class GestaoEquipamento {
         } else {
             Aux = gerir.obterAuxEst(pos1);
         }
+        Aux.setNumAvariasPorReparar(Aux.getNumAvariasPorReparar() + 1);
         Aux.setNumAvariasIrreparaveis(Aux.getNumAvariasIrreparaveis() + 1);
-        Aux.setNumAvarias(Aux.getNumAvarias() + 1);
         gerir.adicionaNumEQAvariaTotal(EQ);
         EQ.adicionarAvaria(A5);
 
@@ -523,8 +522,8 @@ public class GestaoEquipamento {
         } else {
             Aux = gerir.obterAuxEst(pos1);
         }
+        Aux.setNumAvariasPorReparar(Aux.getNumAvariasPorReparar() + 1);
         Aux.setNumAvariasIrreparaveis(Aux.getNumAvariasIrreparaveis() + 1);
-        Aux.setNumAvarias(Aux.getNumAvarias() + 1);
         gerir.adicionaNumEQAvariaTotal(EQ);
         EQ.adicionarAvaria(A6);
 
@@ -714,7 +713,6 @@ public class GestaoEquipamento {
                     Aux = gerir.obterAuxEst(pos);
                 }
                 Aux.setNumAvariasPorReparar(Aux.getNumAvariasPorReparar() + 1);
-                Aux.setNumAvarias(Aux.getNumAvarias() + 1);
                 gerir.adicionaNumEQAvariaTotal(passaEQ);
                 passaEQ.adicionarAvaria(A);
             }
@@ -751,7 +749,6 @@ public class GestaoEquipamento {
                     Aux = gerir.obterAuxEst(pos);
                 }
                 Aux.setNumAvariasPorReparar(Aux.getNumAvariasPorReparar() + 1);
-                Aux.setNumAvarias(Aux.getNumAvarias() + 1);
                 gerir.adicionaNumEQAvariaTotal(passaEQ);
                 passaEQ.adicionarAvaria(A);
             }
@@ -788,7 +785,6 @@ public class GestaoEquipamento {
                     Aux = gerir.obterAuxEst(pos);
                 }
                 Aux.setNumAvariasPorReparar(Aux.getNumAvariasPorReparar() + 1);
-                Aux.setNumAvarias(Aux.getNumAvarias() + 1);
                 gerir.adicionaNumEQAvariaTotal(passaEQ);
                 passaEQ.adicionarAvaria(A);
             }
@@ -825,7 +821,6 @@ public class GestaoEquipamento {
                     Aux = gerir.obterAuxEst(pos);
                 }
                 Aux.setNumAvariasPorReparar(Aux.getNumAvariasPorReparar() + 1);
-                Aux.setNumAvarias(Aux.getNumAvarias() + 1);
                 gerir.adicionaNumEQAvariaTotal(passaEQ);
                 passaEQ.adicionarAvaria(A);
             }
@@ -849,7 +844,7 @@ public class GestaoEquipamento {
         } while (pos == -1);
         EQ = gerir.obterEquipamento(pos);
 
-        System.out.println(EQ.ListarAvarias(EQ));
+        System.out.println(EQ.listarAvarias(EQ));
 
         if (EQ.avariasEQnotEmpty()) {
             do {
@@ -873,7 +868,7 @@ public class GestaoEquipamento {
         int id;
         int pos;
         Avaria A;
-        Calendar dataReparacao = Calendar.getInstance();
+        Calendar dataAtual = Calendar.getInstance();
         Reparacao R;
         int estado;
         int nif;
@@ -922,7 +917,7 @@ public class GestaoEquipamento {
         A.getEQ().obterAvaria(A).setEstadoA(estado);
         System.out.println("\n------Alterado o estado com sucesso!------\n");
 
-        pos = gerir.pesquisarAvariaAno(A.getDataAvaria());
+        pos = gerir.pesquisarAvariaAno(dataAtual);
         Aux = gerir.obterAuxEst(pos);
 
         if (estado != 1) {
@@ -940,7 +935,7 @@ public class GestaoEquipamento {
             descricao = Consola.lerString("Coloque uma breve descrição da reparação: ");
             custo = Consola.lerInt("Custo da reparação em euros: ", 0, 999999999);
 
-            R = new Reparacao(A, dataReparacao, descricao, custo, F);
+            R = new Reparacao(A, dataAtual, descricao, custo, F);
             gerir.adicionarReparacao(R);
             A.getEQ().adicionarReparacao(R);
             A.getEQ().setEstado(1);
@@ -948,11 +943,10 @@ public class GestaoEquipamento {
             System.out.println(R);
 
             Aux.setNumAvariasReparadas(Aux.getNumAvariasReparadas() + 1);
-            Aux.setNumAvariasPorReparar(Aux.getNumAvariasPorReparar() - 1);
 
-            pos = gerir.pesquisarAnoGastos(A.getEQ().getE(), A.getEQ().getDataIventario());
+            pos = gerir.pesquisarAnoGastos(A.getEQ().getE(), dataAtual);
             if (pos == -1) {
-                auxGastos = new AuxEst2(A.getEQ().getDataIventario());
+                auxGastos = new AuxEst2(dataAtual);
                 auxGastos.aumentaGastosAno(custo);
                 A.getEQ().getE().adicionarAnoGastos(auxGastos);
             } else {
@@ -973,7 +967,6 @@ public class GestaoEquipamento {
             A.getEQ().getLab().setEscolaLoc(null);
 
             Aux.setNumAvariasIrreparaveis(Aux.getNumAvariasIrreparaveis() + 1);
-            Aux.setNumAvariasPorReparar(Aux.getNumAvariasPorReparar() - 1);
 
         }
 
@@ -1038,7 +1031,6 @@ public class GestaoEquipamento {
                 }
 
                 Aux.setNumAvariasPorReparar(Aux.getNumAvariasPorReparar() + 1);
-                Aux.setNumAvarias(Aux.getNumAvarias() + 1);
                 gerir.adicionaNumEQAvariaTotal(EQ);
 
                 System.out.println("\n------Registada Avaria com sucesso!------\n");

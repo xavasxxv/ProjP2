@@ -72,7 +72,7 @@ public class Gestor {
     public float percEquipAvariaAgrup() {
         float percEquipAvariagrup = 0;
 
-        percEquipAvariagrup = (numEquipAvariaTotal / equipamentos.size()) * 100;
+        percEquipAvariagrup = ((float) numEquipAvariaTotal / equipamentos.size()) * 100;
 
         return percEquipAvariagrup;
     }
@@ -85,11 +85,11 @@ public class Gestor {
             str.append("\nNão é possivel consultar esta estatística não há avarias");
         } else {
             str.append("\nTotal de avarias resgitadas por estado num determinado ano");
-            str.append("\nAno-Avarias-AvariasReparadas-AvariasPorReparar-AvariasInrreparaveis\n");
+            str.append("\nAno-AvariasPorReparar-AvariasReparadas-AvariasInrreparaveis\n");
             for (int i = 0; i < auxEst.size(); i++) {
 
-                str.append(auxEst.get(i).getDataAvaria().get(Calendar.YEAR)).append("-").append(auxEst.get(i).getNumAvarias()).append("-").append(auxEst.get(i).getNumAvariasReparadas())
-                        .append("-").append(auxEst.get(i).getNumAvariasPorReparar()).append("-").append(auxEst.get(i).getNumAvariasIrreparaveis()).append("\n");
+                str.append(auxEst.get(i).getDataAvaria().get(Calendar.YEAR)).append("-").append("-").append(auxEst.get(i).getNumAvariasPorReparar())
+                        .append(auxEst.get(i).getNumAvariasReparadas()).append("-").append("-").append(auxEst.get(i).getNumAvariasIrreparaveis()).append("\n");
 
             }
         }

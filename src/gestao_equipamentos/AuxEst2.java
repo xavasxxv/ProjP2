@@ -10,7 +10,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 /**
- * Class auxiliar para estatistica 3
+ * Class auxiliar para estatistica 2
  *
  * @author Ricardo Anastácio
  * @author Xavier Bento

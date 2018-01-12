@@ -26,7 +26,7 @@ public class GestaoEquipamento {
 
         //gerir.lerFicheiro();
         //testes(gerir); // COMENTAR 
-        testes1(gerir, 1);
+        testes1(gerir, 0);
         int op;
         int op2;
         int op3;
@@ -976,7 +976,7 @@ public class GestaoEquipamento {
     public static void registarAvaria(Gestor gerir) {
         Equipamento EQ;
         Calendar dataAvaria = Calendar.getInstance();
-        String descriçao;
+        String descricao;
         Funcionario F;
         Avaria A;
         int id;
@@ -1015,9 +1015,11 @@ public class GestaoEquipamento {
 
                 F = EQ.getE().obterFuncionarioEscola(pos);
 
-                descriçao = Consola.lerString("Coloque uma breve descrição da avaria: ");
+                descricao = Consola.lerString("Coloque uma breve descrição da avaria: ");
+                
+                gerir.adicionaNumEQAvariaTotal(EQ);
 
-                A = new Avaria(dataAvaria, EQ, descriçao, F, 1, false);
+                A = new Avaria(dataAvaria, EQ, descricao, F, 1, false);
                 gerir.adicionarAvaria(A);
                 EQ.adicionarAvaria(A);
 
@@ -1032,7 +1034,6 @@ public class GestaoEquipamento {
                 }
 
                 Aux.setNumAvariasPorReparar(Aux.getNumAvariasPorReparar() + 1);
-                gerir.adicionaNumEQAvariaTotal(EQ);
 
                 System.out.println("\n------Registada Avaria com sucesso!------\n");
                 break;

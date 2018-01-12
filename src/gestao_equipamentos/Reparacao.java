@@ -19,22 +19,22 @@ public class Reparacao implements Serializable {
     private int numId;
     private Avaria A;
     private Calendar dataReparacao = new GregorianCalendar();
-    private String descriçao;
+    private String descricao;
     private int custoReparacao;
     private Funcionario F;
 /**
  * Construtor Reparacao
  * @param A recebe avaria
  * @param dataReparacao recebe data da reparaçao
- * @param descriçao recebe descricao da reparaçao
+ * @param descricao recebe descricao da reparaçao
  * @param custoReparacao recebe custo da reparaçao
  * @param F  recebe o funcionario que regista a reparação
  */
-    public Reparacao(Avaria A, Calendar dataReparacao, String descriçao, int custoReparacao, Funcionario F) {
+    public Reparacao(Avaria A, Calendar dataReparacao, String descricao, int custoReparacao, Funcionario F) {
 
         this.A = A;
         this.dataReparacao = dataReparacao;
-        this.descriçao = descriçao;
+        this.descricao = descricao;
         this.custoReparacao = custoReparacao;
         this.F = F;
 
@@ -45,7 +45,7 @@ public class Reparacao implements Serializable {
         StringBuilder str = new StringBuilder();
         str.append("Dados da reparação: ");
         str.append("\nNúmero de identificação: ").append(numId);
-        str.append("\nDescrição: ").append(descriçao);
+        str.append("\nDescrição: ").append(descricao);
         str.append("\nCusto em euros: ").append(custoReparacao);
         str.append("\nFuncionário que reparou: ").append(F.getNome());
         str.append("\nData de reparação: ").append(dataReparacao.get(Calendar.DATE)).append("/");
@@ -100,15 +100,15 @@ public class Reparacao implements Serializable {
     /**
      * @return the descriçao
      */
-    public String getDescriçao() {
-        return descriçao;
+    public String getDescricao() {
+        return descricao;
     }
 
     /**
      * @param descriçao the descriçao to set
      */
-    public void setDescriçao(String descriçao) {
-        this.descriçao = descriçao;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     /**

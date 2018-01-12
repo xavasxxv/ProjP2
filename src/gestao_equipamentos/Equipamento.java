@@ -55,7 +55,7 @@ public class Equipamento implements Serializable {
             for (int i = 0; i < EQ.avarias.size(); i++) {
 
                 str.append(EQ.avarias.get(i).getNumId() + " - ");
-                str.append(EQ.avarias.get(i).getDescriçao()).append("\n");
+                str.append(EQ.avarias.get(i).getDescricao()).append("\n");
 
             }
         }

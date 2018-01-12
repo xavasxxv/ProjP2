@@ -124,10 +124,11 @@ public class Gestor {
         return -1;
 
     }
-/**
- * 
- * @param Aux recebe 
- */
+
+    /**
+     *
+     * @param Aux recebe
+     */
     public void adicionarAuxEst(AuxEst Aux) {
         auxEst.add(Aux);
 
@@ -163,11 +164,12 @@ public class Gestor {
 
         return avarias.get(pos);
     }
-/**
- * 
- * @param ND recebe um nao docente 
- * @return devolve um funcionario
- */
+
+    /**
+     *
+     * @param ND recebe um nao docente
+     * @return devolve um funcionario
+     */
     public Funcionario obterFuncionario(FuncionarioNaoDocente ND) {
 
         return funcionarios.get(funcionarios.indexOf(ND));
@@ -219,22 +221,6 @@ public class Gestor {
         return str.toString();
     }
 
-    public String listarNaoDocentes() {
-        StringBuilder str = new StringBuilder("");
-        if (naoDocentes.isEmpty()) {
-            str.append("\nNão há funcionários não docentes!");
-        } else {
-            str.append("\nFuncionários não docentes do agrupamento (NIF-Nome-Escola-Função): \n");
-            for (int i = 0; i < naoDocentes.size(); i++) {
-                str.append("\t").append(naoDocentes.get(i).getNif() + "-");
-                str.append(naoDocentes.get(i).getNome() + "-");
-                str.append(naoDocentes.get(i).getEscolaTrabalho().getNome() + "-");
-                str.append(naoDocentes.get(i).funcao).append("\n");
-            }
-        }
-        return str.toString();
-    }
-
     public String listarEscolaNome() {
         StringBuilder str = new StringBuilder("");
         if (escolas.isEmpty()) {
@@ -258,7 +244,7 @@ public class Gestor {
             for (int i = 0; i < avarias.size(); i++) {
                 if (avarias.get(i).isAlterado() == false) {
                     str.append("\t").append(avarias.get(i).getNumId() + "-");
-                    str.append(avarias.get(i).getDescriçao()).append("\n");
+                    str.append(avarias.get(i).getDescricao()).append("\n");
                 }
             }
 
@@ -447,15 +433,6 @@ public class Gestor {
     public int pesquisarIdEquipamento(int id) {
         for (int i = 0; i < equipamentos.size(); i++) {
             if (equipamentos.get(i).getNumId() == id) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
-    public int pesquisarAvaria(int id) {
-        for (int i = 0; i < avarias.size(); i++) {
-            if (avarias.get(i).getNumId() == id) {
                 return i;
             }
         }

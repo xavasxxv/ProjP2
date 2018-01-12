@@ -11,8 +11,10 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 /**
+ * Class que define Equipamento
  *
- * @author RicardoAnastácio
+ * @author Ricardo Anastácio
+ * @author Xavier Bento
  */
 public class Equipamento implements Serializable {
 
@@ -27,7 +29,7 @@ public class Equipamento implements Serializable {
     private FuncionarioNaoDocente ND;
     private int custo;
 
-    protected ArrayList<Avaria> avarias = new ArrayList<>();
+    private ArrayList<Avaria> avarias = new ArrayList<>();
     private ArrayList<Reparacao> reparacoes = new ArrayList<>();
 
     public Equipamento(Calendar dataIventario, String descricao, int numSerie, TipoEquipamento T, Escola E, int custo, FuncionarioNaoDocente ND, int estado) {
@@ -53,7 +55,7 @@ public class Equipamento implements Serializable {
             for (int i = 0; i < EQ.avarias.size(); i++) {
 
                 str.append(EQ.avarias.get(i).getNumId() + " - ");
-                str.append(EQ.avarias.get(i).getDescriçao()).append("\n");
+                str.append(EQ.avarias.get(i).getDescricao()).append("\n");
 
             }
         }
@@ -218,6 +220,13 @@ public class Equipamento implements Serializable {
      */
     public FuncionarioNaoDocente getND() {
         return ND;
+    }
+
+    /**
+     * @return the avarias
+     */
+    public ArrayList<Avaria> getAvarias() {
+        return avarias;
     }
 
 }

@@ -7,11 +7,12 @@ package gestao_equipamentos;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 /**
+ * Class que define laboratorio
  *
- *  * @author RicardoAnastácio
+ * @author Ricardo Anastácio
+ * @author Xavier Bento
  */
 public class Laboratorio implements Serializable {
 
@@ -20,6 +21,12 @@ public class Laboratorio implements Serializable {
     private String escolaLoc;
     private ArrayList<Equipamento> equipamentos = new ArrayList<>();
 
+    /**
+     *
+     * @param descricao recebe descricao do laboratorio
+     * @param escolaLab recebe escola a qual pertence laboratorio
+     * @param escolaLoc recebe a localização do laboratorio na escola
+     */
     public Laboratorio(String descricao, Escola escolaLab, String escolaLoc) {
 
         this.descricao = descricao;
@@ -42,13 +49,6 @@ public class Laboratorio implements Serializable {
         return escolaLab;
     }
 
-    /**
-     * @return the escolaLoc
-     */
-    public String getEscolaLoc() {
-        return escolaLoc;
-    }
-
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder();
@@ -58,7 +58,8 @@ public class Laboratorio implements Serializable {
             str.append("\nLaboratório: ");
             str.append("\nDescrição: ").append(descricao);
             str.append("\nEscola onde se encontra: ").append(escolaLab.getNome());
-            str.append("\nLocalização na escola: ").append(escolaLoc).append("\n");
+            str.append("\nLocalização na escola: ").append(escolaLoc);
+            str.append("\nNumero de equipamentos instalados: ").append(equipamentos.size()).append("\n");
         }
         return str.toString();
     }
@@ -98,13 +99,14 @@ public class Laboratorio implements Serializable {
         if (equipamentos.isEmpty()) {
             str.append("Não há equipamentos neste laboratório!");
         } else {
-            str.append("Equipamento listados (ID-Descrição-Escola-NumSerie-TipoEquipamento): \n");
+            str.append("Equipamento listados (ID-Descrição-Escola-NumSerie-TipoEquipamento-Nr de avarias): \n");
             for (int i = 0; i < equipamentos.size(); i++) {
                 str.append("\t").append(equipamentos.get(i).getNumId() + "-");
                 str.append(equipamentos.get(i).getDescricao() + "-");
                 str.append(equipamentos.get(i).getE().getNome() + "-");
                 str.append(equipamentos.get(i).getNumSerie() + "-");
-                str.append(equipamentos.get(i).getT().getDesignacao()).append("\n");
+                str.append(equipamentos.get(i).getT().getDesignacao() + "-");
+                str.append(equipamentos.get(i).getAvarias().size()).append("\n");
             }
         }
         return str.toString();

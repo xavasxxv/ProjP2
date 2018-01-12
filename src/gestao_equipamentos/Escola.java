@@ -30,6 +30,7 @@ public class Escola implements Serializable, Comparable<Escola> {
     private ArrayList<AuxEst2> gastosAno = new ArrayList<>();
 
     /**
+     * Construtor de uma Escola
      *
      * @param nome recebe nome da escola
      * @param nif recebe nif da escola
@@ -48,6 +49,12 @@ public class Escola implements Serializable, Comparable<Escola> {
         this.dataInicioServico = dataInicioServico;
     }
 
+    /**
+     * Aumenta o gasto de um determinado ano e ordena por gasto
+     *
+     * @param gasto recebe o gasto adicional
+     * @param pos recebe a posiçao do ano de gastos
+     */
     public void aumentaGastosAno(int gasto, int pos) {
 
         gastosAno.get(pos).aumentaGastosAno(gasto);
@@ -55,27 +62,60 @@ public class Escola implements Serializable, Comparable<Escola> {
 
     }
 
+    /**
+     * Verifica se a escola ja registou gastos
+     *
+     * @return devolve se exitem anos de gastos
+     */
     public boolean gastosAnoIsEmpty() {
         return gastosAno.isEmpty();
     }
 
+    /**
+     * Devolve o numero de anos de gastos
+     *
+     * @return devolve o numero de anos de gastos
+     */
     public int gastosAnoSize() {
         return gastosAno.size();
     }
 
+    /**
+     * Adiciona um novo ano de gastos e ordena
+     *
+     * @param anoGastos recebe um novo anoGastos
+     */
     public void adicionarAnoGastos(AuxEst2 anoGastos) {
         gastosAno.add(anoGastos);
         Collections.sort(gastosAno);
     }
 
+    /**
+     * Obtem um ano de gastos
+     *
+     * @param pos recebe a posiçao do ano
+     * @return devolve o ano de gastos
+     */
     public AuxEst2 obterAnoGastos(int pos) {
         return gastosAno.get(pos);
     }
 
+    /**
+     * Obtem um funcionario
+     *
+     * @param pos recebe a posiçao
+     * @return devolve um funcionario
+     */
     public Funcionario obterFuncionarioEscola(int pos) {
         return funcionarios.get(pos);
     }
 
+    /**
+     * Pesquisa a posiçao de um funcionario por nif
+     *
+     * @param nif recebe o nif do funcionario
+     * @return devolve a posiçao do funcionario
+     */
     public int pesquisarFuncionarioNIFEscola(int nif) {
 
         for (int i = 0; i < funcionarios.size(); i++) {
@@ -86,6 +126,11 @@ public class Escola implements Serializable, Comparable<Escola> {
         return -1;
     }
 
+    /**
+     * Lista os funcionarios da escola
+     *
+     * @return devolve a string dos funcionarios da escola
+     */
     public String listarFuncionariosEscola() {
         StringBuilder str = new StringBuilder("");
         if (funcionarios.isEmpty()) {
@@ -101,6 +146,11 @@ public class Escola implements Serializable, Comparable<Escola> {
         return str.toString();
     }
 
+    /**
+     * Lista os laboratorios da escola
+     *
+     * @return devolve a string dos laboratorios da escola
+     */
     public String listarLaboratoriosEscola() {
         StringBuilder str = new StringBuilder("");
         if (laboratorios.isEmpty()) {
@@ -115,20 +165,40 @@ public class Escola implements Serializable, Comparable<Escola> {
         return str.toString();
     }
 
+    /**
+     * Remover um funcionario
+     *
+     * @param f recebe um funcionario
+     */
     public void removerFuncionario(Funcionario f) {
         funcionarios.remove(f);
     }
 
+    /**
+     * Adiciona um equipamento a escola
+     *
+     * @param EQ recebe um equipamento
+     */
     public void adicionarEquipamento(Equipamento EQ) {
 
         equipamentos.add(EQ);
     }
 
+    /**
+     * Adiciona um funcionario a escola
+     *
+     * @param F recebe um funcionario
+     */
     public void adicionarFuncionario(Funcionario F) {
 
         funcionarios.add(F);
     }
 
+    /**
+     * Adiciona um laboratorio a escola
+     *
+     * @param L recebe um laboratorio
+     */
     public void adicionarLaboratorio(Laboratorio L) {
 
         laboratorios.add(L);
@@ -173,7 +243,10 @@ public class Escola implements Serializable, Comparable<Escola> {
     }
 
     /**
-     * @return the gastosAno
+     * Procurar um ano de gastos
+     *
+     * @param i recebe a posiçao do ano de gastos
+     * @return devolve um ano de gastos
      */
     public AuxEst2 getGastosAno(int i) {
         return gastosAno.get(i);

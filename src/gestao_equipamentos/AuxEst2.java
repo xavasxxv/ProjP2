@@ -20,6 +20,11 @@ public class AuxEst2 implements Serializable, Comparable<AuxEst2> {
     private int totalGasto;
     private Calendar anoGastos = new GregorianCalendar();
 
+    /**
+     * Construtor de um ano de gastos
+     *
+     * @param anoGastos recebe um novo ano para gastos
+     */
     public AuxEst2(Calendar anoGastos) {
 
         this.anoGastos = anoGastos;
@@ -53,6 +58,11 @@ public class AuxEst2 implements Serializable, Comparable<AuxEst2> {
         this.anoGastos = anoGastos;
     }
 
+    /**
+     * Aumenta o total gasto do ano
+     *
+     * @param gasto recebe o gasto adicional
+     */
     public void aumentaGastosAno(int gasto) {
         totalGasto += gasto;
     }

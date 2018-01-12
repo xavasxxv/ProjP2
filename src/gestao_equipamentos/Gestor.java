@@ -22,9 +22,6 @@ import java.util.Collections;
  */
 public class Gestor {
 
-    /**
-     * Lista de Escolas
-     */
     private ArrayList<Escola> escolas = new ArrayList<>();
     private ArrayList<FuncionarioDocente> docentes = new ArrayList<>();
     private ArrayList<Funcionario> funcionarios = new ArrayList<>();
@@ -36,13 +33,19 @@ public class Gestor {
     private ArrayList<Reparacao> reparacoes = new ArrayList<>();
     private ArrayList<AuxEst> auxEst = new ArrayList<>();
     private int numEquipAvariaTotal;
-
+/**
+ * Aumenta o numero de equipamentos avariados
+ * @param EQ recebe um equipamento
+ */
     public void adicionaNumEQAvariaTotal(Equipamento EQ) {
         if (EQ.avariasEQnotEmpty() == false) {
             numEquipAvariaTotal++;
         }
     }
-
+/**
+ * Mostra os gastos por ano das escolas
+ * @return devolve a string dos gastos das escolas
+ */
     public String totalGastoAnoEqEscola() {
         StringBuilder str = new StringBuilder();
         Collections.sort(escolas);
@@ -69,7 +72,10 @@ public class Gestor {
 
         return str.toString();
     }
-
+/**
+ * Calcula a % de equipamentos avariados
+ * @return devolve a % dos equipamentos avariados
+ */
     public float percEquipAvariaAgrup() {
         float percEquipAvariagrup = 0;
 
@@ -77,7 +83,10 @@ public class Gestor {
 
         return percEquipAvariagrup;
     }
-
+/**
+ * Mostra e ordena as avarias registadas por ano
+ * @return devolve a string que mostra as avarias registadas por ano
+ */
     public String avariasRegistadasPorOrdemCrescenteTotal() {
         StringBuilder str = new StringBuilder();
         Collections.sort(auxEst);
@@ -94,7 +103,11 @@ public class Gestor {
 
         return str.toString();
     }
-
+/**
+ * Pesquisa o ano de avarias
+ * @param Data recebe a data de avaria
+ * @return devolve a posiçao do ano das avarias
+ */
     public int pesquisarAvariaAno(Calendar Data) {
 
         if (auxEst.isEmpty()) {
@@ -109,7 +122,12 @@ public class Gestor {
         return -1;
 
     }
-
+/**
+ * Pesquisa o ano de gastos da escola
+ * @param E recebe a escola
+ * @param Data recebe o ano dos gastos 
+ * @return devolve a posiçao do ano de gastos
+ */
     public int pesquisarAnoGastos(Escola E, Calendar Data) {
 
         if (E.gastosAnoIsEmpty()) {
@@ -126,14 +144,17 @@ public class Gestor {
     }
 
     /**
-     *
-     * @param Aux recebe
+     * Adiciona o ano de avarias
+     * @param Aux recebe o ano de avarias
      */
     public void adicionarAuxEst(AuxEst Aux) {
         auxEst.add(Aux);
-
     }
-
+/**
+ * Obter o ano de avarias
+ * @param pos recebe a posiçao 
+ * @return devolve o ano de avarias
+ */
     public AuxEst obterAuxEst(int pos) {
 
         return auxEst.get(pos);
@@ -166,7 +187,7 @@ public class Gestor {
     }
 
     /**
-     *
+     * Obtem um funcionario a partir de um nao docente
      * @param ND recebe um nao docente
      * @return devolve um funcionario
      */
@@ -175,7 +196,10 @@ public class Gestor {
         return funcionarios.get(funcionarios.indexOf(ND));
 
     }
-
+/**
+ * Adiciona uma reparação
+ * @param R recebe uma reparação
+ */
     public void adicionarReparacao(Reparacao R) {
         if (reparacoes.isEmpty()) {
             R.setNumId(1);
@@ -184,11 +208,18 @@ public class Gestor {
         }
         reparacoes.add(R);
     }
-
+/**
+ * obtem um tipo de equipamento
+ * @param pos recebe a posiçao 
+ * @return devolve um tipo de equipamento
+ */
     public TipoEquipamento obterTipoEquipamento(int pos) {
         return tipoEquipamentos.get(pos);
     }
-
+/**
+ * Lista os funcionarios
+ * @return devolve a string dos funcionarios
+ */
     public String listarFuncionarios() {
         StringBuilder str = new StringBuilder("");
         if (funcionarios.isEmpty()) {
@@ -203,7 +234,11 @@ public class Gestor {
         }
         return str.toString();
     }
-
+/**
+ * Lista os tecnicos de uma escola
+ * @param E recebe a escola
+ * @return devolve a string que lista os tecnicos de uma escola
+ */
     public String listarTecnicosEscola(Escola E) {
         StringBuilder str = new StringBuilder("");
         if (verificaNaoDocenteTecnicoEscola(E) == false) {
@@ -220,7 +255,10 @@ public class Gestor {
         }
         return str.toString();
     }
-
+/**
+ * Lista as escolas por ordem alfabetica
+ * @return devolve a string que lista as escolas ordenadas
+ */
     public String listarEscolaNome() {
         StringBuilder str = new StringBuilder("");
         if (escolas.isEmpty()) {
@@ -234,7 +272,10 @@ public class Gestor {
         }
         return str.toString();
     }
-
+/**
+ * Lisa as avarias 
+ * @return devolve a string das avarias registadas
+ */
     public String listarAvarias() {
         StringBuilder str = new StringBuilder("");
         if (avarias.isEmpty()) {
@@ -252,7 +293,10 @@ public class Gestor {
 
         return str.toString();
     }
-
+/**
+ * Verifica se existem avarias por reparar
+ * @return devolve a existencia de avarias por reparar
+ */
     public boolean verificarAvarias() {
 
         boolean avariasValidas = false;
@@ -265,7 +309,10 @@ public class Gestor {
 
         return avariasValidas;
     }
-
+/**
+ * Verifica se existem nao docentes tecnicos
+ * @return  devolve se existem não docentes tecnicos
+ */
     public boolean verificaNaoDocenteTecnico() {
 
         boolean haNDTecnico = false;
@@ -278,7 +325,11 @@ public class Gestor {
 
         return haNDTecnico;
     }
-
+/**
+ * Verifica se existe nao docente tecnico numa escola
+ * @param E recebe uma escola
+ * @return devolve se existem nao docentes tecnicos numa escola
+ */
     public boolean verificaNaoDocenteTecnicoEscola(Escola E) {
 
         boolean haNDTecnicoEscola = false;
@@ -291,7 +342,11 @@ public class Gestor {
 
         return haNDTecnicoEscola;
     }
-
+/**
+ * Lista laboratorios da escola
+ * @param E recebe uma escola
+ * @return devolve a lista 
+ */
     public String listarLaboratorioEscola(Escola E) {
         StringBuilder str = new StringBuilder("");
         if (laboratorios.isEmpty()) {
@@ -307,7 +362,10 @@ public class Gestor {
         }
         return str.toString();
     }
-
+/**
+ * lista os tipos de equipamento
+ * @return devolve a lista dos tipos de equipamentos
+ */
     public String listarTiposEquipamento() {
 
         StringBuilder str = new StringBuilder("");
@@ -322,7 +380,10 @@ public class Gestor {
         }
         return str.toString();
     }
-
+/**
+ * lista os tipos de equipamentos e numero de equipamentos por tipo
+ * @return devolve a lista
+ */
     public String listarTiposEquipamentoMenu() {
 
         StringBuilder str = new StringBuilder("");
@@ -337,7 +398,10 @@ public class Gestor {
         }
         return str.toString();
     }
-
+/**
+ * Lista os equipamentos
+ * @return devolve a lista de equipamentos
+ */
     public String listarEquipamentos() {
         StringBuilder str = new StringBuilder("");
         if (equipamentos.isEmpty()) {
@@ -354,7 +418,10 @@ public class Gestor {
         }
         return str.toString();
     }
-
+/**
+ * Adiciona um tipo de equipamento
+ * @param TE recebe um tipo de equipamento
+ */
     public void adicionarTipoEquipamento(TipoEquipamento TE) {
         if (tipoEquipamentos.isEmpty()) {
             TE.setNumId(1);
@@ -363,7 +430,10 @@ public class Gestor {
         }
         tipoEquipamentos.add(TE);
     }
-
+/**
+ *Adiciona um equipamento 
+ * @param EQ recebe um equipamento
+ */
     public void adicionarEquipamento(Equipamento EQ) {
         if (equipamentos.isEmpty()) {
             EQ.setNumId(1);
@@ -373,21 +443,33 @@ public class Gestor {
         equipamentos.add(EQ);
         EQ.getND().setVerificaEliminar(true);
     }
-
+/**
+ * Adiciona um funcionarios docente
+ * @param D recebe um funcionario docente
+ */
     public void adicionarDocente(FuncionarioDocente D) {
         docentes.add(D);
         funcionarios.add(D);
     }
-
+/**
+ * Adiciona um laboratorio 
+ * @param L recebe um laboratorio
+ */
     public void adicionarLaboratorio(Laboratorio L) {
         laboratorios.add(L);
     }
-
+/**
+ * Adiciona um não docente
+ * @param ND recebe um funcionario nao docente
+ */
     public void adicionarNaoDocente(FuncionarioNaoDocente ND) {
         naoDocentes.add(ND);
         funcionarios.add(ND);
     }
-
+/**
+ * Remove um funcionario
+ * @param pos recebe um posiçao
+ */
     public void removerFuncionario(int pos) {
 
         Funcionario f = obterFuncionario(pos);
@@ -395,32 +477,59 @@ public class Gestor {
         naoDocentes.remove(f);
         funcionarios.remove(f);
     }
-
+/**
+ * Adiciona uma escola
+ * @param E recebe uma escola
+ */
     public void adicionarEscola(Escola E) {
         escolas.add(E);
 
     }
-
+/**
+ * Obtem uma escola
+ * @param pos recebe a posiçao da escola
+ * @return devolve uma escola
+ */
     public Escola obterEscola(int pos) {
         return escolas.get(pos);
     }
-
+/**
+ * Obtem um equipamento
+ * @param pos recebe a posiçao
+ * @return devolve um equipamento
+ */
     public Equipamento obterEquipamento(int pos) {
         return equipamentos.get(pos);
     }
-
+/**
+ * Obtem um funcionario
+ * @param pos recebe a posiçao
+ * @return devolve um funcionario
+ */
     public Funcionario obterFuncionario(int pos) {
         return funcionarios.get(pos);
     }
-
+/**
+ * Obtem um funcionario nao docente
+ * @param pos recebe uma posiçao
+ * @return devolve um funcionario nao docente
+ */
     public FuncionarioNaoDocente obterFuncionarioNaoDocente(int pos) {
         return naoDocentes.get(pos);
     }
-
+/**
+ * obtem um laboratorio
+ * @param pos recebe uma posiçao
+ * @return devolve um laboratorio
+ */
     public Laboratorio obterLaboratorio(int pos) {
         return laboratorios.get(pos);
     }
-
+/**
+ * Pesquisa um tipo de equipamento por id
+ * @param id recebe um id
+ * @return devolve a posiçao do tipo de equipamentos
+ */
     public int pesquisarIdTipoEquipamento(int id) {
         for (int i = 0; i < tipoEquipamentos.size(); i++) {
             if (tipoEquipamentos.get(i).getNumId() == id) {
@@ -429,7 +538,11 @@ public class Gestor {
         }
         return -1;
     }
-
+/**
+ * Pesquisa um equipamento por id
+ * @param id recebe um id
+ * @return devolve a posiçao de um equipamento
+ */
     public int pesquisarIdEquipamento(int id) {
         for (int i = 0; i < equipamentos.size(); i++) {
             if (equipamentos.get(i).getNumId() == id) {
@@ -438,7 +551,11 @@ public class Gestor {
         }
         return -1;
     }
-
+/**
+ * Pesquisa se uma avaria se nao foi alterada por id
+ * @param id recebe o id 
+ * @return devolve a posiçao da avaria
+ */
     public int pesquisarAvariaNAlteradas(int id) {
         for (int i = 0; i < avarias.size(); i++) {
             if (avarias.get(i).getNumId() == id && avarias.get(i).isAlterado() == false) {
@@ -447,7 +564,11 @@ public class Gestor {
         }
         return -1;
     }
-
+/**
+ * Pesquisa uma escola por nif
+ * @param nif recebe um nif
+ * @return devolve a posiçao da escola
+ */
     public int pesquisarEscolaNIF(int nif) {
 
         for (int i = 0; i < escolas.size(); i++) {
@@ -458,7 +579,11 @@ public class Gestor {
         return -1;
 
     }
-
+/**
+ * Pesquisa um funcionario por nif
+ * @param nif recebe um nif
+ * @return devolve a posiçao de um funcionario
+ */
     public int pesquisarFuncionarioNIF(int nif) {
 
         for (int i = 0; i < funcionarios.size(); i++) {
@@ -468,7 +593,12 @@ public class Gestor {
         }
         return -1;
     }
-
+/**
+ * pesquisa um nao docente tecnico por escola e nif
+ * @param nif recebe nif
+ * @param E recebe escola
+ * @return devolve a posiçao
+ */
     public int pesquisarNaoDocenteTecnico(int nif, Escola E) {
         for (int i = 0; i < naoDocentes.size(); i++) {
             if ("tecnico".equalsIgnoreCase(naoDocentes.get(i).funcao) && naoDocentes.get(i).getNif() == nif && naoDocentes.get(i).getEscolaTrabalho() == E) {
@@ -477,7 +607,11 @@ public class Gestor {
         }
         return -1;
     }
-
+/**
+ * Pesquisa laboratorio por descriçao
+ * @param descricao recebe descriçao
+ * @return devolve a posiçao do laboratorio
+ */
     public int pesquisarLabDesc(String descricao) {
         for (int i = 0; i < laboratorios.size(); i++) {
             if (descricao.equalsIgnoreCase(laboratorios.get(i).getDescricao())) {
@@ -486,7 +620,12 @@ public class Gestor {
         }
         return -1;
     }
-
+/**
+ * Pesquisa um laboratorio por descriçao e escola
+ * @param descricao recebe descriçao
+ * @param E recebe escola
+ * @return  devolve posiçao do laboratorio
+ */
     public int pesquisarLabDescEscola(String descricao, Escola E) {
         for (int i = 0; i < laboratorios.size(); i++) {
             if (descricao.equalsIgnoreCase(laboratorios.get(i).getDescricao()) && laboratorios.get(i).getEscolaLab().equals(E)) {
@@ -495,7 +634,11 @@ public class Gestor {
         }
         return -1;
     }
-
+/**
+ * Pesquisa escola por nome
+ * @param nome recebe o nome
+ * @return devolve a posiçao da escola
+ */
     public int pesquisarEscola(String nome) {
         for (int i = 0; i < escolas.size(); i++) {
 
@@ -505,46 +648,76 @@ public class Gestor {
         }
         return -1;
     }
-
+/**
+ * Valida o @ no email
+ * @param email recebe o email 
+ * @return devolve a validaçao
+ */
     public int validarEmail(String email) {
         if (email.indexOf("@") == -1) {
             return -1;
         }
         return 0;
     }
-
+/**
+ * Numero de escolas
+ * @return  devolve o numero de escolas
+ */
     public int getSizeEscolas() {
         return escolas.size();
     }
-
+/**
+ * Numero de funcionarios
+ * @return devolve o numero de funcionarios
+ */
     public int getSizeFuncionarios() {
         return funcionarios.size();
     }
-
+/**
+ * Numero de docentes
+ * @return devolve o numero de docentes
+ */
     public int getSizeDocentes() {
         return docentes.size();
     }
-
+/**
+ * Numero de nao docentes
+ * @return devolve o numero de nao docentes
+ */
     public int getSizeNaoDocentes() {
         return naoDocentes.size();
     }
-
+/**
+ * Numero de tipos de equipamento
+ * @return devolve o numero de tipo de equipamentos
+ */
     public int getSizeTipoEquipamento() {
         return tipoEquipamentos.size();
     }
-
+/**
+ * Numero de laboratorios
+ * @return devolve o numero de laboratorios
+ */
     public int getSizeLaboratorio() {
         return laboratorios.size();
     }
-
+/**
+ * Numero de equipamentos
+ * @return devolve o numero de equipamentos
+ */
     public int getSizeEquipamento() {
         return equipamentos.size();
     }
-
+/**
+ * Numero de avarias
+ * @return devolve o numero de avarias
+ */
     public int getSizeAvarias() {
         return avarias.size();
     }
-
+/**
+ * Grava ficheiro
+ */
     public void gravarFicheiro() {
         try {
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("dados_projeto.dat"));
@@ -565,7 +738,9 @@ public class Gestor {
             System.out.println(ex.getMessage());
         }
     }
-
+/**
+ * Lê ficheiro
+ */
     public void lerFicheiro() {
         try {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream("dados_projeto.dat"));

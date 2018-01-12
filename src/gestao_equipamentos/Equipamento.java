@@ -31,17 +31,20 @@ public class Equipamento implements Serializable {
 
     private ArrayList<Avaria> avarias = new ArrayList<>();
     private ArrayList<Reparacao> reparacoes = new ArrayList<>();
-/**
- * Construtor Equipamento
- * @param dataIventario Recebe a data em que é registado o equipamento
- * @param descricao Recebe uma descriçao do equipamento
- * @param numSerie Recebe o numero de serie do equipamento 
- * @param T Recebe o tipo de equipamento do equipamento
- * @param E Recebe a escola onde vai estar o equipamento
- * @param custo Recebe o custo do equipamento
- * @param ND Recebe o funcionario não docente tecnico que regista o equipamento
- * @param estado Recebe/atualiza o estado do equipamento para Disponivel
- */
+
+    /**
+     * Construtor Equipamento
+     *
+     * @param dataIventario Recebe a data em que é registado o equipamento
+     * @param descricao Recebe uma descriçao do equipamento
+     * @param numSerie Recebe o numero de serie do equipamento
+     * @param T Recebe o tipo de equipamento do equipamento
+     * @param E Recebe a escola onde vai estar o equipamento
+     * @param custo Recebe o custo do equipamento
+     * @param ND Recebe o funcionario não docente tecnico que regista o
+     * equipamento
+     * @param estado Recebe/atualiza o estado do equipamento para Disponivel
+     */
     public Equipamento(Calendar dataIventario, String descricao, int numSerie, TipoEquipamento T, Escola E, int custo, FuncionarioNaoDocente ND, int estado) {
 
         this.dataIventario = dataIventario;
@@ -55,7 +58,11 @@ public class Equipamento implements Serializable {
         this.lab = null;
 
     }
-
+/**
+ * Lista avarias do equipamento
+ * @param EQ recebe um equipamento
+ * @return a string das avarias do equipamento
+ */
     public String listarAvarias(Equipamento EQ) {
         StringBuilder str = new StringBuilder("");
         if (EQ.avarias.isEmpty()) {
@@ -71,7 +78,11 @@ public class Equipamento implements Serializable {
         }
         return str.toString();
     }
-
+/**
+ * Pesquisa avaria de um equipamento
+ * @param id recebe o numero de identificação da avaria
+ * @return devolve a posição da avaria
+ */
     public int pesquisarAvariaEQ(int id) {
         for (int i = 0; i < avarias.size(); i++) {
             if (avarias.get(i).getNumId() == id) {
@@ -80,18 +91,28 @@ public class Equipamento implements Serializable {
         }
         return -1;
     }
-
+/**
+ * Adiciona uma avaria e define o estado do equipamento para indisponivel
+ * @param A recebe uma avaria
+ */
     public void adicionarAvaria(Avaria A) {
 
         avarias.add(A);
         setEstado(2); //passa automatiocamente a indisponivel
     }
-
+/**
+ * Adiciona uma reparação ao equipamento
+ * @param R recebe uma reparação
+ */
     public void adicionarReparacao(Reparacao R) {
 
         reparacoes.add(R);
     }
-
+/**
+ * Obtem a posição da avaria 
+ * @param A recebe uma avaria
+ * @return devolve a posiçao da avaria 
+ */
     public Avaria obterAvaria(Avaria A) {
 
         return avarias.get(avarias.indexOf(A));
@@ -213,7 +234,10 @@ public class Equipamento implements Serializable {
     public Laboratorio getLab() {
         return lab;
     }
-
+/**
+ * Verifica se existem avarias no equipamento
+ * @return Devolve true se existirem avarias no equipamento
+ */
     public boolean avariasEQnotEmpty() {
         return !avarias.isEmpty();
     }

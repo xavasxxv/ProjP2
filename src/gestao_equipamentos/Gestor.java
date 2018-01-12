@@ -58,7 +58,7 @@ public class Gestor {
                     str.append("  Esta escola não teve gastos!");
                 } else {
                     for (int j = 0; j < escolas.get(i).gastosAnoSize(); j++) {
-                        str.append("  " + escolas.get(i).getGastosAno().get(j).getAnoGastos().get(Calendar.YEAR)).append(" - ").append(escolas.get(i).getGastosAno().get(j).getTotalGasto()).append("\n");
+                        str.append("  " + escolas.get(i).getGastosAno(j).getAnoGastos().get(Calendar.YEAR)).append(" - ").append(escolas.get(i).getGastosAno(j).getTotalGasto()).append("\n");
                     }
                 }
 
@@ -116,7 +116,7 @@ public class Gestor {
             return -1;
         } else {
             for (int i = 0; i < E.gastosAnoSize(); i++) {
-                if (Data.get(Calendar.YEAR) == E.getGastosAno().get(i).getAnoGastos().get(Calendar.YEAR)) {
+                if (Data.get(Calendar.YEAR) == E.getGastosAno(i).getAnoGastos().get(Calendar.YEAR)) {
                     return i;
                 }
             }

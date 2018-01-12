@@ -175,8 +175,8 @@ public class Escola implements Serializable, Comparable<Escola> {
     /**
      * @return the gastosAno
      */
-    public ArrayList<AuxEst2> getGastosAno() {
-        return gastosAno;
+    public AuxEst2 getGastosAno(int i) {
+        return gastosAno.get(i);
     }
 
     @Override

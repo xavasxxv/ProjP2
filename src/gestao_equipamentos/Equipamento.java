@@ -31,7 +31,17 @@ public class Equipamento implements Serializable {
 
     private ArrayList<Avaria> avarias = new ArrayList<>();
     private ArrayList<Reparacao> reparacoes = new ArrayList<>();
-
+/**
+ * Construtor Equipamento
+ * @param dataIventario Recebe a data em que é registado o equipamento
+ * @param descricao Recebe uma descriçao do equipamento
+ * @param numSerie Recebe o numero de serie do equipamento 
+ * @param T Recebe o tipo de equipamento do equipamento
+ * @param E Recebe a escola onde vai estar o equipamento
+ * @param custo Recebe o custo do equipamento
+ * @param ND Recebe o funcionario não docente tecnico que regista o equipamento
+ * @param estado Recebe/atualiza o estado do equipamento para Disponivel
+ */
     public Equipamento(Calendar dataIventario, String descricao, int numSerie, TipoEquipamento T, Escola E, int custo, FuncionarioNaoDocente ND, int estado) {
 
         this.dataIventario = dataIventario;
@@ -225,8 +235,8 @@ public class Equipamento implements Serializable {
     /**
      * @return the avarias
      */
-    public ArrayList<Avaria> getAvarias() {
-        return avarias;
+    public int getAvariasSize() {
+        return avarias.size();
     }
 
 }

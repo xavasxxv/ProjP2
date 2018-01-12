@@ -106,7 +106,7 @@ public class Laboratorio implements Serializable {
                 str.append(equipamentos.get(i).getE().getNome() + "-");
                 str.append(equipamentos.get(i).getNumSerie() + "-");
                 str.append(equipamentos.get(i).getT().getDesignacao() + "-");
-                str.append(equipamentos.get(i).getAvarias().size()).append("\n");
+                str.append(equipamentos.get(i).getAvariasSize()).append("\n");
             }
         }
         return str.toString();

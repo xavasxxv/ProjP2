@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * Class que define laboratorio
+ * Class que define laboratório
  *
  * @author Ricardo Anastácio
  * @author Xavier Bento
@@ -63,11 +63,17 @@ public class Laboratorio implements Serializable {
         }
         return str.toString();
     }
-
+/**
+ * Adiciona um equipamento a um laboratorio
+ * @param E recebe o equipamento 
+ */
     public void adicionarEquipamento(Equipamento E) {
         equipamentos.add(E);
     }
-
+/**
+ * Remove um equipamento do laboratorio
+ * @param E recebe o equipamento
+ */
     public void removerEquipamento(Equipamento E) {
         equipamentos.remove(E);
     }
@@ -93,6 +99,10 @@ public class Laboratorio implements Serializable {
         this.escolaLoc = escolaLoc;
     }
 
+    /**
+     *Lista equipamentos por laboratorio
+     * @return a string dos equipamentos do laboratorio
+     */
     public String listarEQLab() {
 
         StringBuilder str = new StringBuilder("");
@@ -106,7 +116,7 @@ public class Laboratorio implements Serializable {
                 str.append(equipamentos.get(i).getE().getNome() + "-");
                 str.append(equipamentos.get(i).getNumSerie() + "-");
                 str.append(equipamentos.get(i).getT().getDesignacao() + "-");
-                str.append(equipamentos.get(i).getAvarias().size()).append("\n");
+                str.append(equipamentos.get(i).getAvariasSize()).append("\n");
             }
         }
         return str.toString();

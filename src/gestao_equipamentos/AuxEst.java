@@ -23,7 +23,7 @@ public class AuxEst implements Serializable, Comparable<AuxEst> {
     private Calendar dataAvaria = new GregorianCalendar();
 
     /**
-     *
+     *Construtor de um ano de avarias
      * @param dataAvaria recebe data de avaria
      */
     public AuxEst(Calendar dataAvaria) {
@@ -95,7 +95,6 @@ public class AuxEst implements Serializable, Comparable<AuxEst> {
 
     @Override
     public String toString() {
-
         StringBuilder str = new StringBuilder();
 
         str.append(dataAvaria.get(Calendar.YEAR)).append("-").append(numAvariasPorReparar).append("-")

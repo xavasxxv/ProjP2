@@ -1,0 +1,737 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Gestao_equipamentosV1">
+  <ClassDiagramComponents>
+    <Class name="AuxEst" package="gestao_equipamentos" visibility="public" xPosition="1475.0" yPosition="11.0">
+      <Fields>
+        <Field name="numAvariasReparadas" type="int" visibility="private"/>
+        <Field name="numAvariasPorReparar" type="int" visibility="private"/>
+        <Field name="numAvariasIrreparaveis" type="int" visibility="private"/>
+        <Field name="dataAvaria" type="Calendar" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Calendar" name="dataAvaria"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNumAvariasReparadas" returnType="int" visibility="public"/>
+        <Method name="setNumAvariasReparadas" returnType="void" visibility="public">
+          <Argument type="int" name="numAvariasReparadas"/>
+        </Method>
+        <Method name="getNumAvariasPorReparar" returnType="int" visibility="public"/>
+        <Method name="setNumAvariasPorReparar" returnType="void" visibility="public">
+          <Argument type="int" name="numAvariasPorReparar"/>
+        </Method>
+        <Method name="getNumAvariasIrreparaveis" returnType="int" visibility="public"/>
+        <Method name="setNumAvariasIrreparaveis" returnType="void" visibility="public">
+          <Argument type="int" name="numAvariasIrreparaveis"/>
+        </Method>
+        <Method name="getDataAvaria" returnType="Calendar" visibility="public"/>
+        <Method name="compareTo" returnType="int" visibility="public">
+          <Argument type="AuxEst" name="o"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="AuxEst2" package="gestao_equipamentos" visibility="public" xPosition="1554.0" yPosition="1051.0">
+      <Fields>
+        <Field name="totalGasto" type="int" visibility="private"/>
+        <Field name="anoGastos" type="Calendar" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Calendar" name="anoGastos"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getTotalGasto" returnType="int" visibility="public"/>
+        <Method name="setTotalGasto" returnType="void" visibility="public">
+          <Argument type="int" name="totalGasto"/>
+        </Method>
+        <Method name="getAnoGastos" returnType="Calendar" visibility="public"/>
+        <Method name="setAnoGastos" returnType="void" visibility="public">
+          <Argument type="Calendar" name="anoGastos"/>
+        </Method>
+        <Method name="aumentaGastosAno" returnType="void" visibility="public">
+          <Argument type="int" name="gasto"/>
+        </Method>
+        <Method name="compareTo" returnType="int" visibility="public">
+          <Argument type="AuxEst2" name="o"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Avaria" package="gestao_equipamentos" visibility="public" xPosition="856.0" yPosition="11.0">
+      <Fields>
+        <Field name="numId" type="int" visibility="private"/>
+        <Field name="dataAvaria" type="Calendar" visibility="private"/>
+        <Field name="EQ" type="Equipamento" visibility="private"/>
+        <Field name="descricao" type="String" visibility="private"/>
+        <Field name="F" type="Funcionario" visibility="private"/>
+        <Field name="estadoA" type="int" visibility="private"/>
+        <Field name="alterado" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Calendar" name="dataAvaria"/>
+          <Argument type="Equipamento" name="E"/>
+          <Argument type="String" name="descricao"/>
+          <Argument type="Funcionario" name="F"/>
+          <Argument type="int" name="estadoA"/>
+          <Argument type="boolean" name="alterado"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="getNumId" returnType="int" visibility="public"/>
+        <Method name="setNumId" returnType="void" visibility="public">
+          <Argument type="int" name="numId"/>
+        </Method>
+        <Method name="getDataAvaria" returnType="Calendar" visibility="public"/>
+        <Method name="getEQ" returnType="Equipamento" visibility="public"/>
+        <Method name="getDescricao" returnType="String" visibility="public"/>
+        <Method name="getF" returnType="Funcionario" visibility="public"/>
+        <Method name="getEstadoA" returnType="int" visibility="public"/>
+        <Method name="setEstadoA" returnType="void" visibility="public">
+          <Argument type="int" name="estadoA"/>
+        </Method>
+        <Method name="isAlterado" returnType="boolean" visibility="public"/>
+        <Method name="setAlterado" returnType="void" visibility="public">
+          <Argument type="boolean" name="alterado"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Equipamento" package="gestao_equipamentos" visibility="public" xPosition="622.0" yPosition="455.0">
+      <Fields>
+        <Field name="numId" type="int" visibility="private"/>
+        <Field name="dataIventario" type="Calendar" visibility="private"/>
+        <Field name="descricao" type="String" visibility="private"/>
+        <Field name="numSerie" type="int" visibility="private"/>
+        <Field name="T" type="TipoEquipamento" visibility="private"/>
+        <Field name="lab" type="Laboratorio" visibility="private"/>
+        <Field name="E" type="Escola" visibility="private"/>
+        <Field name="estado" type="int" visibility="private"/>
+        <Field name="ND" type="FuncionarioNaoDocente" visibility="private"/>
+        <Field name="custo" type="int" visibility="private"/>
+        <Field name="avarias" type="ArrayList&lt;Avaria&gt;" visibility="private"/>
+        <Field name="reparacoes" type="ArrayList&lt;Reparacao&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Calendar" name="dataIventario"/>
+          <Argument type="String" name="descricao"/>
+          <Argument type="int" name="numSerie"/>
+          <Argument type="TipoEquipamento" name="T"/>
+          <Argument type="Escola" name="E"/>
+          <Argument type="int" name="custo"/>
+          <Argument type="FuncionarioNaoDocente" name="ND"/>
+          <Argument type="int" name="estado"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="listarAvarias" returnType="String" visibility="public">
+          <Argument type="Equipamento" name="EQ"/>
+        </Method>
+        <Method name="pesquisarAvariaEQ" returnType="int" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="adicionarAvaria" returnType="void" visibility="public">
+          <Argument type="Avaria" name="A"/>
+        </Method>
+        <Method name="adicionarReparacao" returnType="void" visibility="public">
+          <Argument type="Reparacao" name="R"/>
+        </Method>
+        <Method name="obterAvaria" returnType="Avaria" visibility="public">
+          <Argument type="Avaria" name="A"/>
+        </Method>
+        <Method name="obterAvaria" returnType="Avaria" visibility="public">
+          <Argument type="int" name="pos"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="getNumId" returnType="int" visibility="public"/>
+        <Method name="setNumId" returnType="void" visibility="public">
+          <Argument type="int" name="numId"/>
+        </Method>
+        <Method name="getDescricao" returnType="String" visibility="public"/>
+        <Method name="getNumSerie" returnType="int" visibility="public"/>
+        <Method name="getT" returnType="TipoEquipamento" visibility="public"/>
+        <Method name="getE" returnType="Escola" visibility="public"/>
+        <Method name="getEstado" returnType="int" visibility="public"/>
+        <Method name="setEstado" returnType="void" visibility="public">
+          <Argument type="int" name="estado"/>
+        </Method>
+        <Method name="setLab" returnType="void" visibility="public">
+          <Argument type="Laboratorio" name="lab"/>
+        </Method>
+        <Method name="getLab" returnType="Laboratorio" visibility="public"/>
+        <Method name="avariasEQnotEmpty" returnType="boolean" visibility="public"/>
+        <Method name="getDataIventario" returnType="Calendar" visibility="public"/>
+        <Method name="getND" returnType="FuncionarioNaoDocente" visibility="public"/>
+        <Method name="getAvarias" returnType="ArrayList&lt;Avaria&gt;" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Escola" package="gestao_equipamentos" visibility="public" xPosition="65.0" yPosition="455.0">
+      <Fields>
+        <Field name="nome" type="String" visibility="private"/>
+        <Field name="morada" type="String" visibility="private"/>
+        <Field name="nif" type="int" visibility="private"/>
+        <Field name="telefone" type="int" visibility="private"/>
+        <Field name="email" type="String" visibility="private"/>
+        <Field name="dataInicioServico" type="Calendar" visibility="private"/>
+        <Field name="funcionarios" type="ArrayList&lt;Funcionario&gt;" visibility="private"/>
+        <Field name="laboratorios" type="ArrayList&lt;Laboratorio&gt;" visibility="private"/>
+        <Field name="equipamentos" type="ArrayList&lt;Equipamento&gt;" visibility="private"/>
+        <Field name="gastosAno" type="ArrayList&lt;AuxEst2&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nome"/>
+          <Argument type="int" name="nif"/>
+          <Argument type="String" name="morada"/>
+          <Argument type="int" name="telefone"/>
+          <Argument type="String" name="email"/>
+          <Argument type="Calendar" name="dataInicioServico"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="aumentaGastosAno" returnType="void" visibility="public">
+          <Argument type="int" name="gasto"/>
+          <Argument type="int" name="pos"/>
+        </Method>
+        <Method name="gastosAnoIsEmpty" returnType="boolean" visibility="public"/>
+        <Method name="gastosAnoSize" returnType="int" visibility="public"/>
+        <Method name="adicionarAnoGastos" returnType="void" visibility="public">
+          <Argument type="AuxEst2" name="anoGastos"/>
+        </Method>
+        <Method name="obterAnoGastos" returnType="AuxEst2" visibility="public">
+          <Argument type="int" name="pos"/>
+        </Method>
+        <Method name="obterFuncionarioEscola" returnType="Funcionario" visibility="public">
+          <Argument type="int" name="pos"/>
+        </Method>
+        <Method name="pesquisarFuncionarioNIFEscola" returnType="int" visibility="public">
+          <Argument type="int" name="nif"/>
+        </Method>
+        <Method name="listarFuncionariosEscola" returnType="String" visibility="public"/>
+        <Method name="listarLaboratoriosEscola" returnType="String" visibility="public"/>
+        <Method name="removerFuncionario" returnType="void" visibility="public">
+          <Argument type="Funcionario" name="f"/>
+        </Method>
+        <Method name="adicionarEquipamento" returnType="void" visibility="public">
+          <Argument type="Equipamento" name="EQ"/>
+        </Method>
+        <Method name="adicionarFuncionario" returnType="void" visibility="public">
+          <Argument type="Funcionario" name="F"/>
+        </Method>
+        <Method name="adicionarLaboratorio" returnType="void" visibility="public">
+          <Argument type="Laboratorio" name="L"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="getNome" returnType="String" visibility="public"/>
+        <Method name="getNif" returnType="int" visibility="public"/>
+        <Method name="getGastosAno" returnType="ArrayList&lt;AuxEst2&gt;" visibility="public"/>
+        <Method name="compareTo" returnType="int" visibility="public">
+          <Argument type="Escola" name="o"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Funcionario" package="gestao_equipamentos" visibility="public" xPosition="71.0" yPosition="30.0">
+      <Fields>
+        <Field name="nome" type="String" visibility="private"/>
+        <Field name="morada" type="String" visibility="private"/>
+        <Field name="nif" type="int" visibility="private"/>
+        <Field name="email" type="String" visibility="private"/>
+        <Field name="telefone" type="int" visibility="private"/>
+        <Field name="dataNasc" type="Calendar" visibility="private"/>
+        <Field name="habilitacoes" type="String" visibility="private"/>
+        <Field name="escolaTrabalho" type="Escola" visibility="private"/>
+        <Field name="verificaEliminar" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nome"/>
+          <Argument type="String" name="morada"/>
+          <Argument type="int" name="nif"/>
+          <Argument type="String" name="email"/>
+          <Argument type="int" name="telefone"/>
+          <Argument type="Calendar" name="dataNasc"/>
+          <Argument type="String" name="habilitacoes"/>
+          <Argument type="Escola" name="escolaTrabalho"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="getNome" returnType="String" visibility="public"/>
+        <Method name="setMorada" returnType="void" visibility="public">
+          <Argument type="String" name="morada"/>
+        </Method>
+        <Method name="getNif" returnType="int" visibility="public"/>
+        <Method name="setTelefone" returnType="void" visibility="public">
+          <Argument type="int" name="telefone"/>
+        </Method>
+        <Method name="getEscolaTrabalho" returnType="Escola" visibility="public"/>
+        <Method name="isVerificaEliminar" returnType="boolean" visibility="public"/>
+        <Method name="setVerificaEliminar" returnType="void" visibility="public">
+          <Argument type="boolean" name="verificaEliminar"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="FuncionarioDocente" package="gestao_equipamentos" visibility="public" xPosition="623.0" yPosition="1324.0">
+      <Fields>
+        <Field name="departamento" type="String" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nome"/>
+          <Argument type="String" name="morada"/>
+          <Argument type="int" name="nif"/>
+          <Argument type="String" name="email"/>
+          <Argument type="int" name="telefone"/>
+          <Argument type="Calendar" name="dataNasc"/>
+          <Argument type="String" name="habilitacoes"/>
+          <Argument type="Escola" name="escolaTrabalho"/>
+          <Argument type="String" name="departamento"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="FuncionarioNaoDocente" package="gestao_equipamentos" visibility="public" xPosition="622.0" yPosition="1184.0">
+      <Fields>
+        <Field name="funcao" type="String" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nome"/>
+          <Argument type="String" name="morada"/>
+          <Argument type="int" name="nif"/>
+          <Argument type="String" name="email"/>
+          <Argument type="int" name="telefone"/>
+          <Argument type="Calendar" name="dataNasc"/>
+          <Argument type="String" name="habilitacoes"/>
+          <Argument type="Escola" name="escolaTrabalho"/>
+          <Argument type="String" name="funcao"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="GestaoEquipamento" package="gestao_equipamentos" visibility="public" xPosition="1475.0" yPosition="360.0">
+      <Fields>
+        <Field name="formato" type="SimpleDateFormat" visibility="public" isStatic="true"/>
+        <Field name="gerir" type="Gestor" visibility="public" isStatic="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+        <Method name="testes" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Gestor" name="gerir"/>
+        </Method>
+        <Method name="testes1" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Gestor" name="gerir"/>
+          <Argument type="int" name="nrAvariasAdicionar"/>
+        </Method>
+        <Method name="consultarAvariaEquipamento" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Gestor" name="gerir"/>
+        </Method>
+        <Method name="alterarEstadoAvaria" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Gestor" name="gerir"/>
+        </Method>
+        <Method name="registarAvaria" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Gestor" name="gerir"/>
+        </Method>
+        <Method name="registarEquipamento" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Gestor" name="gerir"/>
+        </Method>
+        <Method name="associarLabEquipamento" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Gestor" name="gerir"/>
+        </Method>
+        <Method name="consultarEquipamentoNumero" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Gestor" name="gerir"/>
+        </Method>
+        <Method name="consultarEquipamentoLab" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Gestor" name="gerir"/>
+        </Method>
+        <Method name="inserirTiposEquipamento" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Gestor" name="gerir"/>
+        </Method>
+        <Method name="consultarTiposEquipamentos" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Gestor" name="gerir"/>
+        </Method>
+        <Method name="inserirEscola" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Gestor" name="gerir"/>
+        </Method>
+        <Method name="consulaEscolaNIF" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Gestor" name="gerir"/>
+        </Method>
+        <Method name="inserirFuncionario" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Gestor" name="gerir"/>
+        </Method>
+        <Method name="alterarFuncionario" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Gestor" name="gerir"/>
+        </Method>
+        <Method name="eliminarFuncionarioNIF" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Gestor" name="gerir"/>
+        </Method>
+        <Method name="consultaFuncionarioNIF" returnType="int" visibility="public" isStatic="true">
+          <Argument type="Gestor" name="gerir"/>
+        </Method>
+        <Method name="inserirLaboratorio" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Gestor" name="gerir"/>
+        </Method>
+        <Method name="consultarLaboratorioEscola" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Gestor" name="gerir"/>
+        </Method>
+        <Method name="consultarLaboratorioDescricao" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Gestor" name="gerir"/>
+        </Method>
+        <Method name="menuLabConsulta" returnType="int" visibility="public" isStatic="true"/>
+        <Method name="menu" returnType="int" visibility="public" isStatic="true"/>
+        <Method name="menuEstatisticas" returnType="int" visibility="public" isStatic="true"/>
+        <Method name="gestaoAvarias" returnType="int" visibility="public" isStatic="true"/>
+        <Method name="gestaoEquipamentos" returnType="int" visibility="public" isStatic="true"/>
+        <Method name="gestaoTiposEquipamento" returnType="int" visibility="public" isStatic="true"/>
+        <Method name="gestaoLaboratorios" returnType="int" visibility="public" isStatic="true"/>
+        <Method name="gestaoFuncionarios" returnType="int" visibility="public" isStatic="true"/>
+        <Method name="gestaoEscolas" returnType="int" visibility="public" isStatic="true"/>
+      </Methods>
+    </Class>
+    <Class name="Gestor" package="gestao_equipamentos" visibility="public" xPosition="1832.0" yPosition="11.0">
+      <Fields>
+        <Field name="escolas" type="ArrayList&lt;Escola&gt;" visibility="private"/>
+        <Field name="docentes" type="ArrayList&lt;FuncionarioDocente&gt;" visibility="private"/>
+        <Field name="funcionarios" type="ArrayList&lt;Funcionario&gt;" visibility="private"/>
+        <Field name="naoDocentes" type="ArrayList&lt;FuncionarioNaoDocente&gt;" visibility="private"/>
+        <Field name="tipoEquipamentos" type="ArrayList&lt;TipoEquipamento&gt;" visibility="private"/>
+        <Field name="laboratorios" type="ArrayList&lt;Laboratorio&gt;" visibility="private"/>
+        <Field name="equipamentos" type="ArrayList&lt;Equipamento&gt;" visibility="private"/>
+        <Field name="avarias" type="ArrayList&lt;Avaria&gt;" visibility="private"/>
+        <Field name="reparacoes" type="ArrayList&lt;Reparacao&gt;" visibility="private"/>
+        <Field name="auxEst" type="ArrayList&lt;AuxEst&gt;" visibility="private"/>
+        <Field name="numEquipAvariaTotal" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="adicionaNumEQAvariaTotal" returnType="void" visibility="public">
+          <Argument type="Equipamento" name="EQ"/>
+        </Method>
+        <Method name="totalGastoAnoEqEscola" returnType="String" visibility="public"/>
+        <Method name="percEquipAvariaAgrup" returnType="float" visibility="public"/>
+        <Method name="avariasRegistadasPorOrdemCrescenteTotal" returnType="String" visibility="public"/>
+        <Method name="pesquisarAvariaAno" returnType="int" visibility="public">
+          <Argument type="Calendar" name="Data"/>
+        </Method>
+        <Method name="pesquisarAnoGastos" returnType="int" visibility="public">
+          <Argument type="Escola" name="E"/>
+          <Argument type="Calendar" name="Data"/>
+        </Method>
+        <Method name="adicionarAuxEst" returnType="void" visibility="public">
+          <Argument type="AuxEst" name="Aux"/>
+        </Method>
+        <Method name="obterAuxEst" returnType="AuxEst" visibility="public">
+          <Argument type="int" name="pos"/>
+        </Method>
+        <Method name="adicionarAvaria" returnType="void" visibility="public">
+          <Argument type="Avaria" name="A"/>
+        </Method>
+        <Method name="obterAvaria" returnType="Avaria" visibility="public">
+          <Argument type="int" name="pos"/>
+        </Method>
+        <Method name="obterFuncionario" returnType="Funcionario" visibility="public">
+          <Argument type="FuncionarioNaoDocente" name="ND"/>
+        </Method>
+        <Method name="adicionarReparacao" returnType="void" visibility="public">
+          <Argument type="Reparacao" name="R"/>
+        </Method>
+        <Method name="obterTipoEquipamento" returnType="TipoEquipamento" visibility="public">
+          <Argument type="int" name="pos"/>
+        </Method>
+        <Method name="listarFuncionarios" returnType="String" visibility="public"/>
+        <Method name="listarTecnicosEscola" returnType="String" visibility="public">
+          <Argument type="Escola" name="E"/>
+        </Method>
+        <Method name="listarEscolaNome" returnType="String" visibility="public"/>
+        <Method name="listarAvarias" returnType="String" visibility="public"/>
+        <Method name="verificarAvarias" returnType="boolean" visibility="public"/>
+        <Method name="verificaNaoDocenteTecnico" returnType="boolean" visibility="public"/>
+        <Method name="verificaNaoDocenteTecnicoEscola" returnType="boolean" visibility="public">
+          <Argument type="Escola" name="E"/>
+        </Method>
+        <Method name="listarLaboratorioEscola" returnType="String" visibility="public">
+          <Argument type="Escola" name="E"/>
+        </Method>
+        <Method name="listarTiposEquipamento" returnType="String" visibility="public"/>
+        <Method name="listarTiposEquipamentoMenu" returnType="String" visibility="public"/>
+        <Method name="listarEquipamentos" returnType="String" visibility="public"/>
+        <Method name="adicionarTipoEquipamento" returnType="void" visibility="public">
+          <Argument type="TipoEquipamento" name="TE"/>
+        </Method>
+        <Method name="adicionarEquipamento" returnType="void" visibility="public">
+          <Argument type="Equipamento" name="EQ"/>
+        </Method>
+        <Method name="adicionarDocente" returnType="void" visibility="public">
+          <Argument type="FuncionarioDocente" name="D"/>
+        </Method>
+        <Method name="adicionarLaboratorio" returnType="void" visibility="public">
+          <Argument type="Laboratorio" name="L"/>
+        </Method>
+        <Method name="adicionarNaoDocente" returnType="void" visibility="public">
+          <Argument type="FuncionarioNaoDocente" name="ND"/>
+        </Method>
+        <Method name="removerFuncionario" returnType="void" visibility="public">
+          <Argument type="int" name="pos"/>
+        </Method>
+        <Method name="adicionarEscola" returnType="void" visibility="public">
+          <Argument type="Escola" name="E"/>
+        </Method>
+        <Method name="obterEscola" returnType="Escola" visibility="public">
+          <Argument type="int" name="pos"/>
+        </Method>
+        <Method name="obterEquipamento" returnType="Equipamento" visibility="public">
+          <Argument type="int" name="pos"/>
+        </Method>
+        <Method name="obterFuncionario" returnType="Funcionario" visibility="public">
+          <Argument type="int" name="pos"/>
+        </Method>
+        <Method name="obterFuncionarioNaoDocente" returnType="FuncionarioNaoDocente" visibility="public">
+          <Argument type="int" name="pos"/>
+        </Method>
+        <Method name="obterLaboratorio" returnType="Laboratorio" visibility="public">
+          <Argument type="int" name="pos"/>
+        </Method>
+        <Method name="pesquisarIdTipoEquipamento" returnType="int" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="pesquisarIdEquipamento" returnType="int" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="pesquisarAvariaNAlteradas" returnType="int" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="pesquisarEscolaNIF" returnType="int" visibility="public">
+          <Argument type="int" name="nif"/>
+        </Method>
+        <Method name="pesquisarFuncionarioNIF" returnType="int" visibility="public">
+          <Argument type="int" name="nif"/>
+        </Method>
+        <Method name="pesquisarNaoDocenteTecnico" returnType="int" visibility="public">
+          <Argument type="int" name="nif"/>
+          <Argument type="Escola" name="E"/>
+        </Method>
+        <Method name="pesquisarLabDesc" returnType="int" visibility="public">
+          <Argument type="String" name="descricao"/>
+        </Method>
+        <Method name="pesquisarLabDescEscola" returnType="int" visibility="public">
+          <Argument type="String" name="descricao"/>
+          <Argument type="Escola" name="E"/>
+        </Method>
+        <Method name="pesquisarEscola" returnType="int" visibility="public">
+          <Argument type="String" name="nome"/>
+        </Method>
+        <Method name="validarEmail" returnType="int" visibility="public">
+          <Argument type="String" name="email"/>
+        </Method>
+        <Method name="getSizeEscolas" returnType="int" visibility="public"/>
+        <Method name="getSizeFuncionarios" returnType="int" visibility="public"/>
+        <Method name="getSizeDocentes" returnType="int" visibility="public"/>
+        <Method name="getSizeNaoDocentes" returnType="int" visibility="public"/>
+        <Method name="getSizeTipoEquipamento" returnType="int" visibility="public"/>
+        <Method name="getSizeLaboratorio" returnType="int" visibility="public"/>
+        <Method name="getSizeEquipamento" returnType="int" visibility="public"/>
+        <Method name="getSizeAvarias" returnType="int" visibility="public"/>
+        <Method name="gravarFicheiro" returnType="void" visibility="public"/>
+        <Method name="lerFicheiro" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Laboratorio" package="gestao_equipamentos" visibility="public" xPosition="225.0" yPosition="1085.0">
+      <Fields>
+        <Field name="descricao" type="String" visibility="private"/>
+        <Field name="escolaLab" type="Escola" visibility="private"/>
+        <Field name="escolaLoc" type="String" visibility="private"/>
+        <Field name="equipamentos" type="ArrayList&lt;Equipamento&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="descricao"/>
+          <Argument type="Escola" name="escolaLab"/>
+          <Argument type="String" name="escolaLoc"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getDescricao" returnType="String" visibility="public"/>
+        <Method name="getEscolaLab" returnType="Escola" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="adicionarEquipamento" returnType="void" visibility="public">
+          <Argument type="Equipamento" name="E"/>
+        </Method>
+        <Method name="removerEquipamento" returnType="void" visibility="public">
+          <Argument type="Equipamento" name="E"/>
+        </Method>
+        <Method name="setDescricao" returnType="void" visibility="public">
+          <Argument type="String" name="descricao"/>
+        </Method>
+        <Method name="setEscolaLab" returnType="void" visibility="public">
+          <Argument type="Escola" name="escolaLab"/>
+        </Method>
+        <Method name="setEscolaLoc" returnType="void" visibility="public">
+          <Argument type="String" name="escolaLoc"/>
+        </Method>
+        <Method name="listarEQLab" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Reparacao" package="gestao_equipamentos" visibility="public" xPosition="1630.0" yPosition="1367.0">
+      <Fields>
+        <Field name="numId" type="int" visibility="private"/>
+        <Field name="A" type="Avaria" visibility="private"/>
+        <Field name="dataReparacao" type="Calendar" visibility="private"/>
+        <Field name="descricao" type="String" visibility="private"/>
+        <Field name="custoReparacao" type="int" visibility="private"/>
+        <Field name="F" type="Funcionario" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Avaria" name="A"/>
+          <Argument type="Calendar" name="dataReparacao"/>
+          <Argument type="String" name="descricao"/>
+          <Argument type="int" name="custoReparacao"/>
+          <Argument type="Funcionario" name="F"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="getNumId" returnType="int" visibility="public"/>
+        <Method name="setNumId" returnType="void" visibility="public">
+          <Argument type="int" name="numId"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="TipoEquipamento" package="gestao_equipamentos" visibility="public" xPosition="336.0" yPosition="1434.0">
+      <Fields>
+        <Field name="designacao" type="String" visibility="private"/>
+        <Field name="numId" type="int" visibility="private"/>
+        <Field name="equipamentos" type="ArrayList&lt;Equipamento&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="designacao"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="adicionarEquipamento" returnType="void" visibility="public">
+          <Argument type="Equipamento" name="EQ"/>
+        </Method>
+        <Method name="getDesignacao" returnType="String" visibility="public"/>
+        <Method name="getNumId" returnType="int" visibility="public"/>
+        <Method name="setNumId" returnType="void" visibility="public">
+          <Argument type="int" name="numId"/>
+        </Method>
+        <Method name="getNumEq" returnType="int" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Consola" package="util" visibility="public" xPosition="623.0" yPosition="1464.0">
+      <Fields>
+        <Field name="sc" type="Scanner" visibility="public" isStatic="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="lerInt" returnType="int" visibility="public" isStatic="true">
+          <Argument type="String" name="texto"/>
+          <Argument type="int" name="min"/>
+          <Argument type="int" name="max"/>
+        </Method>
+        <Method name="lerLong" returnType="long" visibility="public" isStatic="true">
+          <Argument type="String" name="texto"/>
+          <Argument type="long" name="min"/>
+          <Argument type="long" name="max"/>
+        </Method>
+        <Method name="lerFloat" returnType="float" visibility="public" isStatic="true">
+          <Argument type="String" name="texto"/>
+          <Argument type="float" name="min"/>
+          <Argument type="float" name="max"/>
+        </Method>
+        <Method name="lerDouble" returnType="double" visibility="public" isStatic="true">
+          <Argument type="String" name="texto"/>
+          <Argument type="double" name="min"/>
+          <Argument type="double" name="max"/>
+        </Method>
+        <Method name="lerChar" returnType="char" visibility="public" isStatic="true">
+          <Argument type="String" name="texto"/>
+          <Argument type="String" name="opcoes"/>
+        </Method>
+        <Method name="lerString" returnType="String" visibility="public" isStatic="true">
+          <Argument type="String" name="texto"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="gestao_equipamentos.TipoEquipamento" target="gestao_equipamentos.Equipamento" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="lab" source="gestao_equipamentos.Equipamento" target="gestao_equipamentos.Laboratorio" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="gestao_equipamentos.Laboratorio" target="gestao_equipamentos.Escola" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="E" source="gestao_equipamentos.Equipamento" target="gestao_equipamentos.Escola" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="gestao_equipamentos.Gestor" target="gestao_equipamentos.TipoEquipamento" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="gestao_equipamentos.Equipamento" target="gestao_equipamentos.FuncionarioNaoDocente" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="gestao_equipamentos.GestaoEquipamento" target="gestao_equipamentos.Gestor" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="funcionarios" source="gestao_equipamentos.Gestor" target="gestao_equipamentos.Funcionario" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Funcionario&gt;"/>
+    <UseRelation source="gestao_equipamentos.Gestor" target="gestao_equipamentos.Reparacao" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="A" source="gestao_equipamentos.Reparacao" target="gestao_equipamentos.Avaria" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="avarias" source="gestao_equipamentos.Gestor" target="gestao_equipamentos.Avaria" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Avaria&gt;"/>
+    <UseRelation source="gestao_equipamentos.Gestor" target="gestao_equipamentos.Equipamento" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="gestao_equipamentos.FuncionarioDocente" target="gestao_equipamentos.Funcionario"/>
+    <UseRelation source="gestao_equipamentos.Avaria" target="gestao_equipamentos.Funcionario" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="gestao_equipamentos.Gestor" target="gestao_equipamentos.Laboratorio" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="equipamentos" source="gestao_equipamentos.TipoEquipamento" target="gestao_equipamentos.Equipamento" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Equipamento&gt;"/>
+    <HasRelation name="equipamentos" source="gestao_equipamentos.Laboratorio" target="gestao_equipamentos.Equipamento" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Equipamento&gt;"/>
+    <UseRelation source="gestao_equipamentos.Equipamento" target="gestao_equipamentos.TipoEquipamento" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="laboratorios" source="gestao_equipamentos.Escola" target="gestao_equipamentos.Laboratorio" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Laboratorio&gt;"/>
+    <UseRelation source="gestao_equipamentos.Escola" target="gestao_equipamentos.AuxEst2" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="gestao_equipamentos.AuxEst2" target="gestao_equipamentos.AuxEst2" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="gestao_equipamentos.Escola" target="gestao_equipamentos.Equipamento" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="gestao_equipamentos.Gestor" target="gestao_equipamentos.AuxEst" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="ND" source="gestao_equipamentos.Equipamento" target="gestao_equipamentos.FuncionarioNaoDocente" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="tipoEquipamentos" source="gestao_equipamentos.Gestor" target="gestao_equipamentos.TipoEquipamento" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;TipoEquipamento&gt;"/>
+    <UseRelation source="gestao_equipamentos.Equipamento" target="gestao_equipamentos.Equipamento" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="F" source="gestao_equipamentos.Reparacao" target="gestao_equipamentos.Funcionario" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="gestao_equipamentos.Equipamento" target="gestao_equipamentos.Reparacao" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="avarias" source="gestao_equipamentos.Equipamento" target="gestao_equipamentos.Avaria" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Avaria&gt;"/>
+    <UseRelation source="gestao_equipamentos.Equipamento" target="gestao_equipamentos.Escola" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="laboratorios" source="gestao_equipamentos.Gestor" target="gestao_equipamentos.Laboratorio" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Laboratorio&gt;"/>
+    <HasRelation name="F" source="gestao_equipamentos.Avaria" target="gestao_equipamentos.Funcionario" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="gestao_equipamentos.Gestor" target="gestao_equipamentos.FuncionarioDocente" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="gestao_equipamentos.Gestor" target="gestao_equipamentos.Avaria" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="escolaLab" source="gestao_equipamentos.Laboratorio" target="gestao_equipamentos.Escola" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="gestao_equipamentos.FuncionarioNaoDocente" target="gestao_equipamentos.Funcionario"/>
+    <HasRelation name="naoDocentes" source="gestao_equipamentos.Gestor" target="gestao_equipamentos.FuncionarioNaoDocente" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;FuncionarioNaoDocente&gt;"/>
+    <UseRelation source="gestao_equipamentos.AuxEst" target="gestao_equipamentos.AuxEst" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="gestao_equipamentos.Escola" target="gestao_equipamentos.Laboratorio" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="gestao_equipamentos.Equipamento" target="gestao_equipamentos.Laboratorio" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="gestao_equipamentos.Escola" target="gestao_equipamentos.Escola" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="gestao_equipamentos.Avaria" target="gestao_equipamentos.Equipamento" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="escolaTrabalho" source="gestao_equipamentos.Funcionario" target="gestao_equipamentos.Escola" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="funcionarios" source="gestao_equipamentos.Escola" target="gestao_equipamentos.Funcionario" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Funcionario&gt;"/>
+    <HasRelation name="auxEst" source="gestao_equipamentos.Gestor" target="gestao_equipamentos.AuxEst" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;AuxEst&gt;"/>
+    <HasRelation name="EQ" source="gestao_equipamentos.Avaria" target="gestao_equipamentos.Equipamento" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="reparacoes" source="gestao_equipamentos.Gestor" target="gestao_equipamentos.Reparacao" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Reparacao&gt;"/>
+    <UseRelation source="gestao_equipamentos.Escola" target="gestao_equipamentos.Funcionario" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="gerir" source="gestao_equipamentos.GestaoEquipamento" target="gestao_equipamentos.Gestor" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="gastosAno" source="gestao_equipamentos.Escola" target="gestao_equipamentos.AuxEst2" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;AuxEst2&gt;"/>
+    <UseRelation source="gestao_equipamentos.Gestor" target="gestao_equipamentos.Escola" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="gestao_equipamentos.Gestor" target="gestao_equipamentos.Funcionario" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="gestao_equipamentos.Funcionario" target="gestao_equipamentos.Escola" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="gestao_equipamentos.Equipamento" target="gestao_equipamentos.Avaria" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="gestao_equipamentos.Laboratorio" target="gestao_equipamentos.Equipamento" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="T" source="gestao_equipamentos.Equipamento" target="gestao_equipamentos.TipoEquipamento" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="escolas" source="gestao_equipamentos.Gestor" target="gestao_equipamentos.Escola" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Escola&gt;"/>
+    <HasRelation name="equipamentos" source="gestao_equipamentos.Gestor" target="gestao_equipamentos.Equipamento" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Equipamento&gt;"/>
+    <UseRelation source="gestao_equipamentos.Gestor" target="gestao_equipamentos.FuncionarioNaoDocente" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="equipamentos" source="gestao_equipamentos.Escola" target="gestao_equipamentos.Equipamento" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Equipamento&gt;"/>
+    <HasRelation name="docentes" source="gestao_equipamentos.Gestor" target="gestao_equipamentos.FuncionarioDocente" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;FuncionarioDocente&gt;"/>
+    <HasRelation name="reparacoes" source="gestao_equipamentos.Equipamento" target="gestao_equipamentos.Reparacao" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Reparacao&gt;"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
- *
- * @author RicardoAnastácio
+ * Class que define cada tipo equipamento
+ *  @author RicardoAnastácio & Xavier Bento
  */
 public class TipoEquipamento implements Serializable {
 
@@ -19,11 +19,18 @@ public class TipoEquipamento implements Serializable {
     private int numId;
     private ArrayList<Equipamento> equipamentos = new ArrayList<>();
 
+    /**
+     * 
+     * @param EQ recebe um equipamento
+     */
     public void adicionarEquipamento(Equipamento EQ) {
 
         equipamentos.add(EQ);
     }
-
+/**
+ * 
+ * @param  recebe designação do tipo equipamento
+ */
     public TipoEquipamento(String designacao) {
         this.designacao = designacao;
     }

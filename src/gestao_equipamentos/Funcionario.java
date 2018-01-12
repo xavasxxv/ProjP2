@@ -9,8 +9,8 @@ import java.io.Serializable;
 import java.util.Calendar;
 
 /**
- *
- * @author RicardoAnastácio
+ *Class que define dados base do funcionario
+ * @author RicardoAnastácio & Xavier Bento
  */
 public class Funcionario implements Serializable {
 
@@ -24,6 +24,17 @@ public class Funcionario implements Serializable {
     private Escola escolaTrabalho;
     private boolean verificaEliminar;
 
+    /**
+     * 
+     * @param nome recebe nome do funcionario
+     * @param morada recebe morada do funcionario
+     * @param nif recebe nif do funcionario
+     * @param email recebe email do funcionario
+     * @param telefone recebe telefone do funcionario
+     * @param dataNasc recebe data de nascimento do funcionario
+     * @param habilitacoes recebe habilitações do funcionario
+     * @param escolaTrabalho recebe escola onde trabalha o funcionario
+     */
     public Funcionario(String nome, String morada, int nif, String email, int telefone, Calendar dataNasc, String habilitacoes, Escola escolaTrabalho) {
 
         this.nome = nome;

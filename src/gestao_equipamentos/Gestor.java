@@ -17,7 +17,7 @@ import java.util.Collections;
 /**
  * Class Gestor que gere todo o Agrupamento
  *
- * @author RicardoAnastácio
+ * @author RicardoAnastácio & Xavier Bento
  */
 public class Gestor {
 
@@ -87,10 +87,7 @@ public class Gestor {
             str.append("\nTotal de avarias resgitadas por estado num determinado ano");
             str.append("\nAno-AvariasPorReparar-AvariasReparadas-AvariasInrreparaveis\n");
             for (int i = 0; i < auxEst.size(); i++) {
-
-                str.append(auxEst.get(i).getDataAvaria().get(Calendar.YEAR)).append("-").append("-").append(auxEst.get(i).getNumAvariasPorReparar())
-                        .append(auxEst.get(i).getNumAvariasReparadas()).append("-").append("-").append(auxEst.get(i).getNumAvariasIrreparaveis()).append("\n");
-
+                str.append(auxEst.get(i));
             }
         }
 
@@ -126,7 +123,10 @@ public class Gestor {
         return -1;
 
     }
-
+/**
+ * 
+ * @param Aux recebe 
+ */
     public void adicionarAuxEst(AuxEst Aux) {
         auxEst.add(Aux);
 
@@ -156,13 +156,17 @@ public class Gestor {
      * Método para obter uma Avaria de uma determinada posição
      *
      * @param pos posiçao
-     * @return Devolve uma avaria
+     * @return devolve uma avaria
      */
     public Avaria obterAvaria(int pos) {
 
         return avarias.get(pos);
     }
-
+/**
+ * 
+ * @param ND recebe um nao docente 
+ * @return devolve um funcionario
+ */
     public Funcionario obterFuncionario(FuncionarioNaoDocente ND) {
 
         return funcionarios.get(funcionarios.indexOf(ND));

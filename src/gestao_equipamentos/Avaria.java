@@ -10,8 +10,8 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 /**
- *
- * @author RicardoAnastácio
+ * Class que define Avaria
+ * @author RicardoAnastácio & Xavier Bento
  */
 public class Avaria implements Serializable {
 
@@ -22,6 +22,7 @@ public class Avaria implements Serializable {
     private Funcionario F;
     private int estadoA;
     private boolean alterado;
+
 
     public Avaria(Calendar dataAvaria, Equipamento E, String descriçao, Funcionario F, int estadoA, boolean alterado) {
 

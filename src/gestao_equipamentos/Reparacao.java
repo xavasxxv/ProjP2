@@ -10,8 +10,8 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 /**
- *
- * @author ricar
+ *Class que define cada Reparação 
+ *  @author RicardoAnastácio & Xavier Bento
  */
 public class Reparacao implements Serializable {
 
@@ -21,7 +21,14 @@ public class Reparacao implements Serializable {
     private String descriçao;
     private int custoReparacao;
     private Funcionario F;
-
+/**
+ * Construtor Reparacao
+ * @param A recebe avaria
+ * @param dataReparacao recebe data da reparaçao
+ * @param descriçao recebe descricao da reparaçao
+ * @param custoReparacao recebe custo da reparaçao
+ * @param F  recebe o funcionario que regista a reparação
+ */
     public Reparacao(Avaria A, Calendar dataReparacao, String descriçao, int custoReparacao, Funcionario F) {
 
         this.A = A;

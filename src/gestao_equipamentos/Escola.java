@@ -11,8 +11,9 @@ import java.util.Calendar;
 import java.util.Collections;
 
 /**
+ * Class que define escola
  *
- * @author RicardoAnastácio
+ * @author RicardoAnastácio e Xavier Bento
  */
 public class Escola implements Serializable, Comparable<Escola> {
 
@@ -27,6 +28,15 @@ public class Escola implements Serializable, Comparable<Escola> {
     private ArrayList<Equipamento> equipamentos = new ArrayList<>();
     private ArrayList<AuxEst2> gastosAno = new ArrayList<>();
 
+    /**
+     *
+     * @param nome recebe nome da escola
+     * @param nif recebe nif da escola
+     * @param morada recebe morada da escola
+     * @param telefone recebe telefone da escola
+     * @param email recebe email da escola
+     * @param dataInicioServico recebe ano de inicio da escola
+     */
     public Escola(String nome, int nif, String morada, int telefone, String email, Calendar dataInicioServico) {
 
         this.nome = nome;
@@ -80,10 +90,10 @@ public class Escola implements Serializable, Comparable<Escola> {
         if (funcionarios.isEmpty()) {
             str.append("Não há funcionários na escola!");
         } else {
-            str.append("Funcionários da escola " + "(NIF-Nome): \n");
+            str.append("Funcionários da escola (NIF-Nome): ");
             for (int i = 0; i < funcionarios.size(); i++) {
-                str.append(funcionarios.get(i).getNif() + "-");
-                str.append(funcionarios.get(i).getNome()).append("\n");
+                str.append("\n\t").append(funcionarios.get(i).getNif() + "-");
+                str.append(funcionarios.get(i).getNome());
             }
             str.append("\n");
         }
@@ -95,7 +105,7 @@ public class Escola implements Serializable, Comparable<Escola> {
         if (laboratorios.isEmpty()) {
             str.append("Não há laboratórios na escola!");
         } else {
-            str.append("Laboratórios da escola " + "(NIF-Nome): \n");
+            str.append("Laboratórios da escola: \n");
             for (int i = 0; i < laboratorios.size(); i++) {
                 str.append(laboratorios.get(i));
             }
@@ -136,7 +146,17 @@ public class Escola implements Serializable, Comparable<Escola> {
         str.append("\nTelefone: ").append(telefone);
         str.append("\nNIF: ").append(nif);
         str.append("\nEmail: ").append(email);
-        str.append("\nAno de entrada em serviço: ").append(dataInicioServico.get(Calendar.YEAR)).append("\n");
+        str.append("\nAno de entrada em serviço: ").append(dataInicioServico.get(Calendar.YEAR));
+        if (gastosAnoIsEmpty()) {
+            str.append("\nEsta escola não tem gastos registados!\n");
+        } else {
+            Collections.sort(gastosAno);
+            str.append("\nGastos por ano (Ano - Despesa)");
+            for (int i = 0; i < gastosAno.size(); i++) {
+                str.append("\n\t").append(gastosAno.get(i));
+            }
+            str.append("\n");
+        }
 
         return str.toString();
     }

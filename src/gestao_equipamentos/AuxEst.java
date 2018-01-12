@@ -80,13 +80,6 @@ public class AuxEst implements Serializable, Comparable<AuxEst> {
         return dataAvaria;
     }
 
-    /**
-     * @param dataAvaria the dataAvaria to set
-     */
-    public void setDataAvaria(Calendar dataAvaria) {
-        this.dataAvaria = dataAvaria;
-    }
-
     @Override
     public int compareTo(AuxEst o) {
 

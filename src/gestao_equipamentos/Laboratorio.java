@@ -49,13 +49,6 @@ public class Laboratorio implements Serializable {
         return escolaLab;
     }
 
-    /**
-     * @return the escolaLoc
-     */
-    public String getEscolaLoc() {
-        return escolaLoc;
-    }
-
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder();

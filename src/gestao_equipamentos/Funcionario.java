@@ -9,7 +9,8 @@ import java.io.Serializable;
 import java.util.Calendar;
 
 /**
- *Class que define dados base do funcionario
+ * Class que define dados base do funcionario
+ *
  * @author Ricardo Anastácio
  * @author Xavier Bento
  */
@@ -26,7 +27,7 @@ public class Funcionario implements Serializable {
     private boolean verificaEliminar;
 
     /**
-     * 
+     *
      * @param nome recebe nome do funcionario
      * @param morada recebe morada do funcionario
      * @param nif recebe nif do funcionario
@@ -71,13 +72,6 @@ public class Funcionario implements Serializable {
      */
     public String getNome() {
         return nome;
-    }
-
-    /**
-     * @return the morada
-     */
-    public String getMorada() {
-        return morada;
     }
 
     /**

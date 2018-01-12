@@ -46,13 +46,6 @@ public class TipoEquipamento implements Serializable {
     }
 
     /**
-     * @param designacao the designacao to set
-     */
-    public void setDesignacao(String designacao) {
-        this.designacao = designacao;
-    }
-
-    /**
      * @return the numId
      */
     public int getNumId() {

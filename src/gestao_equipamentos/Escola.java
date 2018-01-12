@@ -115,10 +115,6 @@ public class Escola implements Serializable, Comparable<Escola> {
         return str.toString();
     }
 
-    public int getSizeFuncionarios() {
-        return funcionarios.size();
-    }
-
     public void removerFuncionario(Funcionario f) {
         funcionarios.remove(f);
     }
@@ -170,38 +166,10 @@ public class Escola implements Serializable, Comparable<Escola> {
     }
 
     /**
-     * @return the morada
-     */
-    public String getMorada() {
-        return morada;
-    }
-
-    /**
      * @return the nif
      */
     public int getNif() {
         return nif;
-    }
-
-    /**
-     * @return the telefone
-     */
-    public int getTelefone() {
-        return telefone;
-    }
-
-    /**
-     * @return the email
-     */
-    public String getEmail() {
-        return email;
-    }
-
-    /**
-     * @return the dataInicioServico
-     */
-    public Calendar getDataInicioServico() {
-        return dataInicioServico;
     }
 
     /**

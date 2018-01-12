@@ -10,7 +10,8 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 /**
- *Class que define cada Reparação 
+ * Class que define cada Reparação
+ *
  * @author Ricardo Anastácio
  * @author Xavier Bento
  */
@@ -22,14 +23,16 @@ public class Reparacao implements Serializable {
     private String descricao;
     private int custoReparacao;
     private Funcionario F;
-/**
- * Construtor Reparacao
- * @param A recebe avaria
- * @param dataReparacao recebe data da reparaçao
- * @param descricao recebe descricao da reparaçao
- * @param custoReparacao recebe custo da reparaçao
- * @param F  recebe o funcionario que regista a reparação
- */
+
+    /**
+     * Construtor Reparacao
+     *
+     * @param A recebe avaria
+     * @param dataReparacao recebe data da reparaçao
+     * @param descricao recebe descricao da reparaçao
+     * @param custoReparacao recebe custo da reparaçao
+     * @param F recebe o funcionario que regista a reparação
+     */
     public Reparacao(Avaria A, Calendar dataReparacao, String descricao, int custoReparacao, Funcionario F) {
 
         this.A = A;
@@ -67,76 +70,6 @@ public class Reparacao implements Serializable {
      */
     public void setNumId(int numId) {
         this.numId = numId;
-    }
-
-    /**
-     * @return the A
-     */
-    public Avaria getA() {
-        return A;
-    }
-
-    /**
-     * @param A the A to set
-     */
-    public void setA(Avaria A) {
-        this.A = A;
-    }
-
-    /**
-     * @return the dataReparacao
-     */
-    public Calendar getDataReparacao() {
-        return dataReparacao;
-    }
-
-    /**
-     * @param dataReparacao the dataReparacao to set
-     */
-    public void setDataReparacao(Calendar dataReparacao) {
-        this.dataReparacao = dataReparacao;
-    }
-
-    /**
-     * @return the descriçao
-     */
-    public String getDescricao() {
-        return descricao;
-    }
-
-    /**
-     * @param descriçao the descriçao to set
-     */
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    /**
-     * @return the custoReparacao
-     */
-    public int getCustoReparacao() {
-        return custoReparacao;
-    }
-
-    /**
-     * @param custoReparacao the custoReparacao to set
-     */
-    public void setCustoReparacao(int custoReparacao) {
-        this.custoReparacao = custoReparacao;
-    }
-
-    /**
-     * @return the F
-     */
-    public Funcionario getF() {
-        return F;
-    }
-
-    /**
-     * @param F the F to set
-     */
-    public void setF(Funcionario F) {
-        this.F = F;
     }
 
 }

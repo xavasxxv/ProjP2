@@ -1016,7 +1016,7 @@ public class GestaoEquipamento {
                 F = EQ.getE().obterFuncionarioEscola(pos);
 
                 descricao = Consola.lerString("Coloque uma breve descrição da avaria: ");
-                
+
                 gerir.adicionaNumEQAvariaTotal(EQ);
 
                 A = new Avaria(dataAvaria, EQ, descricao, F, 1, false);

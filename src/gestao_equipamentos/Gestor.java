@@ -586,18 +586,4 @@ public class Gestor {
         }
     }
 
-    /**
-     * @return the numEquipAvariaTotal
-     */
-    public int getNumEquipAvariaTotal() {
-        return numEquipAvariaTotal;
-    }
-
-    /**
-     * @param numEquipAvariaTotal the numEquipAvariaTotal to set
-     */
-    public void setNumEquipAvariaTotal(int numEquipAvariaTotal) {
-        this.numEquipAvariaTotal = numEquipAvariaTotal;
-    }
-
 }

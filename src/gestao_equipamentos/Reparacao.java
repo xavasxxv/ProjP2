@@ -11,7 +11,8 @@ import java.util.GregorianCalendar;
 
 /**
  *Class que define cada Reparação 
- *  @author RicardoAnastácio & Xavier Bento
+ * @author Ricardo Anastácio
+ * @author Xavier Bento
  */
 public class Reparacao implements Serializable {
 

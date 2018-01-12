@@ -17,7 +17,8 @@ import java.util.Collections;
 /**
  * Class Gestor que gere todo o Agrupamento
  *
- * @author RicardoAnastácio & Xavier Bento
+ * @author Ricardo Anastácio
+ * @author Xavier Bento
  */
 public class Gestor {
 

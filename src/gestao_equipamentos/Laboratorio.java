@@ -7,12 +7,12 @@ package gestao_equipamentos;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 /**
  * Class que define laboratorio
  *
- *  * @author RicardoAnastácio & Xavier Bento
+ * @author Ricardo Anastácio
+ * @author Xavier Bento
  */
 public class Laboratorio implements Serializable {
 

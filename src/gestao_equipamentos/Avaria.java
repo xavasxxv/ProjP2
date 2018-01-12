@@ -11,7 +11,8 @@ import java.util.GregorianCalendar;
 
 /**
  * Class que define Avaria
- * @author RicardoAnastácio & Xavier Bento
+ * @author Ricardo Anastácio
+ * @author Xavier Bento
  */
 public class Avaria implements Serializable {
 

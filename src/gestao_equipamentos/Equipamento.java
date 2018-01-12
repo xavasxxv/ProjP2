@@ -12,7 +12,8 @@ import java.util.GregorianCalendar;
 
 /**
  *Class que define Equipamento
- * @author RicardoAnastácio & Xavier Bento
+ * @author Ricardo Anastácio
+ * @author Xavier Bento
  */
 public class Equipamento implements Serializable {
 

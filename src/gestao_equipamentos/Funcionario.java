@@ -10,7 +10,8 @@ import java.util.Calendar;
 
 /**
  *Class que define dados base do funcionario
- * @author RicardoAnastácio & Xavier Bento
+ * @author Ricardo Anastácio
+ * @author Xavier Bento
  */
 public class Funcionario implements Serializable {
 

@@ -10,7 +10,8 @@ import java.util.Calendar;
 
 /**
  * Class proveniente de funcionario que define docente
- * @author RicardoAnastácio & Xavier Bento
+ * @author Ricardo Anastácio
+ * @author Xavier Bento
  */
 public class FuncionarioDocente extends Funcionario implements Serializable {
 

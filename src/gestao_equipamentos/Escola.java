@@ -13,7 +13,8 @@ import java.util.Collections;
 /**
  * Class que define escola
  *
- * @author RicardoAnastácio e Xavier Bento
+ * @author Ricardo Anastácio
+ * @author Xavier Bento
  */
 public class Escola implements Serializable, Comparable<Escola> {
 

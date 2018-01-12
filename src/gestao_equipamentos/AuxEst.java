@@ -12,7 +12,8 @@ import java.util.GregorianCalendar;
 /**
  * Class auxiliar para estatistica 2
  *
- * @author RicardoAnastácio & Xavier Bento
+ * @author Ricardo Anastácio
+ * @author Xavier Bento
  */
 public class AuxEst implements Serializable, Comparable<AuxEst> {
 

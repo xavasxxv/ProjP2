@@ -11,7 +11,8 @@ import java.util.Calendar;
 
 /**
  * Class que define cada tipo equipamento
- *  @author RicardoAnastácio & Xavier Bento
+ * @author Ricardo Anastácio
+ * @author Xavier Bento
  */
 public class TipoEquipamento implements Serializable {
 
@@ -27,10 +28,7 @@ public class TipoEquipamento implements Serializable {
 
         equipamentos.add(EQ);
     }
-/**
- * 
- * @param  recebe designação do tipo equipamento
- */
+
     public TipoEquipamento(String designacao) {
         this.designacao = designacao;
     }

@@ -15,6 +15,7 @@ import util.Consola;
 /**
  *
  * @author Ricardo Anastácio
+ * @author Xavier Bento
  */
 public class GestaoEquipamento {
 

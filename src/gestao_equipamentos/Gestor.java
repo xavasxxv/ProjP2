@@ -17,7 +17,8 @@ import java.util.Collections;
 /**
  * Class Gestor que gere todo o Agrupamento
  *
- * @author RicardoAnastácio
+ * @author Ricardo Anastácio
+ * @author Xavier Bento
  */
 public class Gestor {
 
@@ -87,10 +88,7 @@ public class Gestor {
             str.append("\nTotal de avarias resgitadas por estado num determinado ano");
             str.append("\nAno-AvariasPorReparar-AvariasReparadas-AvariasInrreparaveis\n");
             for (int i = 0; i < auxEst.size(); i++) {
-
-                str.append(auxEst.get(i).getDataAvaria().get(Calendar.YEAR)).append("-").append("-").append(auxEst.get(i).getNumAvariasPorReparar())
-                        .append(auxEst.get(i).getNumAvariasReparadas()).append("-").append("-").append(auxEst.get(i).getNumAvariasIrreparaveis()).append("\n");
-
+                str.append(auxEst.get(i));
             }
         }
 
@@ -127,6 +125,10 @@ public class Gestor {
 
     }
 
+    /**
+     *
+     * @param Aux recebe
+     */
     public void adicionarAuxEst(AuxEst Aux) {
         auxEst.add(Aux);
 
@@ -156,13 +158,18 @@ public class Gestor {
      * Método para obter uma Avaria de uma determinada posição
      *
      * @param pos posiçao
-     * @return Devolve uma avaria
+     * @return devolve uma avaria
      */
     public Avaria obterAvaria(int pos) {
 
         return avarias.get(pos);
     }
 
+    /**
+     *
+     * @param ND recebe um nao docente
+     * @return devolve um funcionario
+     */
     public Funcionario obterFuncionario(FuncionarioNaoDocente ND) {
 
         return funcionarios.get(funcionarios.indexOf(ND));
@@ -214,22 +221,6 @@ public class Gestor {
         return str.toString();
     }
 
-    public String listarNaoDocentes() {
-        StringBuilder str = new StringBuilder("");
-        if (naoDocentes.isEmpty()) {
-            str.append("\nNão há funcionários não docentes!");
-        } else {
-            str.append("\nFuncionários não docentes do agrupamento (NIF-Nome-Escola-Função): \n");
-            for (int i = 0; i < naoDocentes.size(); i++) {
-                str.append("\t").append(naoDocentes.get(i).getNif() + "-");
-                str.append(naoDocentes.get(i).getNome() + "-");
-                str.append(naoDocentes.get(i).getEscolaTrabalho().getNome() + "-");
-                str.append(naoDocentes.get(i).funcao).append("\n");
-            }
-        }
-        return str.toString();
-    }
-
     public String listarEscolaNome() {
         StringBuilder str = new StringBuilder("");
         if (escolas.isEmpty()) {
@@ -253,7 +244,7 @@ public class Gestor {
             for (int i = 0; i < avarias.size(); i++) {
                 if (avarias.get(i).isAlterado() == false) {
                     str.append("\t").append(avarias.get(i).getNumId() + "-");
-                    str.append(avarias.get(i).getDescriçao()).append("\n");
+                    str.append(avarias.get(i).getDescricao()).append("\n");
                 }
             }
 
@@ -448,15 +439,6 @@ public class Gestor {
         return -1;
     }
 
-    public int pesquisarAvaria(int id) {
-        for (int i = 0; i < avarias.size(); i++) {
-            if (avarias.get(i).getNumId() == id) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
     public int pesquisarAvariaNAlteradas(int id) {
         for (int i = 0; i < avarias.size(); i++) {
             if (avarias.get(i).getNumId() == id && avarias.get(i).isAlterado() == false) {
@@ -602,20 +584,6 @@ public class Gestor {
         } catch (IOException | ClassNotFoundException ex) {
             System.out.println(ex.getMessage());
         }
-    }
-
-    /**
-     * @return the numEquipAvariaTotal
-     */
-    public int getNumEquipAvariaTotal() {
-        return numEquipAvariaTotal;
-    }
-
-    /**
-     * @param numEquipAvariaTotal the numEquipAvariaTotal to set
-     */
-    public void setNumEquipAvariaTotal(int numEquipAvariaTotal) {
-        this.numEquipAvariaTotal = numEquipAvariaTotal;
     }
 
 }

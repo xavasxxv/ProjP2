@@ -10,24 +10,26 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 /**
+ * Class que define Avaria
  *
- * @author RicardoAnastácio
+ * @author Ricardo Anastácio
+ * @author Xavier Bento
  */
 public class Avaria implements Serializable {
 
     private int numId;
     private Calendar dataAvaria = new GregorianCalendar();
     private Equipamento EQ;
-    private String descriçao;
+    private String descricao;
     private Funcionario F;
     private int estadoA;
     private boolean alterado;
 
-    public Avaria(Calendar dataAvaria, Equipamento E, String descriçao, Funcionario F, int estadoA, boolean alterado) {
+    public Avaria(Calendar dataAvaria, Equipamento E, String descricao, Funcionario F, int estadoA, boolean alterado) {
 
         this.dataAvaria = dataAvaria;
         this.EQ = E;
-        this.descriçao = descriçao;
+        this.descricao = descricao;
         this.F = F;
         this.EQ = E;
         this.estadoA = estadoA;
@@ -40,7 +42,7 @@ public class Avaria implements Serializable {
         StringBuilder str = new StringBuilder();
         str.append("Avaria: ");
         str.append("\nNúmero de Identificação: ").append(numId);
-        str.append("\nDescrição: ").append(descriçao);
+        str.append("\nDescrição: ").append(descricao);
         str.append("\nEstado: ");
         if (estadoA == 1) {
             str.append("POR REPARAR");
@@ -90,8 +92,8 @@ public class Avaria implements Serializable {
     /**
      * @return the descriçao
      */
-    public String getDescriçao() {
-        return descriçao;
+    public String getDescricao() {
+        return descricao;
     }
 
     /**

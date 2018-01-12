@@ -9,13 +9,31 @@ import java.io.Serializable;
 import java.util.Calendar;
 
 /**
+ * Class proveniente de funcionario que define docente
  *
- * @author RicardoAnastácio
+ * @author Ricardo Anastácio
+ * @author Xavier Bento
  */
 public class FuncionarioDocente extends Funcionario implements Serializable {
 
     protected String departamento;
 
+    /**
+     * Construtor Funcionario nao docente
+     *
+     * @param nome Recebe nome do funcionario da class Funcionario
+     * @param morada Recebe morada do funcionario da class Funcionario
+     * @param nif Recebe nif do funcionario da class Funcionario
+     * @param email Recebe email do funcionario da class Funcionario
+     * @param telefone Recebe telefone do funcionario da class Funcionario
+     * @param dataNasc Recebe data nascimento do funcionario da class
+     * Funcionario
+     * @param habilitacoes Recebe habilitaçoes do funcionario da class
+     * Funcionario
+     * @param escolaTrabalho Recebe Escola onde trabalha o funcionario da class
+     * Funcionario
+     * @param departamento Recebe o departamento do funcionario
+     */
     public FuncionarioDocente(String nome, String morada, int nif, String email, int telefone, Calendar dataNasc, String habilitacoes, Escola escolaTrabalho, String departamento) {
 
         super(nome, morada, nif, email, telefone, dataNasc, habilitacoes, escolaTrabalho);

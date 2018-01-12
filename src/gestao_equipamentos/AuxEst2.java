@@ -10,8 +10,10 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 /**
+ * Class auxiliar para estatistica 2
  *
- * @author ricar
+ * @author Ricardo Anastácio
+ * @author Xavier Bento
  */
 public class AuxEst2 implements Serializable, Comparable<AuxEst2> {
 
@@ -66,6 +68,15 @@ public class AuxEst2 implements Serializable, Comparable<AuxEst2> {
         }
         return 0;
 
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder str = new StringBuilder();
+
+        str.append(anoGastos.get(Calendar.YEAR)).append(" - ").append(totalGasto);
+
+        return str.toString();
     }
 
 }

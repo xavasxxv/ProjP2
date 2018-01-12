@@ -10,8 +10,10 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 /**
+ * Class auxiliar para estatistica
  *
- * @author ricar
+ * @author Ricardo Anastácio
+ * @author Xavier Bento
  */
 public class AuxEst implements Serializable, Comparable<AuxEst> {
 
@@ -20,6 +22,10 @@ public class AuxEst implements Serializable, Comparable<AuxEst> {
     private int numAvariasIrreparaveis;
     private Calendar dataAvaria = new GregorianCalendar();
 
+    /**
+     *
+     * @param dataAvaria recebe data de avaria
+     */
     public AuxEst(Calendar dataAvaria) {
 
         this.dataAvaria = dataAvaria;
@@ -74,23 +80,28 @@ public class AuxEst implements Serializable, Comparable<AuxEst> {
         return dataAvaria;
     }
 
-    /**
-     * @param dataAvaria the dataAvaria to set
-     */
-    public void setDataAvaria(Calendar dataAvaria) {
-        this.dataAvaria = dataAvaria;
-    }
-
     @Override
     public int compareTo(AuxEst o) {
 
-        if (numAvariasPorReparar < o.getNumAvariasPorReparar()) {
+        if (numAvariasPorReparar > o.getNumAvariasPorReparar()) {
             return 1;
         }
-        if (numAvariasPorReparar > o.getNumAvariasPorReparar()) {
+        if (numAvariasPorReparar < o.getNumAvariasPorReparar()) {
             return -1;
         }
         return 0;
 
     }
+
+    @Override
+    public String toString() {
+
+        StringBuilder str = new StringBuilder();
+
+        str.append(dataAvaria.get(Calendar.YEAR)).append("-").append(numAvariasPorReparar).append("-")
+                .append(numAvariasReparadas).append("-").append(numAvariasIrreparaveis).append("\n");
+
+        return str.toString();
+    }
+
 }

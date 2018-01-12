@@ -7,11 +7,12 @@ package gestao_equipamentos;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 /**
+ * Class que define cada tipo equipamento
  *
- * @author RicardoAnastácio
+ * @author Ricardo Anastácio
+ * @author Xavier Bento
  */
 public class TipoEquipamento implements Serializable {
 
@@ -19,11 +20,20 @@ public class TipoEquipamento implements Serializable {
     private int numId;
     private ArrayList<Equipamento> equipamentos = new ArrayList<>();
 
+    /**
+     *
+     * @param EQ recebe um equipamento
+     */
     public void adicionarEquipamento(Equipamento EQ) {
 
         equipamentos.add(EQ);
     }
 
+    /**
+     * Construtor TipoEquipamento
+     *
+     * @param designacao recebe a designação do novo tipo de equipamento
+     */
     public TipoEquipamento(String designacao) {
         this.designacao = designacao;
     }
@@ -33,13 +43,6 @@ public class TipoEquipamento implements Serializable {
      */
     public String getDesignacao() {
         return designacao;
-    }
-
-    /**
-     * @param designacao the designacao to set
-     */
-    public void setDesignacao(String designacao) {
-        this.designacao = designacao;
     }
 
     /**

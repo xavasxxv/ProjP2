@@ -23,7 +23,8 @@ public class AuxEst implements Serializable, Comparable<AuxEst> {
     private Calendar dataAvaria = new GregorianCalendar();
 
     /**
-     *Construtor de um ano de avarias
+     * Construtor de um ano de avarias
+     *
      * @param dataAvaria recebe data de avaria
      */
     public AuxEst(Calendar dataAvaria) {

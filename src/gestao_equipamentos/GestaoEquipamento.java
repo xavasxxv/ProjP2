@@ -13,7 +13,7 @@ import java.util.GregorianCalendar;
 import util.Consola;
 
 /**
- *
+ * Classe Gestão de Equipamentos, exibe e recebe dados do utilizador
  * @author Ricardo Anastácio
  * @author Xavier Bento
  */
@@ -550,7 +550,7 @@ public class GestaoEquipamento {
 
         Equipamento passaEQ;
 
-        Calendar passaData = new GregorianCalendar();
+        Calendar passaData;
         Calendar data = new GregorianCalendar();
         data.set(1, 1990);
         Calendar data1 = new GregorianCalendar();

@@ -13,7 +13,7 @@ import java.util.GregorianCalendar;
 import util.Consola;
 
 /**
- *
+ * Classe Gestão de Equipamentos, exibe e recebe dados do utilizador
  * @author Ricardo Anastácio
  * @author Xavier Bento
  */
@@ -22,11 +22,16 @@ public class GestaoEquipamento {
     public static SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
     public static Gestor gerir = new Gestor();
 
+    /**
+     * Método main, classe pricipal
+     *
+     * @param args
+     */
     public static void main(String[] args) {
 
-        //gerir.lerFicheiro();
-        //testes(gerir); // COMENTAR 
-        testes1(gerir, 0);
+        gerir.lerFicheiro();
+        //testes(gerir);
+        //testes1(gerir, 0);
         int op;
         int op2;
         int op3;
@@ -76,7 +81,7 @@ public class GestaoEquipamento {
                                 }
                                 break;
                             case 4:
-                                if (gerir.getSizeFuncionarios() != 0) {    //se o funcionario nao estiver associado a avarias
+                                if (gerir.getSizeFuncionarios() != 0) {
                                     eliminarFuncionarioNIF(gerir);
                                 } else {
                                     System.err.println("\nÉ necessário existirem funcionários!\n");
@@ -235,6 +240,12 @@ public class GestaoEquipamento {
         } while (op != 0);
     }
 
+    /**
+     * Método para testes, adicionava objetos aos arrays de modo a ser mais
+     * fácil o debug
+     *
+     * @param gerir recebe o objeto de gestão com todos os arrays e variáveis
+     */
     public static void testes(Gestor gerir) {
         int pos, pos1;
 
@@ -391,7 +402,6 @@ public class GestaoEquipamento {
         pos1 = gerir.pesquisarAvariaAno(A1.getDataAvaria());
         if (pos1 == -1) {
             Aux = new AuxEst(A1.getDataAvaria());
-            //pos1 = gerir.pesquisarAvariaAno(A1.getDataAvaria());
             gerir.adicionarAuxEst(Aux);
         } else {
             Aux = gerir.obterAuxEst(pos1);
@@ -418,7 +428,6 @@ public class GestaoEquipamento {
         pos1 = gerir.pesquisarAvariaAno(A2.getDataAvaria());
         if (pos1 == -1) {
             Aux = new AuxEst(A2.getDataAvaria());
-            //pos1 = gerir.pesquisarAvariaAno(A2.getDataAvaria());
             gerir.adicionarAuxEst(Aux);
         } else {
             Aux = gerir.obterAuxEst(pos1);
@@ -445,7 +454,6 @@ public class GestaoEquipamento {
         pos1 = gerir.pesquisarAvariaAno(A3.getDataAvaria());
         if (pos1 == -1) {
             Aux = new AuxEst(A3.getDataAvaria());
-            //pos1 = gerir.pesquisarAvariaAno(A3.getDataAvaria());
             gerir.adicionarAuxEst(Aux);
         } else {
             Aux = gerir.obterAuxEst(pos1);
@@ -472,7 +480,6 @@ public class GestaoEquipamento {
         pos1 = gerir.pesquisarAvariaAno(A4.getDataAvaria());
         if (pos1 == -1) {
             Aux = new AuxEst(A4.getDataAvaria());
-            //pos1 = gerir.pesquisarAvariaAno(A4.getDataAvaria());
             gerir.adicionarAuxEst(Aux);
         } else {
             Aux = gerir.obterAuxEst(pos1);
@@ -499,7 +506,6 @@ public class GestaoEquipamento {
         pos1 = gerir.pesquisarAvariaAno(A5.getDataAvaria());
         if (pos1 == -1) {
             Aux = new AuxEst(A5.getDataAvaria());
-            //pos1 = gerir.pesquisarAvariaAno(A5.getDataAvaria());
             gerir.adicionarAuxEst(Aux);
         } else {
             Aux = gerir.obterAuxEst(pos1);
@@ -509,16 +515,11 @@ public class GestaoEquipamento {
         gerir.adicionaNumEQAvariaTotal(EQ);
         EQ.adicionarAvaria(A5);
 
-        //Calendar dataReparacao1 = Calendar.getInstance();
-        //Reparacao R = new Reparacao(A5, dataReparacao1, "reparação", 10, F);
-        //gerir.adicionarReparacao(R);
-        //EQ.adicionarReparacao(R);
         Avaria A6 = new Avaria(data3, EQ, "avaria6", F, 3, true);
         gerir.adicionarAvaria(A6);
         pos1 = gerir.pesquisarAvariaAno(A6.getDataAvaria());
         if (pos1 == -1) {
             Aux = new AuxEst(A6.getDataAvaria());
-            //pos1 = gerir.pesquisarAvariaAno(A6.getDataAvaria());
             gerir.adicionarAuxEst(Aux);
         } else {
             Aux = gerir.obterAuxEst(pos1);
@@ -528,12 +529,18 @@ public class GestaoEquipamento {
         gerir.adicionaNumEQAvariaTotal(EQ);
         EQ.adicionarAvaria(A6);
 
-        //Calendar dataReparacao = Calendar.getInstance();
         Reparacao R1 = new Reparacao(A6, data2, "reparação", 10, F);
         gerir.adicionarReparacao(R1);
         EQ.adicionarReparacao(R1);
     }
 
+    /**
+     * Método para testes, adicionava objetos aos arrays de modo a ser mais
+     * fácil o debug
+     *
+     * @param gerir
+     * @param nrAvariasAdicionar
+     */
     public static void testes1(Gestor gerir, int nrAvariasAdicionar) {
 
         Equipamento EQ1, EQ2, EQ3, EQ4;
@@ -543,7 +550,7 @@ public class GestaoEquipamento {
 
         Equipamento passaEQ;
 
-        Calendar passaData = new GregorianCalendar();
+        Calendar passaData;
         Calendar data = new GregorianCalendar();
         data.set(1, 1990);
         Calendar data1 = new GregorianCalendar();
@@ -829,6 +836,10 @@ public class GestaoEquipamento {
         }
     }
 
+    /**
+     * Método para consultar todas as avarias de um equipamento
+     * @param gerir recebe o objeto de gestão com todos os arrays e variáveis
+     */
     public static void consultarAvariaEquipamento(Gestor gerir) {
         Equipamento EQ;
         Avaria A;
@@ -865,6 +876,10 @@ public class GestaoEquipamento {
         }
     }
 
+    /**
+     * Método para alterar o estado das avarias e registar reparações quando aplicável
+     * @param gerir recebe o objeto de gestão com todos os arrays e variáveis
+     */
     public static void alterarEstadoAvaria(Gestor gerir) {
         int id;
         int pos;
@@ -898,17 +913,16 @@ public class GestaoEquipamento {
 
         System.out.print(A.getEQ().getE().listarFuncionariosEscola());
 
-        //revista, já funciona como deve de ser
         do {
 
             nif = Consola.lerInt("Indique o NIF do funcionário que regista a avaria: ", 1, 999999999);
-            pos = gerir.pesquisarNaoDocenteTecnico(nif, A.getEQ().getE()); //ele vai procurar o ND ou array dos ND e verifica se é da escola e se é tecnico, devolva a pos no array ND
+            pos = gerir.pesquisarNaoDocenteTecnico(nif, A.getEQ().getE());
 
             if (pos == -1) {
                 System.err.println("Não existe funcionário com esse NIF ou não tem como função TECNICO!");
             }
         } while (pos == -1);
-        F = gerir.obterFuncionario(gerir.obterFuncionarioNaoDocente(pos)); //aqui ele vai buscar a instância ND dada a pos no array ND e depois procura a instancia ND no array F, funciona como deve de ser
+        F = gerir.obterFuncionario(gerir.obterFuncionarioNaoDocente(pos));
 
         System.out.println("1-POR REPARAR / 2- REPARADA / 3-IRREPARÁVEL");
 
@@ -973,6 +987,10 @@ public class GestaoEquipamento {
 
     }
 
+    /**
+     * Método para registar novas avarias de equipamento
+     * @param gerir recebe o objeto de gestão com todos os arrays e variáveis
+     */
     public static void registarAvaria(Gestor gerir) {
         Equipamento EQ;
         Calendar dataAvaria = Calendar.getInstance();
@@ -1001,7 +1019,6 @@ public class GestaoEquipamento {
 
         switch (EQ.getEstado()) {
             case 1:
-                //revisto, todos os F das E podem adicionar avarias, obtém a instância F não do array principal, mas do array da escola
                 System.out.print(EQ.getE().listarFuncionariosEscola());
                 do {
 
@@ -1047,6 +1064,10 @@ public class GestaoEquipamento {
         }
     }
 
+    /**
+     * Método para registar um novo equipamento
+     * @param gerir recebe o objeto de gestão com todos os arrays e variáveis
+     */
     public static void registarEquipamento(Gestor gerir) {
         Equipamento EQ;
         Calendar dataIventario = Calendar.getInstance();
@@ -1115,6 +1136,10 @@ public class GestaoEquipamento {
 
     }
 
+    /**
+     * Método para associar um laboratório a um laboratório
+     * @param gerir recebe o objeto de gestão com todos os arrays e variáveis
+     */
     public static void associarLabEquipamento(Gestor gerir) {
 
         int id;
@@ -1140,10 +1165,6 @@ public class GestaoEquipamento {
             return;
         }
 
-        //if (EQ.getLab() != null) {
-        //    System.err.println("Este equipamento já tem laboratório associado!\n");
-        //    return;
-        //}
         System.out.println(gerir.listarLaboratorioEscola(EQ.getE()));
         do {
             descricao = Consola.lerString("Indique a descrição do laboratório ao qual pretende associar: ");
@@ -1163,6 +1184,10 @@ public class GestaoEquipamento {
 
     }
 
+    /**
+     * Método para consultar equipamentos por ID
+     * @param gerir recebe o objeto de gestão com todos os arrays e variáveis
+     */
     public static void consultarEquipamentoNumero(Gestor gerir) {
 
         Equipamento EQ;
@@ -1182,6 +1207,10 @@ public class GestaoEquipamento {
 
     }
 
+    /**
+     * Método para consulta de equipamentos por laboratório
+     * @param gerir recebe o objeto de gestão com todos os arrays e variáveis
+     */
     public static void consultarEquipamentoLab(Gestor gerir) {
 
         int pos;
@@ -1201,6 +1230,10 @@ public class GestaoEquipamento {
 
     }
 
+    /**
+     * Método para inserir um novo tipo de equipamento
+     * @param gerir recebe o objeto de gestão com todos os arrays e variáveis
+     */
     public static void inserirTiposEquipamento(Gestor gerir) {
 
         String designacao;
@@ -1213,6 +1246,10 @@ public class GestaoEquipamento {
 
     }
 
+    /**
+     * Método para consulta de tipos de equipamento
+     * @param gerir recebe o objeto de gestão com todos os arrays e variáveis
+     */
     public static void consultarTiposEquipamentos(Gestor gerir) {
         int id;
         int pos;
@@ -1231,6 +1268,10 @@ public class GestaoEquipamento {
 
     }
 
+    /**
+     * Método para inserir uma nova escola
+     * @param gerir recebe o objeto de gestão com todos os arrays e variáveis
+     */
     public static void inserirEscola(Gestor gerir) {
         Escola E;
         int pos;
@@ -1279,6 +1320,10 @@ public class GestaoEquipamento {
         System.out.println(E);
     }
 
+    /**
+     * Método para consultar uma escola por NIF, mostra os seus funcionários e laboratórios
+     * @param gerir recebe o objeto de gestão com todos os arrays e variáveis
+     */
     public static void consulaEscolaNIF(Gestor gerir) {
         int nif;
         int pos;
@@ -1297,6 +1342,10 @@ public class GestaoEquipamento {
 
     }
 
+    /**
+     * Método para inserir um novo funcionário
+     * @param gerir recebe o objeto de gestão com todos os arrays e variáveis
+     */
     public static void inserirFuncionario(Gestor gerir) {
         FuncionarioDocente D;
         FuncionarioNaoDocente ND;
@@ -1395,13 +1444,24 @@ public class GestaoEquipamento {
         System.out.println("\n------Inserido funcionario com sucesso!------");
     }
 
+    /**
+     * Métodp para alterar as informações de um funcionário
+     * @param gerir recebe o objeto de gestão com todos os arrays e variáveis
+     */
     public static void alterarFuncionario(Gestor gerir) {
         int pos;
+        int nif;
         int telefone;
         String morada;
         Funcionario func;
 
-        pos = consultaFuncionarioNIF(gerir);
+        do {
+            nif = Consola.lerInt("\nIndique o NIF do funcionário a alterar: ", 0, 999999999);
+            pos = gerir.pesquisarFuncionarioNIF(nif);
+            if (pos == -1) {
+                System.err.println("Não existe funcionário com esse NIF!");
+            }
+        } while (pos == -1);
         func = gerir.obterFuncionario(pos);
         morada = Consola.lerString("Indique a morada do funcionário: ");
         telefone = Consola.lerInt("Indique o número de telefone: ", 0, 999999999);
@@ -1410,6 +1470,10 @@ public class GestaoEquipamento {
         System.out.println("\nFuncionário alterado com sucesso!\n");
     }
 
+    /**
+     * Método para eliminar um funcionário
+     * @param gerir recebe o objeto de gestão com todos os arrays e variáveis
+     */
     public static void eliminarFuncionarioNIF(Gestor gerir) {
         int pos;
         Funcionario func;
@@ -1441,7 +1505,12 @@ public class GestaoEquipamento {
         }
     }
 
-    public static int consultaFuncionarioNIF(Gestor gerir) {
+    /**
+     * Método para consulta de um funcionário a partir de um NIF
+     *
+     * @param gerir recebe o objeto de gestão com todos os arrays e variáveis
+     */
+    public static void consultaFuncionarioNIF(Gestor gerir) {
         int nif;
         int pos;
 
@@ -1453,10 +1522,13 @@ public class GestaoEquipamento {
             }
         } while (pos == -1);
         System.out.println(gerir.obterFuncionario(pos));
-        return pos;
-
     }
 
+    /**
+     * Método para inserir um novo laboratório
+     *
+     * @param gerir recebe o objeto de gestão com todos os arrays e variáveis
+     */
     public static void inserirLaboratorio(Gestor gerir) {
         Laboratorio L;
         String descricao;
@@ -1497,6 +1569,11 @@ public class GestaoEquipamento {
 
     }
 
+    /**
+     * Método par aconsulta de laboratórios por escola
+     *
+     * @param gerir recebe o objeto de gestão com todos os arrays e variáveis
+     */
     public static void consultarLaboratorioEscola(Gestor gerir) {
         int nif;
         int pos;
@@ -1514,6 +1591,11 @@ public class GestaoEquipamento {
 
     }
 
+    /**
+     * Método para consulta de laboratórios por descrição
+     *
+     * @param gerir recebe o objeto de gestão com todos os arrays e variáveis
+     */
     public static void consultarLaboratorioDescricao(Gestor gerir) {
         String descricao;
         int pos;
@@ -1532,6 +1614,11 @@ public class GestaoEquipamento {
 
     }
 
+    /**
+     * Menu para a consulta de laboratórios
+     *
+     * @return devolve a opção selecionada
+     */
     public static int menuLabConsulta() {
         int opcao;
         System.out.println("1 - Consular laboratorios por designação");
@@ -1541,6 +1628,11 @@ public class GestaoEquipamento {
         return opcao;
     }
 
+    /**
+     * Menu principal
+     *
+     * @return devolve a opção selecionada
+     */
     public static int menu() {
         int opcao;
         System.out.println("\n\t\t********Gestao de Equipamentos de Escolas********");
@@ -1561,6 +1653,11 @@ public class GestaoEquipamento {
         return opcao;
     }
 
+    /**
+     * Menu para a exibição de estatísticas
+     *
+     * @return devolve a opção selecionada
+     */
     public static int menuEstatisticas() {
         int opcao;
         System.out.println("1 -  Percentagem de equipamentos com avarias no agrupamento.");
@@ -1571,6 +1668,11 @@ public class GestaoEquipamento {
         return opcao;
     }
 
+    /**
+     * Menu para a gestão de avarias e reparações
+     *
+     * @return devolve a opção selecionada
+     */
     public static int gestaoAvarias() {
         int opcao;
         System.out.println("1 - Registar Avaria");
@@ -1581,6 +1683,11 @@ public class GestaoEquipamento {
         return opcao;
     }
 
+    /**
+     * Menu para a gestão de equipamentos
+     *
+     * @return devolve a opção selecionada
+     */
     public static int gestaoEquipamentos() {
         int opcao;
         System.out.println("1 - Registar Equipamento");
@@ -1592,6 +1699,11 @@ public class GestaoEquipamento {
         return opcao;
     }
 
+    /**
+     * Menu para a gestão de tipos de equipamentos
+     *
+     * @return devolve a opção selecionada
+     */
     public static int gestaoTiposEquipamento() {
         int opcao;
         System.out.println("1 - Inserir tipo de equipamento");
@@ -1601,6 +1713,11 @@ public class GestaoEquipamento {
         return opcao;
     }
 
+    /**
+     * Menu para a gestão de laboratórios
+     *
+     * @return devolve a opção selecionada
+     */
     public static int gestaoLaboratorios() {
         int opcao;
         System.out.println("1 - Inserir laboratório");
@@ -1610,6 +1727,11 @@ public class GestaoEquipamento {
         return opcao;
     }
 
+    /**
+     * Menu para a gestão de funcionários
+     *
+     * @return devolve a opção selecionada
+     */
     public static int gestaoFuncionarios() {
         int opcao;
         System.out.println("1 - Inserir Funcionario");
@@ -1621,6 +1743,11 @@ public class GestaoEquipamento {
         return opcao;
     }
 
+    /**
+     * Menu para a gestão de escolas
+     *
+     * @return devolve a opção selecionada
+     */
     public static int gestaoEscolas() {
         int opcao;
         System.out.println("1 - Inserir Escola");

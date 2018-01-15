@@ -21,7 +21,8 @@ public class TipoEquipamento implements Serializable {
     private ArrayList<Equipamento> equipamentos = new ArrayList<>();
 
     /**
-     *Adiciona um equipamento ao tipo de equipamento
+     * Adiciona um equipamento ao tipo de equipamento
+     *
      * @param EQ recebe um equipamento
      */
     public void adicionarEquipamento(Equipamento EQ) {

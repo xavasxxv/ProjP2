@@ -27,7 +27,8 @@ public class Funcionario implements Serializable {
     private boolean verificaEliminar;
 
     /**
-     *Construtor de um funcionario
+     * Construtor de um funcionario
+     *
      * @param nome recebe nome do funcionario
      * @param morada recebe morada do funcionario
      * @param nif recebe nif do funcionario

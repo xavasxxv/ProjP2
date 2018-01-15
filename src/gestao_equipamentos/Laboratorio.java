@@ -63,17 +63,21 @@ public class Laboratorio implements Serializable {
         }
         return str.toString();
     }
-/**
- * Adiciona um equipamento a um laboratorio
- * @param E recebe o equipamento 
- */
+
+    /**
+     * Adiciona um equipamento a um laboratorio
+     *
+     * @param E recebe o equipamento
+     */
     public void adicionarEquipamento(Equipamento E) {
         equipamentos.add(E);
     }
-/**
- * Remove um equipamento do laboratorio
- * @param E recebe o equipamento
- */
+
+    /**
+     * Remove um equipamento do laboratorio
+     *
+     * @param E recebe o equipamento
+     */
     public void removerEquipamento(Equipamento E) {
         equipamentos.remove(E);
     }
@@ -100,7 +104,8 @@ public class Laboratorio implements Serializable {
     }
 
     /**
-     *Lista equipamentos por laboratorio
+     * Lista equipamentos por laboratorio
+     *
      * @return a string dos equipamentos do laboratorio
      */
     public String listarEQLab() {

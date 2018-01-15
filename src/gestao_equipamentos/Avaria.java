@@ -24,15 +24,17 @@ public class Avaria implements Serializable {
     private Funcionario F;
     private int estadoA;
     private boolean alterado;
-/**
- * Construtor Avaria
- * @param dataAvaria Recebe data de registo de avaria
- * @param E Recebe o equipamento avariado
- * @param descricao Recebe a descriçao da avaria
- * @param F Recebe o funcionario que efectua o registo da avaria 
- * @param estadoA Recebe o estado da avaria (por-reparar)
- * @param alterado Recebe o estado da alteração de avaria 
- */
+
+    /**
+     * Construtor Avaria
+     *
+     * @param dataAvaria Recebe data de registo de avaria
+     * @param E Recebe o equipamento avariado
+     * @param descricao Recebe a descriçao da avaria
+     * @param F Recebe o funcionario que efectua o registo da avaria
+     * @param estadoA Recebe o estado da avaria (por-reparar)
+     * @param alterado Recebe o estado da alteração de avaria
+     */
     public Avaria(Calendar dataAvaria, Equipamento E, String descricao, Funcionario F, int estadoA, boolean alterado) {
 
         this.dataAvaria = dataAvaria;
